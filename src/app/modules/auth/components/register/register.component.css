@@ -1,0 +1,118 @@
+.register-wrapper {
+    margin: 0;
+}
+
+.register-fieldset {
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 55px;
+    padding-bottom: 40px;
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-white);
+    border-radius: 50px;
+}
+
+.register-fieldset-title {
+    margin: 0;
+    margin-bottom: 35px;
+    font-weight: bold;
+    font-size: 25px;
+    color: var(--explorjob-orange);
+    text-transform: uppercase;
+}
+
+.register-form {
+
+}
+
+.register-form-input-date {
+    display: block;
+    margin-top: 17.5px;
+    text-align: left;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.birth-input {
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+    background: var(--explorjob-lightgrey);
+    border: none;
+    outline: none;
+}
+
+.register-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 17.5px;
+    padding: 7.5px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+
+.register-form-button:disabled {
+    opacity: 0.5;
+}
+
+.register-input-accept-cgu {
+    display: flex;
+    font-size: 13px;
+}
+
+.register-cgu-link {
+    text-decoration: none;
+}
+
+.register-input-accept-legal-notices {
+    display: flex;
+    font-size: 13px;
+}
+
+.register-legal-notices-link {
+    text-decoration: none;
+}
+
+.register-login-separator {
+    display: block;
+    width: 175px;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.register-login-link {
+    text-decoration: none;
+}
+
+.register-disable {
+
+}
+
+::ng-deep.mat-datepicker-toggle-active {
+    color: var(--explorjob-darkgrey);
+}
+
+::ng-deep.mat-datepicker-toggle-active {
+    color: var(--explorjob-orange);
+}
+
+::ng-deep.mat-calendar {
+    background: var(--explorjob-lightgrey);
+    font-family: "Montserrat";
+}
+
+::ng-deep.mat-calendar-body-selected {
+    background: var(--explorjob-orange);
+}
+.account-profile-contact-informations-form-input-mask {
+    display: grid
+}

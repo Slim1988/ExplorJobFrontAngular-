@@ -1,0 +1,144 @@
+.account-jobs-wrapper {
+    margin: 0;
+}
+
+.account-jobs-fielset {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.account-jobs-fieldset-title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: var(--explorjob-orange);
+}
+
+.account-jobs-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 25px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.account-jobs-add {
+    float: right;
+    margin-top: -43px;
+    margin-right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.account-jobs-content {
+    display: contents;
+    margin-top: 5px;
+}
+
+.account-jobs-list-item-edit {
+    margin-left: 5.25px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.account-jobs-list-item-remove {
+    margin-left: 5.25px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.account-jobs-form-modal-title {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--explorjob-orange);
+}
+
+.account-jobs-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.account-jobs-form-input-label {
+    margin-top: 23px;
+    font-weight: bold;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+}
+
+.account-jobs-form-input-text {
+    width: 100%;
+    height: 30px;
+}
+
+.account-jobs-form-input-text::placeholder {
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14.5px;
+}
+
+::ng-deep .account-jobs-form-input-text-container {
+    width: 100%;
+}
+
+::ng-deep .account-jobs-form-input-text-input-field {
+    width: 100%;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+::ng-deep .account-jobs-form-input-text-input-field::placeholder {
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14.5px;
+}
+
+::ng-deep .account-jobs-form-input-text-panel {
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+}
+
+.account-jobs-form-input-textarea::placeholder {
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14.5px;
+}
+
+::ng-deep .account-jobs-form-input-dropdown-multi {
+    width: auto;
+    height: auto;
+}
+
+::ng-deep .account-jobs-form-input-dropdown-multi::placeholder {
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14.5px;
+}
+
+.account-jobs-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 18px;
+    padding: 7.5px;
+    float: right;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+
+.account-jobs-go-to-add-link {
+    display: block;
+    margin-top: 17.5px;
+    color: var(--explorjob-orange);
+    cursor: pointer;
+}

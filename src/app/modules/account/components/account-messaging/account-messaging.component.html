@@ -1,0 +1,221 @@
+<p-confirmDialog acceptLabel="OK" rejectLabel="Annuler" [style]="{ maxWidth: '75vw' }"></p-confirmDialog>
+
+<user-profile-modal
+    [settings]="userProfileSettings"
+    (events)="handleUserProfileEvent($event)">
+</user-profile-modal>
+
+<write-message-modal
+    [options]="writeMessageOptions"
+    (events)="handleWriteMessageEvent($event)">
+</write-message-modal>
+
+<div class="account-messaging-wrapper">
+    <div *ngIf="!conversations; then accountMessagingLoadingTemplate else accountMessagingLoadedTemplate"></div>
+</div>
+
+<ng-template #accountMessagingLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #accountMessagingLoadedTemplate>
+    <div class="account-messaging-fielset">
+
+        <h2 class="account-messaging-fieldset-title" (click)="backToConversations()" >
+            Messagerie
+        </h2>
+
+        <hr class="account-messaging-separator">
+        <div class="account-messaging-content">
+
+            <div style="display: inherit; margin-top: -25px; margin-bottom: 20px;">
+                <p-messages></p-messages>
+            </div>
+
+            <div *ngIf="!conversationSelected"
+                class="account-messaging-content-conversations">
+                <div *ngIf="conversations.length &&  shouldShowConversations()">
+                    <div class="account-messaging-conversations-filter">
+                        <input
+                            #filterConversationsInput
+                            pInputText
+                            type="text"
+                            (input)="filterConversations($event.target.value)"
+                            placeholder="Rechercher"
+                            class="input account-messaging-conversations-filter-input">
+                        <a (click)="clearFilterConversations()" class="account-messaging-conversations-filter-close">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+
+                    <div class="account-messaging-conversations">
+                        <div *ngFor="let conversation of displayedConversations"
+                            class="account-messaging-conversation">
+                            <div class="p-grid" *ngIf="conversation.display">
+                                <div class="p-col-12 p-md-12 p-lg-8" >
+                                    <a (click)="selectConversation(conversation)" class="cursor-pointer">
+                                        <account-conversation [conversation]="conversation"></account-conversation>
+                                    </a>
+                                </div>
+                                <div class="p-col-8 p-md-7 p-lg-2">
+                                    <button
+                                        class="account-messaging-conversation-button-messages"
+                                        (click)="selectConversation(conversation)"
+                                        title="Consulter les messages">
+                                        <span class="account-messaging-conversation-button-messages-icon"
+                                            title="{{ conversation?.numberOfUnreadMessages() }} messages non lu">
+                                            <span class="account-messaging-conversation-button-messages-icon-text" *ngIf="isFirstReload">
+                                                {{ conversation?.numberOfUnreadMessages() }}
+                                            </span>
+                                            <span class="account-messaging-conversation-button-messages-icon-text" *ngIf="!isFirstReload">
+                                                {{ getUpdatedNumberOfUnreadMessages(conversation) }}
+                                            </span>
+                                        </span>
+                                        <span class="account-messaging-conversation-button-messages-text" *ngIf="getUpdatedNumberOfUnreadMessages(conversation)<=1">
+                                            nouveau<br>message
+                                        </span>
+                                        <span class="account-messaging-conversation-button-messages-text" *ngIf="getUpdatedNumberOfUnreadMessages(conversation)>1">
+                                           nouveaux<br>messages
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="p-col-4 p-md-5 p-lg-2">
+                                    <div class="account-messaging-conversation-actions">
+                                        <a (click)="userProfileTo(conversation?.interlocutor)"
+                                            class="account-messaging-conversation-action">
+                                            <img src="assets/icons/information-orange.png"
+                                                title="Voir le profil de {{ conversation?.interlocutor?.firstName | titlecase }}">
+                                        </a>
+                                        <a (click)="deleteConversation(conversation)"
+                                            class="account-messaging-conversation-action"
+                                            style="position: relative; top: 0px; margin-right: 20px;">
+                                            <img src="assets/icons/corbeille-orange.png"
+                                                title="Supprimer la conversation">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p-paginator
+                            *ngIf="conversations?.length > paginationOptions.rowsPerPage"
+                            class="account-messaging-conversations-paginator"
+                            styleClass="paginator-item-override"
+                            [rows]="paginationOptions.rowsPerPage"
+                            [rowsPerPageOptions]="paginationOptions.rowsPerPageOptions"
+                            [totalRecords]="filteredConversations?.length"
+                            pageLinks = "8"
+                            (onPageChange)="paginate($event)">
+                        </p-paginator>
+                    </div>
+                </div>
+
+                <div *ngIf="!conversations.length">
+                    <div class="center">
+                        <i>Vous n'avez aucune conversation</i>
+                    </div>
+
+                    <div class="center">
+                        <a class="account-messaging-go-to-search-link"
+                            (click)="goToRequest()">
+                            Aller à la recherche
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="conversationSelected"
+                class="account-messaging-content-messages">
+                <div class="account-messaging-messages-actions-bar">
+                    <div class="p-grid">
+                        <div class="p-col-1 p-md-1 p-lg-1">
+                            <a
+                                class="account-messaging-messages-actions-back"
+                                (click)="backToConversations()"
+                                title="Revenir aux conversations">
+                                <i class="fa fa-angle-left md-36"></i>
+                            </a>
+                        </div>
+
+                        <div class="p-col-4 p-md-4 p-lg-1">
+                            <a (click)="userProfileToInterlocutorFromConversationSelected()" class="cursor-pointer">
+                                <div class="account-messaging-messages-actions-user-photo">
+                                    <img #conversationSelectedUserPhoto
+                                        src="{{ conversationSelected?.interlocutor?.photoUrl }}"
+                                        (error)="conversationSelectedUserPhoto.src=userPhotoDefault()"
+                                        alt="Photo de {{ conversationSelected?.interlocutor?.firstName | titlecase }}">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="p-col-7 p-md-7 p-lg-4">
+                            <a (click)="userProfileToInterlocutorFromConversationSelected()" class="cursor-pointer">
+                                <div class="account-messaging-messages-actions-username">
+                                    {{ conversationSelected.interlocutor.firstName | titlecase }} {{ conversationSelected.interlocutor.lastName | slice:0:1 | uppercase }}{{ conversationSelected.interlocutor.lastName ? '.' : '' }}
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="p-col-8 p-md-8 p-lg-4">
+                            <a (click)="userProfileToInterlocutorFromConversationSelected()" class="cursor-pointer">
+                                <div class="account-messaging-messages-actions-user-title">
+                                    {{ userTitle() }}
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="p-col-2 p-md-2 p-lg-1">
+                            <a (click)="userProfileToInterlocutorFromConversationSelected()"
+                                class="account-messaging-messages-action-user-detail">
+                                <img src="assets/icons/information-orange.png"
+                                    title="Voir le profil de {{ conversationSelected.interlocutor.firstName | titlecase }}">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="account-messaging-messages-display-wrapper">
+
+                    <div class="account-messaging-messages">
+
+                        <div *ngFor="let message of conversationSelected?.messages">
+                        <account-message
+                            [message]="message"
+                            [conversationId]="conversationSelected?.id"
+                            [userId]="conversationSelected?.ownerId"
+                            [interlocutorId]="conversationSelected?.interlocutorId"
+                            (events)="handleWriteMessageEvent($event)">
+                        </account-message>
+                        </div>
+
+                        <div #messagesElementEnd></div>
+                    </div>
+
+                    <div class="account-messaging-messages-footer">
+                        <div class="account-messaging-messages-footer-actions">
+                            <a *ngIf="account?.phone"
+                                class="account-messaging-messages-footer-action-transmit-phone"
+                                (click)="transmitPhone()"
+                                title="Transmettre mon numéro de téléphone">
+                                <img src="assets/icons/phone-orange.png">
+                            </a>
+                        </div>
+
+                        <button
+                            pButton
+                            type="button"
+                            label="Écrire un message"
+                            (click)="writeMessageTo(conversationSelected?.interlocutorId,conversationSelected?.id)"
+                            title="Ecrire à {{ conversationSelected?.interlocutor?.firstName | titlecase }}"
+                            class="account-messaging-messages-write-button">
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</ng-template>

@@ -1,0 +1,30 @@
+<div *ngIf="isLoaded()" class="promote-slider-wrapper">
+    <p-carousel [numVisible]="1" [numScroll]="1" [value]="orderedCompaniesToDisplay"
+        [autoplayInterval]="orderedCompaniesToDisplay.length > 1 ? sliderInterval : 0"
+        [circular]="orderedCompaniesToDisplay.length > 1" 
+        class="hide-dots custom-arrows" [ngClass]="{'hide-arrows' : orderedCompaniesToDisplay.length === 1}">
+
+        <ng-template let-promote pTemplate="item">
+            <div *ngIf="!isArray(promote)" class="promotes-wrapper cursor-pointer"
+                (click)="goToCompanyPage(promote.slug)">
+                <img class="promote-logo" [src]="promote?.logoUrl"
+                    alt="Voir le détail de l'entreprise {{ promote?.companyName }}">
+                <div class="promote-msg-wrapper">
+                    <p *ngIf="promote?.highlightMessage" class="bold center-responsive md-12 p-mb-0">{{ promote?.highlightMessage }}</p>
+                    <p *ngIf="promote?.message" class="italic center-responsive md-12">{{ promote?.message }}</p>
+                </div>
+            </div>
+
+            <div *ngIf="isArray(promote)" class="promotes-without-message-wrapper">
+                <div *ngFor="let promoteItem of promote; let i = index;">
+                    <div *ngIf="i < carouselLogoCapacity" (click)="goToCompanyPage(promoteItem.slug)"
+                        class="item cursor-pointer">
+                        <img [src]="promoteItem?.logoUrl"
+                            alt="Voir le détail de l'entreprise {{ promoteItem?.companyName }}" class="item-logo">
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+
+    </p-carousel>
+</div>

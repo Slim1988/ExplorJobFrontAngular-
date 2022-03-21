@@ -1,0 +1,47 @@
+<div class="account-favorite-wrapper">
+    <div *ngIf="favorite">
+
+        <div class="account-favorite">
+            <div class="p-grid">
+
+                <div class="p-col-12 p-md-6 p-lg-2">
+                    <div class="account-favorite-photo">
+                        <img #favoriteUserPhoto
+                            src="{{ favorite?.user?.photoUrl }}"
+                            (error)="favoriteUserPhoto.src=userPhotoDefault()"
+                            alt="Photo de {{ favorite?.user?.firstName | titlecase }}"
+                            class="account-favorite-photo-img">
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-3">
+                    <div *ngIf="favorite.user"
+                        class="account-favorite-username"
+                        style="margin-top: 10px;">
+                        {{ favorite.user.firstName | titlecase }} {{ favorite.user.lastName | slice:0:1 | uppercase }}{{ favorite.user.lastName ? '.' : '' }}
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-4">
+                    <div class="account-favorite-job"
+                        [ngStyle]="{ 'margin-top': favorite?.jobUser?.label && !favorite?.jobUser?.company ? '10px' : '0' }">
+                        {{ favorite?.jobUser?.label ? favorite?.jobUser?.label : '' }}
+                    </div>
+                    <div class="account-favorite-company"
+                        [ngStyle]="{ 'margin-top': favorite?.jobUser?.company && !favorite?.jobUser?.label ? '10px' : '0' }">
+                        {{ favorite?.jobUser?.company ? favorite?.jobUser?.company : '' }}
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-3">
+                    <div class="account-favorite-localisation"
+                        style="margin-top: 10px;">
+                        {{ favorite?.user?.localisationCity | titlecase }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

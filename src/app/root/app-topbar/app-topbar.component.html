@@ -1,0 +1,114 @@
+<div class="app-topbar-wrapper">
+
+    <div class="p-grid">
+
+        <div class="p-col-12 p-md-1 p-lg-2"></div>
+
+        <div class="">
+            <div class="app-topbar-logo">
+                <a routerLink="/{{ redirections.home.path }}">
+                    <img src="assets/images/logos/explorjob.png"
+                        title="ExplorJob"
+                        alt="ExplorJob">
+                </a>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-8 p-lg-7">
+            <div class="app-topbar-links">
+                <!-- <a routerLink="/{{ redirections.home.path }}"
+                    class="app-topbar-link">
+                    Accueil
+                </a> -->
+
+                <a routerLink="/search/request"
+                    class="app-topbar-link">
+                    Trouver un métier
+                </a>
+
+                <a routerLink="/{{ redirections.professional.path }}"
+                    class="app-topbar-link">
+                    Professionnel
+                </a>
+
+                <a routerLink="/{{ redirections.company.path }}"
+                    class="app-topbar-link">
+                    Entreprise
+                </a>
+
+                <a routerLink="/{{ redirections.companion.path }}"
+                    class="app-topbar-link">
+                    Accompagnant
+                </a>
+
+                <a [matMenuTriggerFor]="subMenu" #menuTrigger="matMenuTrigger" 
+                    (mouseenter)="menuTrigger.openMenu()"
+                    routerLink="/{{ redirections.whoarewe.path }}"
+                    class="app-topbar-link-submenu">
+                    Ressources
+                </a>
+
+                <mat-menu #subMenu="matMenu">
+                    <span (mouseleave)="menuTrigger.closeMenu()">
+                        <a class="mat-menu-item menu-link" routerLink="/{{ redirections.team.path }}">L'équipe</a>
+                        <a class="mat-menu-item menu-link" routerLink="/{{ redirections.joinus.path }}">Nous rejoindre</a>
+                        <a class="mat-menu-item menu-link" routerLink="/{{ redirections.theysupportus.path }}">Ils nous accompagnent</a>
+                        <a class="mat-menu-item menu-link" routerLink="/{{ redirections.ourstory.path }}">Notre histoire</a>
+                        <a class="mat-menu-item menu-link" routerLink="/{{ redirections.news.path }}">Actualités</a>
+                </span>
+                </mat-menu>
+
+
+                <a *ngIf="this.authService.isLoggedIn()"
+                    routerLink="/account"
+                    class="app-topbar-link-account">
+                    Mon compte
+                </a>
+
+                <a *ngIf="!this.authService.isLoggedIn()"
+                    routerLink="/login"
+                    class="app-topbar-link-account">
+                    Mon compte
+                </a>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-0 p-lg-1">
+            <div class="app-topbar-social-medias">
+                <a class="app-topbar-social-media"
+                    href="{{ facebookUrl }}"
+                    target="_blank">
+                    <img src="assets/icons/social-medias/facebook-white.png"
+                        title="facebook"
+                        alt="facebook">
+                </a>
+
+                <a class="app-topbar-social-media"
+                    href="{{ instagramUrl }}"
+                    target="_blank">
+                    <img src="assets/icons/social-medias/instagram-white.png"
+                        title="instagram"
+                        alt="instagram">
+                </a>
+
+                <a class="app-topbar-social-media"
+                    href="{{ linkedInUrl }}"
+                    target="_blank">
+                    <img src="assets/icons/social-medias/linkedIn-white.png"
+                        title="linkedIn"
+                        alt="linkedIn">
+                </a>
+            </div>
+
+            <div class="app-topbar-menu-burger">
+                <a (click)="triggerBurgerMenu()">
+                    <div class="app-topbar-menu-burger-item"></div>
+                    <div class="app-topbar-menu-burger-item"></div>
+                    <div class="app-topbar-menu-burger-item"></div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+<div class="company-image-component-wrapper">
+
+    <p-dialog 
+        [(visible)]="showModal" 
+        [modal]="true" 
+        [draggable]="false"
+        [dismissableMask]="true" 
+        [style]="{
+            width: 'auto',
+            maxWidth: '80vw',
+            minWidth: '35vw',
+            height: 'auto',
+            minheight: '20vw'
+        }"
+        [contentStyle]="{
+            width: 'auto',
+            height: 'auto',
+            minheight: '20vw',
+            margin: 'auto'
+        }" 
+        [autoZIndex]="true" 
+        (onHide)="handleModalClose()">
+
+        <img [src]="imageUrl" class="center image-modal"/>
+
+    </p-dialog>
+</div>

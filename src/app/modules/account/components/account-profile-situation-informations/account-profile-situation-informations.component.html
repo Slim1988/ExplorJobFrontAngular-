@@ -1,0 +1,144 @@
+<div class="account-profile-situation-informations-wrapper">
+    <div *ngIf="!account; then accountProfileSituationInformationsLoadingTemplate else accountProfileSituationInformationsLoadedTemplate"></div>
+</div>
+
+<ng-template #accountProfileSituationInformationsLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #accountProfileSituationInformationsLoadedTemplate>
+    <div class="account-profile-situation-informations-fielset">
+
+        <h2 class="account-profile-situation-informations-fieldset-title">
+            Situation actuelle
+        </h2>
+
+        <hr class="account-profile-situation-informations-separator">
+
+        <div class="account-profile-situation-informations-form">
+
+            <div #windowTop></div>
+
+            <p-messages></p-messages>
+
+            <form
+                [formGroup]="situationInformationsForm"
+                (ngSubmit)="updateSituationInformations()">
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div class="account-profile-situation-informations-form-input-label">
+                            Dernier diplôme obtenu
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <p-dropdown
+                                [options]="degreesDropdown"
+                                optionLabel="label"
+                                [showClear]="true"
+                                formControlName="lastDegree"
+                                [(ngModel)]="degreesDropdownSelected"
+                                placeholder="Dernier diplôme"
+                                class="input-dropdown account-profile-situation-informations-form-input-dropdown">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div class="account-profile-situation-informations-form-input-label">
+                            Situation professionnelle
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <p-dropdown
+                                [options]="professionalSituationsDropdown"
+                                optionLabel="label"
+                                [showClear]="true"
+                                formControlName="professionalSituation"
+                                [(ngModel)]="professionalSituationsDropdownSelected"
+                                placeholder="Situation pro"
+                                class="input-dropdown account-profile-situation-informations-form-input-dropdown">
+                            </p-dropdown>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div class="account-profile-situation-informations-form-input-label">
+                            Entreprise actuelle
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <input
+                                pInputText
+                                type="text"
+                                formControlName="currentCompany"
+                                placeholder="Entreprise actuelle"
+                                class="input account-profile-situation-informations-form-input-text">
+
+                            <div
+                                *ngIf="situationInformationsForm.controls.currentCompany.invalid && (situationInformationsForm.controls.currentCompany.dirty || situationInformationsForm.controls.currentCompany.touched)"
+                                class="input-messages">
+                                <p-message
+                                    *ngIf="situationInformationsForm.controls.currentCompany.errors.maxlength"
+                                    severity="error"
+                                    text="L'entreprise actuelle ne peut excéder 125 caractères">
+                                </p-message>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div class="account-profile-situation-informations-form-input-label">
+                            Dernier établissement de formation
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <input
+                                pInputText
+                                type="text"
+                                formControlName="currentSchool"
+                                placeholder="Dernier établissement de formation"
+                                class="input account-profile-situation-informations-form-input-text">
+
+                            <div
+                                *ngIf="situationInformationsForm.controls.currentSchool.invalid && (situationInformationsForm.controls.currentSchool.dirty || situationInformationsForm.controls.currentSchool.touched)"
+                                class="input-messages">
+                                <p-message
+                                    *ngIf="situationInformationsForm.controls.currentSchool.errors.maxlength"
+                                    severity="error"
+                                    text="L'école actuelle ne peut excéder 125 caractères">
+                                </p-message>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons-wrapper">
+                    <button
+                        pButton
+                        type="submit"
+                        label="Enregistrer"
+                        [disabled]="!situationInformationsForm.valid"
+                        class="button account-profile-situation-informations-form-button">
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</ng-template>

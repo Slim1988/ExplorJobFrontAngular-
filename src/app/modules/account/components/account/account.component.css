@@ -1,0 +1,17 @@
+.account-wrapper {
+    margin: 0;
+}
+
+.account-layout-sidebar {
+
+}
+
+@media only screen and (max-width: 767px) {
+    .account-layout-sidebar {
+        display: none;
+    }
+}
+
+.account-layout-content {
+
+}

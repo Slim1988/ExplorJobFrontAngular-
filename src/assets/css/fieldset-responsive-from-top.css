@@ -1,0 +1,93 @@
+.fieldset-responsive-from-top {
+    margin-top: 75px;
+}
+
+@media only screen and (max-height: 765px) {
+    .fieldset-responsive-from-top {
+        margin-top: 70px;
+    }
+}
+
+@media only screen and (max-height: 715px) {
+    .fieldset-responsive-from-top {
+        margin-top: 65px;
+    }
+}
+
+@media only screen and (max-height: 695px) {
+    .fieldset-responsive-from-top {
+        margin-top: 60px;
+    }
+}
+
+@media only screen and (max-height: 675px) {
+    .fieldset-responsive-from-top {
+        margin-top: 55px;
+    }
+}
+
+@media only screen and (max-height: 655px) {
+    .fieldset-responsive-from-top {
+        margin-top: 50px;
+    }
+}
+
+@media only screen and (max-height: 645px) {
+    .fieldset-responsive-from-top {
+        margin-top: 45px;
+    }
+}
+
+@media only screen and (max-height: 635px) {
+    .fieldset-responsive-from-top {
+        margin-top: 40px;
+    }
+}
+
+@media only screen and (max-height: 625px) {
+    .fieldset-responsive-from-top {
+        margin-top: 35px;
+    }
+}
+
+@media only screen and (max-height: 615px) {
+    .fieldset-responsive-from-top {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-height: 605px) {
+    .fieldset-responsive-from-top {
+        margin-top: 25px;
+    }
+}
+
+@media only screen and (max-height: 595px) {
+    .fieldset-responsive-from-top {
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-height: 585px) {
+    .fieldset-responsive-from-top {
+        margin-top: 15px;
+    }
+}
+
+@media only screen and (max-height: 575px) {
+    .fieldset-responsive-from-top {
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (max-height: 565px) {
+    .fieldset-responsive-from-top {
+        margin-top: 5px;
+    }
+}
+
+@media only screen and (max-height: 555px) {
+    .fieldset-responsive-from-top {
+        margin-top: 0;
+    }
+}

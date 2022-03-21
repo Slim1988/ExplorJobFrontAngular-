@@ -1,0 +1,66 @@
+<div class="user-report-modal-wrapper">
+    <button (click)="showModal()" class="user-report-button">
+        Signaler
+    </button>
+
+    <p-dialog
+        [(visible)]="display"
+        [modal]="true"
+        [draggable]="false"
+        [dismissableMask]="true"
+        [style]="{ width: 'auto', maxWidth: '99vw', minWidth: '35vw', height: 'auto', minheight: '20vw' }"
+        [contentStyle]="{ width: 'auto', maxWidth: '99vw', minWidth: '35vw', height: 'auto', minheight: '20vw' }"
+        [autoZIndex]=true
+        (onHide)="handleModalClose()">
+
+        <p-header>
+            <h3 *ngIf="user" class="user-report-modal-form-title">
+                Signaler {{ user.firstName | titlecase }} {{ user.lastName | slice:0:1 | uppercase }}{{ user.lastName ? '.' : '' }}
+            </h3>
+        </p-header>
+
+        <div *ngIf="userReportForm" class="user-report-modal-form">
+
+            <form
+                [formGroup]="userReportForm"
+                (ngSubmit)="report()">
+
+                <div class="input-wrapper">
+                    <p-dropdown
+                        [options]="userReportingReasonsDropdown"
+                        optionLabel="label"
+                        [showClear]="true"
+                        formControlName="reason"
+                        (onChange)="userReportForm.value.reason = userReportingReasonsDropdownSelected ? userReportingReasonsDropdownSelected.label : null"
+                        [(ngModel)]="userReportingReasonsDropdownSelected"
+                        placeholder="Raison du signalement"
+                        class="input-dropdown user-report-modal-form-input-dropdown">
+                    </p-dropdown>
+
+                    <div
+                        *ngIf="userReportForm.controls.reason.invalid && (userReportForm.controls.reason.dirty || userReportForm.controls.reason.touched)"
+                        class="input-messages">
+                        <p-message
+                            *ngIf="userReportForm.controls.reason.errors.required"
+                            severity="error"
+                            text="Une raison est requise">
+                        </p-message>
+                    </div>
+                </div>
+
+                <div class="buttons-wrapper">
+                    <button
+                        pButton
+                        type="submit"
+                        label="Signaler"
+                        [disabled]="!userReportForm.valid"
+                        class="button user-report-modal-form-button">
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </p-dialog>
+</div>

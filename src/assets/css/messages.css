@@ -1,0 +1,86 @@
+.message {
+
+}
+
+.message-info {
+
+}
+
+.message-success {
+
+}
+
+.message-warn {
+
+}
+
+.message-error {
+
+}
+
+.ui-messages {
+
+}
+
+.ui-messages-info {
+    color: var(--app-blue);
+}
+
+.ui-messages-success {
+    color: var(--app-green);
+}
+
+.ui-messages-error {
+    color: var(--app-red);
+}
+
+.ui-messages-warn {
+    color: var(--app-orange);
+}
+
+.ui-message {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 20px;
+    font-size: 14.5px;
+}
+
+.ui-message-icon {
+    font-size: 25px;
+}
+
+.ui-message-info {
+    color: var(--app-blue);
+    background-color: var(--app-lightblue);
+}
+
+.ui-message-success {
+    color: var(--app-green);
+    background-color: var(--app-lightgreen);
+}
+
+.ui-message-error {
+    color: var(--app-red);
+}
+
+.ui-message-warn {
+    color: var(--app-orange);
+    background-color: var(--app-lightorange);
+}
+
+.ui-toast .ui-toast-message {
+
+}
+
+.ui-toast-message-success {
+    color: var(--app-green);
+    background-color: var(--explorjob-white);
+    border: 1px solid var(--app-green);
+}
+
+.ui-toast-message-error {
+    color: var(--app-red);
+    background-color: var(--explorjob-white);
+    border: 1px solid var(--app-red);
+}

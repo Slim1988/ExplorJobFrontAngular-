@@ -1,0 +1,146 @@
+<div class="search-request-wrapper">
+
+    <div class="search-request-fielset">
+
+        <h2 class="search-request-fielset-title">
+            Trouver un métier
+        </h2>
+
+        <hr class="search-request-separator">
+
+        <div class="search-request-content">
+
+            <div class="search-request-form">
+                <form [formGroup]="searchForm" (ngSubmit)="search()">
+
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-4 p-lg-4">
+                            <div class="search-request-form-input-label">
+                                Intitulé de poste
+                            </div>
+                        </div>
+
+                        <div class="p-col-12 p-md-8 p-lg-8">
+                            <div class="input-wrapper">
+                                <input pInputText type="text" formControlName="jobLabel"
+                                    placeholder="ex : pilote, ingénieur, kiné, infirmier"
+                                    class="input search-request-form-input-text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid">
+
+                        <div class="p-col-12 p-md-4 p-lg-4"></div>
+
+                        <div class="p-col-12 p-md-8 p-lg-8">
+                            <div class="input-wrapper">
+                                <div class=" search-request-advice explorjob-green">
+                                    Elargissez votre recherche pour découvrir plus de métiers
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-4 p-lg-4">
+                            <div class="search-request-form-input-label ">
+                                Domaine métier
+                            </div>
+                        </div>
+
+                        <div class="p-col-12 p-md-8 p-lg-8">
+                            <div class="input-wrapper">
+                                <p-multiSelect [options]="jobDomainsDropdown" optionLabel="label"
+                                    defaultLabel="Sélectionnez un ou plusieurs domaines métiers dans le menu déroulant"
+                                    selectedItemsLabel="{0} domaine(s)" [showToggleAll]="false" [filter]="true"
+                                    resetFilterOnHide="true" formControlName="jobDomains"
+                                    (onChange)="searchForm.value.jobDomains = jobDomainsDropdownSelected?.length > 0 ? jobDomainsDropdownSelected : []"
+                                    [(ngModel)]="jobDomainsDropdownSelected"
+                                    placeholder="Sélectionnez un domaine métier d'un profesionnel dans la liste déroulante"
+                                    class="input-dropdown-multi search-request-form-input-dropdown-multi">
+                                </p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-4 p-lg-4">
+                            <div class="search-request-form-input-label ">
+                                Entreprise
+                            </div>
+                        </div>
+
+                        <div class="p-col-12 p-md-8 p-lg-8">
+                            <div class="input-wrapper">
+                                <p-autoComplete 
+                                    formControlName="company"
+                                    class="autocomplete-container"
+                                    placeholder="Découvrez les métiers d'une entreprise"
+                                    styleClass="width-100" 
+                                    inputStyleClass="input autocomplete-input"
+                                    panelStyleClass="autocomplete-overlay-panel" 
+                                    [suggestions]="jobUsersFilteredCompanies" [dropdown]
+                                    (completeMethod)="searchCompanies($event)"
+                                    (onClear)="onClearCompaniesInput($event)">
+                                </p-autoComplete>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-4 p-lg-4">
+                            <div class="search-request-form-input-label ">
+                                Localisation
+                            </div>
+                        </div>
+
+                        <div class="p-col-12 p-md-8 p-lg-8">
+                            <div class="input-wrapper">
+                                <input (change)="localisationInputChange()" pInputText type="text"
+                                    formControlName="localisation" placeholder="Découvrez les métiers près de chez vous"
+                                    class="input search-request-form-input-text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-4 p-lg-4">
+                            <div class="search-request-form-input-label">
+                                Recherche libre
+                            </div>
+                        </div>
+
+                        <div class="p-col-12 p-md-8 p-lg-8">
+                            <div class="input-wrapper">
+                                <input pInputText type="text" formControlName="query"
+                                    placeholder="Recherchez un mot-clé dans l'ensemble d'un profil d'un professionnel"
+                                    class="input search-request-form-input-text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttons-wrapper">
+                        <button pButton type="submit" label="Rechercher" [disabled]="!searchForm.valid" [ngClass]="{
+                                'button search-request-form-button': searchForm.valid,
+                                'button search-request-form-button-disabled': !searchForm.valid
+                              }">
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="companiesToPromote.length > 0" class="search-request-fielset">
+        <h2 class="search-request-fielset-title">
+            Besoin d'inspiration ?
+        </h2>
+
+        <hr class="search-request-separator">
+        <promote-logo-carousel [companiesToDisplay]="companiesToPromote" [showMessage]="true"></promote-logo-carousel>
+    </div>
+
+</div>

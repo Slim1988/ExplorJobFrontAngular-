@@ -1,0 +1,76 @@
+.account-message-wrapper {
+    margin: 0;
+}
+
+.account-message {
+    margin-bottom: 8.5px;
+    padding: 12.5px;
+    border-radius: 15px;
+    overflow-wrap: break-word;
+}
+
+.account-message-from-owner {
+    margin-left: 20%;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+}
+
+.account-message-from-interlocutor {
+    width: 80%;
+    color: var(--explorjob-dark);
+    background-color: var(--explorjob-grey);
+}
+
+.account-message-time {
+    margin-bottom: 5px;
+    font-style: italic;
+    font-size: 12px;
+    color: var(--explorjob-green);
+}
+
+.account-message-content {
+    text-align: left;
+    white-space: break-spaces !important;
+}
+.account-messaging-messages-write-button {
+    border-radius: 25px;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 13px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.span-proposal-appointment{
+    font-style: italic;
+    font-size: smaller;
+}
+
+p::after{
+    content: "\a";
+    white-space: pre;
+}
+p:last-child{
+    content: inherit;
+    white-space: normal;
+}
+.account-messaging-messages-accepted-appointment {
+    border-radius: 25px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    font-style: normal;
+    padding: 5px;
+    text-align: center;
+}

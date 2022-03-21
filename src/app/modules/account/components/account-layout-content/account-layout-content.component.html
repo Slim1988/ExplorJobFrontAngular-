@@ -1,0 +1,37 @@
+<div class="account-layout-content-wrapper">
+
+    <div *ngIf="displayAccountProfileGeneralInformations()">
+        <account-profile-general-informations></account-profile-general-informations>
+    </div>
+
+    <div *ngIf="displayAccountProfileContactInformations()">
+        <account-profile-contact-informations></account-profile-contact-informations>
+    </div>
+
+    <div *ngIf="displayAccountProfileSituationInformations()">
+        <account-profile-situation-informations></account-profile-situation-informations>
+    </div>
+
+    <div *ngIf="displayAccountMessaging()">
+        <account-messaging (selectConversation) = "onSelectConversation($event)"></account-messaging>
+    </div>
+    <div *ngIf="displayAccountAppointments()">
+        <account-appointments></account-appointments>
+    </div>
+    <div *ngIf="displayAccountFavorites()">
+        <account-favorites></account-favorites>
+    </div>
+
+    <div *ngIf="displayAccountJobs()">
+        <account-jobs></account-jobs>
+    </div>
+
+    <div *ngIf="displayAccountChangePassword()">
+        <account-change-password></account-change-password>
+    </div>
+
+    <div *ngIf="displayAccountBecomeProfessional()">
+        <account-become-professional></account-become-professional>
+    </div>
+
+</div>

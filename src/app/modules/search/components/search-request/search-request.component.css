@@ -1,0 +1,201 @@
+.search-request-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-top: 30px;
+    padding-left: 17.5px;
+    padding-right: 17.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-white);
+    border-radius: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+    .search-request-wrapper  {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 684px) {
+    .search-request-wrapper  {
+        width: 94.5%;
+    }
+}
+
+@media only screen and (max-width: 630px) {
+    .search-request-wrapper  {
+        width: 93.5%;
+    }
+}
+
+@media only screen and (max-width: 517px) {
+    .search-request-wrapper  {
+        width: 93%;
+    }
+}
+
+.search-request-fielset {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.search-request-fielset-title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: var(--explorjob-orange);
+}
+
+.search-request-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.search-request-recherce-avancee {
+    display: block;
+    color: var(--explorjob-orange);
+    margin-top: 10px;
+    margin-bottom: 3px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.search-request-content {
+    padding-top: 10px;
+}
+
+.search-request-form-message {
+    display: inline-block;
+    margin-top: 27.5px;
+    font-size: 12px;
+    font-style: italic;
+}
+.search-request-form-message-text {
+    margin-left: 5px;
+}
+
+.search-request-form-separator {
+    margin-top: 20px;
+    margin-bottom: 2.5px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.search-request-form-input-label {
+    margin-top: 27.5px;
+    font-weight: bold;
+    font-size: 14.5px;
+}
+
+.search-request-form-input-text {
+    width: 100%;
+    height: 30px;
+    padding: 20px;
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 13.5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-style: italic;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-style: italic;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-style: italic;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-style: italic;
+  }
+
+.search-request-form-input-dropdown-multi {
+    width: auto;
+    height: auto;
+    padding-top: 9.5px;
+    padding-bottom: 9.5px;
+}
+
+.search-request-form-button {
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7.5px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.search-request-form-button-disabled {
+    display: block;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7.5px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-darkgrey);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+    cursor: default;
+}
+
+.search-request-advice {
+    border: solid 1.7px var(--explorjob-green);
+    padding: 0.7em 1em;
+    border-radius: 25px;
+    width: fit-content;
+}
+
+
+
+::ng-deep .autocomplete-container {
+    width: 100%;
+    height: 30px;
+}
+
+::ng-deep .width-100 {
+    width: 100%;
+}
+
+::ng-deep .autocomplete-input {
+    width: 100%;
+    font-size: 14.5px;
+    height: 30px !important;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+    font-family: 'Montserrat';
+    font-family: 'Montserrat';
+    font-size: 13.5px;
+}
+
+::ng-deep .autocomplete-input::placeholder {
+    font-style: italic;
+    font-family: 'Montserrat';
+    font-size: 14.5px;
+}
+
+::ng-deep .autocomplete-overlay-panel {
+    font-size: 14.5px !important;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    width: 100%;
+}

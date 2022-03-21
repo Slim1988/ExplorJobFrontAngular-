@@ -1,0 +1,33 @@
+<div class="account-wrapper">
+    <div *ngIf="!loaded; then accountLoadingTemplate else accountLoadedTemplate"></div>
+</div>
+
+<ng-template #accountLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #accountLoadedTemplate>
+    <div class="p-grid">
+
+        <div class="p-col-12 p-md-4 p-lg-3">
+            <div class="account-layout-sidebar">
+                <account-layout-sidebar
+                    [menuItemSelectedAtInit]="menuItemSelectedDefault"
+                    (menuItemSelected)="setMenuItemSelected($event)"
+                    [numberOfUnreadMessageFromConversation]="numberOfUnreadMessage">
+                </account-layout-sidebar>
+            </div>
+        </div>
+
+        <div class="p-col-12 p-md-8 p-lg-9">
+            <div class="account-layout-content">
+                <account-layout-content
+                    [menuItemSelected]="menuItemSelected"
+                    (sendNumberOfUnreadMessage)="onNumberOfUnreadMessageUpdated($event)">
+                </account-layout-content>
+            </div>
+        </div>
+
+    </div>
+</ng-template>
+<!-- evenement -->

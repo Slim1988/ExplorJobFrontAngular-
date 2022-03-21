@@ -1,0 +1,41 @@
+.add-button{
+    margin-left: 20px;
+}
+.mat-list-base .mat-list-item {
+    height: 25px !important;
+    font-size: 14px;
+}
+.propositions-block{
+    display: inline;
+    min-height: 120px;
+    margin-top: 5px;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 25px;
+    font-size: 16px;
+}
+.mat-toolbar {
+    background: #ffffff !important;
+    color: rgba(0,0,0,.87);
+}
+.mat-icon {
+    color: red !important;
+    margin-left: 5px !important;
+    cursor: pointer;
+}
+mat-expansion-panel-header{
+    background-color: var(--explorjob-green) ;
+}
+mat-expansion-panel-header:hover{
+    background-color: var(--explorjob-green) !important;
+}
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:hover {
+    background-color: var(--explorjob-green) !important;
+}
+mat-panel-title{
+    color: white;
+}
+.mat-expansion-panel-header-description{
+    color: var(--app-lightgrey);
+}

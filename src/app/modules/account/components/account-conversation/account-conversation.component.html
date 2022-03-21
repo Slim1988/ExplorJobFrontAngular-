@@ -1,0 +1,34 @@
+<div class="account-conversation-wrapper">
+    <div *ngIf="conversation">
+
+        <div class="account-conversation">
+            <div class="p-grid">
+
+                <div class="p-col-12 p-md-6 p-lg-2">
+                    <div class="account-conversation-photo">
+                        <img #conversationInterlocutorPhoto
+                            src="{{ conversation.interlocutor.photoUrl }}"
+                            (error)="conversationInterlocutorPhoto.src=interlocutorPhotoDefault()"
+                            alt="Photo de {{ conversation?.interlocutor?.firstName | titlecase }}"
+                            class="account-conversation-photo-img">
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-4">
+                    <div *ngIf="conversation.interlocutor"
+                        class="account-conversation-username">
+                        {{ conversation.interlocutor.firstName | titlecase }} {{ conversation.interlocutor.lastName | slice:0:1 | uppercase }}{{ conversation.interlocutor.lastName ? '.' : '' }}
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="account-conversation-title">
+                        {{ userTitle() }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

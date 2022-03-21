@@ -1,0 +1,11 @@
+.hide-dots .ui-carousel-dots-container{
+    display: none !important;
+} 
+
+.custom-arrows .ui-carousel .ui-button {
+    background: none !important;
+}
+
+.hide-arrows .ui-button { 
+    display: none;
+}

@@ -1,0 +1,234 @@
+<div class="account-profile-contact-informations-wrapper">
+    <div
+        *ngIf="
+            !account;
+            then accountProfileContactInformationsLoadingTemplate;
+            else accountProfileContactInformationsLoadedTemplate
+        "
+    ></div>
+</div>
+
+<ng-template #accountProfileContactInformationsLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #accountProfileContactInformationsLoadedTemplate>
+    <div class="account-profile-contact-informations-fielset">
+        <h2 class="account-profile-contact-informations-fieldset-title">
+            Coordonnées
+        </h2>
+
+        <hr class="account-profile-contact-informations-separator" />
+        <div id="info-users">Vos données ne sont pas visibles des autres utilisateurs. Vous pourrez cependant les partager d’un seul clic pendant vos messages afin de faciliter les rendez-vous.</div>
+        <div class="account-profile-contact-informations-form">
+            <div #windowTop></div>
+
+            <p-messages></p-messages>
+
+            <form
+                [formGroup]="contactInformationsForm"
+                (ngSubmit)="updateContactInformations()"
+            >
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div
+                            class="account-profile-contact-informations-form-input-label"
+                        >
+                            Téléphone
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <p-inputMask
+                                mask="{{ phoneMask }}"
+                                formControlName="phone"
+                                placeholder="Téléphone"
+                                class="input-mask account-profile-contact-informations-form-input-mask"
+                            >
+                            </p-inputMask>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div
+                            class="account-profile-contact-informations-form-input-label"
+                        >
+                            Adresse
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <input
+                                pInputText
+                                type="text"
+                                formControlName="addressStreet"
+                                placeholder="Adresse"
+                                class="input account-profile-contact-informations-form-input-text"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div
+                            class="account-profile-contact-informations-form-input-label"
+                        >
+                            Complément d'adresse
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <input
+                                pInputText
+                                type="text"
+                                formControlName="addressComplement"
+                                placeholder="Complément d'adresse"
+                                class="input account-profile-contact-informations-form-input-text"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div
+                            class="account-profile-contact-informations-form-input-label input-label-required"
+                        >
+                            Code Postal
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <p-inputMask
+                                mask="{{ zipCodeMask }}"
+                                formControlName="addressZipCode"
+                                placeholder="Code Postal"
+                                class="input-mask account-profile-contact-informations-form-input-mask"
+                            >
+                            </p-inputMask>
+                        </div>
+                        <div
+                            *ngIf="
+                                contactInformationsForm.controls.addressZipCode
+                                    .invalid &&
+                                (contactInformationsForm.controls.addressZipCode
+                                    .dirty ||
+                                    contactInformationsForm.controls
+                                        .addressZipCode.touched)
+                            "
+                            class="input-messages"
+                        >
+                            <p-message
+                                *ngIf="
+                                    contactInformationsForm.controls
+                                        .addressZipCode.errors.required
+                                "
+                                severity="error"
+                                text="Le code postal est requis"
+                            >
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div
+                            class="account-profile-contact-informations-form-input-label input-label-required"
+                        >
+                            Ville
+                            <i
+                                title="Pensez à renseigner votre ville afin de faciliter les recherches de proximité"
+                                class="fa fa-question-circle md-18"
+                                style="
+                                    position: relative;
+                                    top: 1px;
+                                    margin-left: 1px;
+                                    cursor: help;
+                                "
+                            ></i>
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <input
+                                pInputText
+                                type="text"
+                                formControlName="addressCity"
+                                placeholder="Ville"
+                                class="input account-profile-contact-informations-form-input-text"
+                            />
+                        </div>
+                        <div
+                            *ngIf="
+                                contactInformationsForm.controls.addressCity
+                                    .invalid &&
+                                (contactInformationsForm.controls.addressCity
+                                    .dirty ||
+                                    contactInformationsForm.controls.addressCity
+                                        .touched)
+                            "
+                            class="input-messages"
+                        >
+                            <p-message
+                                *ngIf="
+                                    contactInformationsForm.controls.addressCity
+                                        .errors.required
+                                "
+                                severity="error"
+                                text="La ville est requise"
+                            >
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-12 p-lg-4">
+                        <div
+                            class="account-profile-contact-informations-form-input-label"
+                        >
+                            Moyens de contact acceptés
+                        </div>
+                    </div>
+
+                    <div class="p-col-12 p-md-12 p-lg-8">
+                        <div class="input-wrapper">
+                            <p-multiSelect
+                                [options]="contactMethodsDropdown"
+                                optionLabel="label"
+                                defaultLabel="Moyens de contact"
+                                selectedItemsLabel="{0} moyen(s) de contact"
+                                [showToggleAll]="false"
+                                [filter]="false"
+                                formControlName="contactMethods"
+                                [(ngModel)]="contactMethodsDropdownSelected"
+                                placeholder="Moyens de contact"
+                                class="input-dropdown-multi account-profile-contact-informations-form-input-dropdown-multi"
+                            >
+                            </p-multiSelect>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="buttons-wrapper">
+                    <button
+                        pButton
+                        type="submit"
+                        label="Enregistrer"
+                        class="button account-profile-contact-informations-form-button"
+                    ></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</ng-template>

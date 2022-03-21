@@ -1,0 +1,209 @@
+.input-wrapper {
+    margin-top: 17.5px;
+}
+
+.input-label-required::after {
+    content: " * ";
+    color: var(--explorjob-orange);
+}
+
+.input {
+    width: 100%;
+    height: 30px;
+    padding: 20px;
+    font-size: 13.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+    font-family: 'Montserrat';
+}
+
+.input-mask {
+    width: 100%;
+}
+
+.input-mask input {
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+.input-mask-register input {
+    width: 100%;
+    font-size: 14px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+.input-textarea {
+    width: 100%;
+    padding: 20px;
+    font-family: 'Montserrat';
+    font-size: 14px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+.input-checkbox {
+    height: 18px;
+    width: 18px;
+    margin-right: 10px;
+    padding: 0.25px;
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+.input-date {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 15.5px;
+    background-color: var(--explorjob-lightgrey);
+}
+
+.input-date span {
+    width: 100%;
+}
+
+.input-date span input {
+    width: 100%;
+    font-size: 14px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+.input-date span button {
+    position: absolute;
+    right: 7.5px;
+    font-size: 19.5px;
+    background-color: var(--explorjob-lightgrey);
+}
+
+.ui-datepicker {
+    background-color: var(--explorjob-white);
+}
+
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+    cursor: pointer;
+}
+
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+    margin-left: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 14px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-white);
+    border: none;
+    cursor: pointer;
+}
+
+.ui-datepicker select.ui-datepicker-month option,
+.ui-datepicker select.ui-datepicker-year option {
+
+}
+
+.ui-datepicker th,
+.ui-datepicker td {
+    cursor: pointer;
+}
+
+.ui-calendar.ui-calendar-w-btn input {
+    width: 100%;
+}
+
+.input-dropdown {
+    display: grid;
+    padding-top: 9px;
+    padding-bottom: 8.5px;
+    padding-left: 15px;
+    padding-right: 8px;
+    font-size: 13.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+.ui-dropdown-list {
+    color: var(--explorjob-darkgrey) !important;
+    background-color: var(--explorjob-white) !important;
+}
+
+.ui-dropdown-item {
+    margin: 6px !important;
+}
+
+.ui-dropdown-item:hover {
+    color: var(--explorjob-dark) !important;
+}
+
+.input-dropdown-multi {
+    display: grid;
+    padding-top: 9px;
+    padding-bottom: 8.5px;
+    padding-left: 15px;
+    padding-right: 8px;
+    font-size: 13.5px;
+    font-style: italic;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+}
+
+.ui-multiselect-list,
+.ui-multiselect-panel {
+    color: var(--explorjob-darkgrey) !important;
+    background-color: var(--explorjob-white) !important;
+}
+
+.ui-multiselect-panel {
+    padding-top: 6px;
+    padding-left: 6px;
+}
+
+.ui-multiselect-header {
+    min-height: 0;
+}
+
+.ui-multiselect-header.ui-multiselect-header-no-toggleall .ui-multiselect-filter-container {
+    width: 95.5%;
+}
+
+.ui-multiselect-header .ui-inputtext {
+    padding: 7.5px;
+    padding-left: 27.5px;
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+    outline: none;
+}
+
+.ui-multiselect-header .ui-multiselect-filter-container .ui-multiselect-filter-icon  {
+    top: 0.6em;
+    left: 0.5em;
+}
+
+.ui-multiselect-item {
+    margin: 6px !important;
+}
+
+.ui-multiselect-item:hover {
+    color: var(--explorjob-dark) !important;
+}
+
+.ui-chkbox {
+    margin-right: 9px;
+    background-color: var(--explorjob-lightgrey) !important;
+}
+
+.input-messages {
+
+}

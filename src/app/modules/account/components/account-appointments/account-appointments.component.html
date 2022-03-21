@@ -1,0 +1,242 @@
+<div class="account-message-wrapper">
+    <show-proposals-modal
+        [options]="showProposalsOptions"
+        (events)="handleShowProposalsEvent($event)"
+    >
+    </show-proposals-modal>
+    <review-modal
+        [options]="showReviewModalOptions"
+        (events)="handleShowReviewEvent($event)"
+    >
+    </review-modal>
+    <user-profile-modal
+    [settings]="userProfileSettings"
+    (events)="handleUserProfileEvent($event)">
+</user-profile-modal>
+    <div class="account-messaging-wrapper">
+        <div
+            *ngIf="
+                !conversations;
+                then accountAppointmentsLoadingTemplate;
+                else accountAppointmentsLoadedTemplate
+            "
+        ></div>
+    </div>
+    <ng-template #accountAppointmentsLoadingTemplate>
+        <loader></loader>
+    </ng-template>
+
+    <ng-template #accountAppointmentsLoadedTemplate>
+        <div class="account-messaging-fielset">
+            <h2 class="account-messaging-fieldset-title">Mes rendez-vous</h2>
+
+            <hr class="account-messaging-separator" />
+            <mat-accordion multi="true">
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="panel-title">
+                            Mes rendez-vous en attente de confirmation
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <table
+                        mat-table
+                        *ngIf="pendingAppointments.length > 0"
+                        [dataSource]="pendingAppointments"
+                        class="mat-elevation-z8"
+                    >
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>Nom</th>
+                            <td mat-cell *matCellDef="let element">
+                                <a (click)="userProfileTo(element.user)">{{ element.id }}</a>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="job">
+                            <th mat-header-cell *matHeaderCellDef>Métier</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.job }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>Action</th>
+                            <td mat-cell *matCellDef="let element">
+                                <button
+                                    pButton
+                                    type="button"
+                                    label="Voir les dates proposées"
+                                    (click)="
+                                        showProposals(
+                                            element,
+                                            isForApproval(element)
+                                        )
+                                    "
+                                    title="Voir les dates proposées"
+                                    class="account-appintments-button"
+                                ></button>
+                            </td>
+                        </ng-container>
+
+                        <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                        ></tr>
+                        <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                        ></tr>
+                    </table>
+                    <span
+                        *ngIf="pendingAppointments.length == 0"
+                        class="no-elements"
+                    >
+                        Pas d'élément à afficher
+                    </span>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="panel-title">
+                            Mes rendez-vous à venir
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <table
+                        mat-table
+                        *ngIf="futurAcceptedAppointments.length > 0"
+                        [dataSource]="futurAcceptedAppointments"
+                        class="mat-elevation-z8"
+                    >
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>Nom</th>
+                            <td mat-cell *matCellDef="let element">
+                                <a (click)="userProfileTo(element.user)">{{ element.id }}</a>
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="job">
+                            <th mat-header-cell *matHeaderCellDef>Métier</th>
+                            <td mat-cell *matCellDef="let element">
+                                {{ element.job }}
+                            </td>
+                        </ng-container>
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>Action</th>
+                            <td mat-cell *matCellDef="let element">
+                                <button
+                                    pButton
+                                    type="button"
+                                    label="Voir le rendez-vous prévu"
+                                    (click)="
+                                        showProposals(
+                                            element,
+                                            ProposalStatus.Declined
+                                        )
+                                    "
+                                    title="Voir le rendez-vous prévu"
+                                    class="account-appintments-button"
+                                ></button>
+                            </td>
+                        </ng-container>
+
+                        <tr
+                            mat-header-row
+                            *matHeaderRowDef="displayedColumns"
+                        ></tr>
+                        <tr
+                            mat-row
+                            *matRowDef="let row; columns: displayedColumns"
+                        ></tr>
+                    </table>
+                    <span
+                        *ngIf="futurAcceptedAppointments.length == 0"
+                        class="no-elements"
+                    >
+                        Pas d'élément à afficher
+                    </span>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel [expanded]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="panel-title">
+                            Mes rendez-vous passés
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                        <table
+                            mat-table
+                            *ngIf="pastAcceptedAppointments.length > 0"
+                            [dataSource]="pastAcceptedAppointments"
+                            class="mat-elevation-z8"
+                        >
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef>Nom</th>
+                                <td mat-cell *matCellDef="let element">
+                                    <a (click)="userProfileTo(element.user)">{{ element.id }}</a>
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="job">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Métier
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{ element.job }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="date">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Date/Heure
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    {{
+                                        convertDateForDTS(element.proposal.dateTime,"DD/MM/YYYY HH:mm")
+                                    }}
+                                </td>
+                            </ng-container>
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Evaluation(s)
+                                </th>
+                                <td mat-cell *matCellDef="let element">
+                                    <img
+                                        class="img-btn"
+                                        *ngIf="element.proposal.reviewed"
+                                        src="assets/icons/evalutation-non-faite.png"
+                                        title="Evaluation faite"
+                                        alt="Evaluation faite"
+                                    />
+                                    <img
+                                        class="img-btn"
+                                        *ngIf="!element.proposal.reviewed"
+                                        (click)="
+                                            showReview(
+                                                element.proposal,
+                                                element.id,
+                                                element.conversationId,
+                                                element.interlocutorId,
+                                                element.emitterOfFirstMessageId
+                                            )
+                                        "
+                                        src="assets/icons/evalutation-faite.png"
+                                        title="Comment s’est passé ce rendez-vous ?"
+                                        alt="Comment s’est passé ce rendez-vous ?"
+                                    />
+                                </td>
+                            </ng-container>
+
+                            <tr
+                                mat-header-row
+                                *matHeaderRowDef="pastAcceptedAppointmentsDisplayedColumns"
+                            ></tr>
+                            <tr
+                                mat-row
+                                *matRowDef="let row; columns: pastAcceptedAppointmentsDisplayedColumns"
+                            ></tr>
+                        </table>
+
+                    <span
+                        *ngIf="pastAcceptedAppointments.length == 0"
+                        class="no-elements"
+                    >
+                        Pas d'élément à afficher
+                    </span>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </ng-template>
+</div>

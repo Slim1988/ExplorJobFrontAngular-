@@ -1,0 +1,29 @@
+<div class="account-job-wrapper">
+    <div *ngIf="job">
+
+        <div class="account-job">
+
+            <div class="account-job-label">
+                {{ job.label }}
+            </div>
+
+            <div class="account-job-domains">
+                <div *ngFor="let domain of job.domains">
+                    <div class="account-job-domain">
+                        {{ domain.label }}
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="job.company" class="account-job-company">
+                {{ job.company }}
+            </div>
+
+            <div class="account-job-presentation">
+                {{ job.presentation }}
+            </div>
+
+        </div>
+
+    </div>
+</div>

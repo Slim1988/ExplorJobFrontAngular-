@@ -1,0 +1,39 @@
+<div class="account-message-wrapper">
+    <show-proposals-modal
+        [options]="showProposalsOptions"
+        (events)="handleShowProposalsEvent($event)">
+    </show-proposals-modal>
+    <div *ngIf="message"
+        class="account-message"
+        [ngClass]="message?.fromInterlocutor ? 'account-message-from-interlocutor' : 'account-message-from-owner'">
+
+            <div class="account-message-header">
+                <div class="account-message-time">
+                    {{ convertDateForDTS(message?.date, "DD/MM/YYYY HH:mm") }}
+                </div>
+            </div>
+
+            <div class="account-message-content" [innerHTML]="message?.content"></div>
+
+            <div class="account-message-content"
+                *ngIf="message.proposalAppointments">
+                <span *ngFor="let prop of message.proposalAppointments" class="span-proposal-appointment">
+                    <p *ngIf="IsDeclinedProposal(prop)">Le rendez-vous du {{convertDateForDTS(prop.dateTime, "DD/MM/YYYY HH:mm") }} n'a pas été accepté</p>
+                    <p class="account-messaging-messages-accepted-appointment" *ngIf="IsApprovedProposal(prop)">Le rendez-vous du {{convertDateForDTS(prop.dateTime, "DD/MM/YYYY HH:mm") }} a été accepté</p>
+                </span>
+
+            </div>
+            <div class="wrapper">
+                <button
+                    pButton
+                    *ngIf="message.proposalAppointments && ShouldShowProposals()"
+                    type="button"
+                    label="Voir les dates proposées"
+                    (click)="showProposals()"
+                    class="account-messaging-messages-write-button">
+            </button>
+            </div>
+
+        </div>
+
+</div>

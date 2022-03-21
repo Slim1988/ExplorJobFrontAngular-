@@ -1,0 +1,268 @@
+<p-confirmDialog acceptLabel="OK" rejectLabel="Annuler" [style]="{ maxWidth: '75vw' }"></p-confirmDialog>
+
+<user-profile-modal [settings]="userProfileSettings" (events)="handleUserProfileEvent($event)">
+</user-profile-modal>
+
+<write-message-modal [options]="writeMessageOptions" (events)="handleWriteMessageEvent($event)">
+</write-message-modal>
+
+<message-sent-confirmation [options]="messageSentConfirmationModalOptions"></message-sent-confirmation>
+
+<div class="search-results-wrapper">
+    <div
+        *ngIf="!resultsPublic && !resultsRestricted; then searchResultsLoadingTemplate else searchResultsLoadedTemplate">
+    </div>
+</div>
+
+<ng-template #searchResultsLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #searchResultsLoadedTemplate>
+    <div class="search-results-fielset">
+        <h2 class="search-results-fielset-title">
+            Métiers trouvés
+        </h2>
+
+        <hr class="search-results-separator">
+
+        <div class="search-results-content">
+            <div class="search-results-content-header">
+                <div>
+                    <a class="search-results-back-to-request-button-link" (click)="backToRequest()">
+                        <i class="fa fa-angle-left md-20"
+                            style="position: relative; top: 1px; margin-left: 5px; margin-right: 5px;"></i>
+                        Revenir à la recherche
+                    </a>
+                </div>
+
+                <div class="filters-header">
+                    Affinez votre recherche
+                </div>
+
+                <div class="filters-header-condensed">
+                    <a>
+                        Affinez votre recherche
+                        <i class="fa fa-angle-down md-20"
+                            style="position: relative; top: 1px; margin-left: 5px; margin-right: 5px;"></i>
+                    </a>
+                    <div class="search-results-filters-condensed">
+                        <div class="filter">
+                            <button class="filters-reset" (click)="this.reset()">
+                                Réinitialiser
+                                <div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="filter">
+                            <div class="filter-options">
+                                <p-multiSelect [options]="filtersLocation" [(ngModel)]="selectedFiltersLocation"
+                                    defaultLabel="Localisation" [maxSelectedLabels]=0
+                                    selectedItemsLabel="{0} localisations séléctionnées" (onChange)="this.filter()">
+                                </p-multiSelect>
+                            </div>
+                        </div>
+                        <div class="filter">
+                            <div class="filter-options">
+                                <button (click)="sortAscendingByCompany()">
+                                    <img src="assets/icons/sort.png" style="width: 8px;">
+                                    <img src="assets/icons/arrow-down.png" style="width: 8px; visibility: hidden;"
+                                        id="arrow-company">
+                                </button>
+                                <p-multiSelect [options]="filtersCompany" [(ngModel)]="selectedFiltersCompany"
+                                    defaultLabel="Entreprises" [maxSelectedLabels]=0
+                                    selectedItemsLabel="{0} entreprises séléctionnées" (onChange)="this.filter()">
+                                </p-multiSelect>
+                            </div>
+                        </div>
+                        <div class="filter">
+                            <div class="filter-options">
+                                <button (click)="sortAscendingByJob()">
+                                    <img src="assets/icons/sort.png" style="width: 8px;">
+                                    <img src="assets/icons/arrow-down.png" style="width: 8px; visibility: hidden;"
+                                        id="arrow-job">
+                                </button>
+                                <p-multiSelect [options]="filtersJob" [(ngModel)]="selectedFiltersJob"
+                                    defaultLabel="Métiers" [maxSelectedLabels]=0
+                                    selectedItemsLabel="{0} métiers séléctionnés" (onChange)="this.filter()">
+                                </p-multiSelect>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-results-filters">
+                <div class="filter">
+                    <button class="filters-reset" (click)="this.reset()">
+                        Réinitialiser
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </button>
+                </div>
+                <div class="filter">
+                    <div class="filter-options">
+                        <p-multiSelect [options]="filtersLocation" [(ngModel)]="selectedFiltersLocation"
+                            defaultLabel="Localisation" [maxSelectedLabels]=0
+                            selectedItemsLabel="{0} localisations séléctionnées" (onChange)="this.filter()">
+                        </p-multiSelect>
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="filter-options">
+                        <button (click)="sortAscendingByCompany()">
+                            <img src="assets/icons/sort.png" style="width: 8px;">
+                            <img src="assets/icons/arrow-down.png" style="width: 8px; visibility: hidden;"
+                                #arrowCompany>
+                        </button>
+                        <p-multiSelect [options]="filtersCompany" [(ngModel)]="selectedFiltersCompany"
+                            defaultLabel="Entreprises" [maxSelectedLabels]=0
+                            selectedItemsLabel="{0} entreprises séléctionnées" (onChange)="this.filter()">
+                        </p-multiSelect>
+                    </div>
+                </div>
+                <div class="filter">
+                    <div class="filter-options">
+                        <button (click)="sortAscendingByJob()">
+                            <img src="assets/icons/sort.png" style="width: 8px;">
+                            <img src="assets/icons/arrow-down.png" style="width: 8px; visibility: hidden;" #arrowJob>
+                        </button>
+                        <p-multiSelect [options]="filtersJob" [(ngModel)]="selectedFiltersJob" defaultLabel="Métiers"
+                            [maxSelectedLabels]=0 selectedItemsLabel="{0} métiers séléctionnés"
+                            (onChange)="this.filter()"></p-multiSelect>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-results-list" [ngClass]="{'scrollable': this.scrollable}">
+
+                <div *ngIf="resultsPublic?.length > 0">
+                    <div *ngFor="let result of resultsPublic; let i = index;">
+
+                        <promote-ad-carousel 
+                            *ngIf="i%10 == 0 && !hidePromotes && promotesForHeaderCarousel.length >= 1" 
+                            [companiesToDisplay]="promotesForHeaderCarousel">
+                        </promote-ad-carousel>
+
+                        <div class="search-results-list-item">
+
+                        <div class="p-grid p-px-5 align-center">
+
+                            <div class="p-col-12 p-md-12 p-lg-10">
+                                <a (click)="userProfileTo(result?.user, result?.job, result?.promote)"
+                                    class="cursor-pointer">
+                                    <search-result-public [result]="result"></search-result-public>
+                                </a>
+                            </div>
+
+                            <div class="p-col-12 p-md-12 p-lg-2 search-results-list-item-actions">
+                                <a class="search-results-list-item-action-disabled"
+                                    title="Mettre en favoris ? Connectez vous !" (click)="goToLogin()"
+                                    style="top: 0px; margin-right: 11px;">
+                                    <img src="assets/icons/etoile-grey.png">
+                                </a>
+                                <a class="search-results-list-item-action"
+                                    title="Voir le profil de {{ result?.user?.firstName | titlecase }}"
+                                    (click)="userProfileTo(result?.user, result?.job, result?.promote)"
+                                    style="top: 0px; margin-right: 13px;">
+                                    <img src="assets/icons/information-orange.png">
+                                </a>
+                                <a class="search-results-list-item-action-disabled"
+                                    title="Ecrire à {{ result?.user?.firstName | titlecase }} ? Connectez vous !"
+                                    (click)="goToLogin()" style="top: 1.5px; margin-right: 0px;">
+                                    <img src="assets/icons/message-grey.png">
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+
+                <div *ngIf="resultsRestricted?.length > 0">
+                    <div *ngFor="let result of resultsRestricted; let i = index;">
+                        <div class="search-results-list-item">
+                            <promote-ad-carousel
+                                *ngIf="i%10 == 0 && !hidePromotes && promotesForHeaderCarousel.length >= 1" 
+                                [companiesToDisplay]="promotesForHeaderCarousel">
+                            </promote-ad-carousel>
+                        </div>
+                       
+                            <div class="search-results-list-item">
+                            <div class="p-grid p-px-5 align-center">
+
+                                <div class="p-col-12 p-md-12 p-lg-10">
+                                    <a (click)="userProfileTo(result?.user, result?.job, result?.promote)"
+                                        class="cursor-pointer">
+                                        <search-result-restricted [result]="result"></search-result-restricted>
+                                    </a>
+                                </div>
+
+                                <div class="p-col-12 p-md-12 p-lg-2 search-results-list-item-actions">
+                                    <a *ngIf="!account?.isJobUserInFavorites(result?.job?.id)"
+                                        class="search-results-list-item-action" title="Mettre en favoris"
+                                        (click)="addToFavorite(result?.user?.id, result?.job?.id)"
+                                        style="top: 0px; margin-right: 11px;">
+                                        <img src="assets/icons/etoile-orange-only-border.png">
+                                    </a>
+                                    <a *ngIf="account?.isJobUserInFavorites(result?.job?.id)"
+                                        class="search-results-list-item-action" title="Retirer des favoris"
+                                        (click)="removeFavorite(result?.user?.id, result?.job?.id)"
+                                        style="top: 0px; margin-right: 11px;">
+                                        <img src="assets/icons/etoile-orange.png">
+                                    </a>
+                                    <a class="search-results-list-item-action"
+                                        title="Voir le profil de {{ result?.user?.firstName | titlecase }}"
+                                        (click)="userProfileTo(result?.user, result?.job, result?.promote)"
+                                        style="top: 0px; margin-right: 13px;">
+                                        <img src="assets/icons/information-orange.png">
+                                    </a>
+                                    <a *ngIf="!userInResultIsOwner(result?.user?.id)"
+                                        class="search-results-list-item-action"
+                                        title="Ecrire à {{ result?.user?.firstName | titlecase }}"
+                                        (click)="writeMessageTo(result?.user?.id)" style="top: 1.5px; margin-right: 0px;">
+                                        <img src="assets/icons/message-orange.png">
+                                    </a>
+                                    <a *ngIf="userInResultIsOwner(result?.user?.id)" class="search-results-list-item-action"
+                                        title="Vous ne pouvez pas vous écrire à vous même !"
+                                        style="top: 1.5px; margin-right: 0px;">
+                                        <img src="assets/icons/message-grey.png">
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="center">
+                        <div *ngIf="resultsPublic?.length === 0 || resultsRestricted?.length === 0">
+                            <i>Aucun métier trouvé</i>
+
+                            <div class="buttons-wrapper">
+                                <button pButton type="button" class="button search-results-back-to-request-button"
+                                    label="Revenir à la recherche" (click)="backToRequest()">
+                                </button>
+                            </div>
+                        </div>
+
+                        <div *ngIf="!hidePromotes" class="search-results-list-empty">
+                            Vous n'avez pas trouvé de professionnel correspondant à votre recherche ?
+                            <br>
+                            Elargissez vos critères (lieu, domaine métier...) ou <a
+                                href="{{ jobNoFoundFormUrl() }}">dites le nous</a>, nous vous trouverons un
+                            professionnel.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,114 @@
+.help-wrapper {
+    margin: 0;
+}
+
+.help-button {
+    height: 65px;
+    width: 65px;
+    position: fixed;
+    bottom: 27.5px;
+    right: 37.5px;
+    font-size: 37.5px;
+    font-weight: bold;
+    color: var(--app-white);
+    background-color: var(--explorjob-orange);
+    border-radius: 50px;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 991px) {
+    .help-button {
+        height: 50px;
+        width: 50px;
+        bottom: 17.5px;
+        right: 27.5px;
+    }
+}
+
+.help-modal,
+::ng-deep .help-modal {
+    width: auto;
+    height: auto;
+    min-width: 62.5vw;
+    min-height: 42.5vw;
+    border-radius: 37.5px;
+}
+
+@media screen and (max-width: 1137px) {
+    .help-modal,
+    ::ng-deep .help-modal {
+        min-width: 72.5vw;
+        min-height: 52.5vw;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .help-modal,
+    ::ng-deep .help-modal {
+        width: 100vw;
+        min-width: 100vw;
+    }
+}
+
+.help-modal-title {
+    margin-bottom: 25px;
+    color: var(--explorjob-dark);
+}
+
+.help-modal-content {
+    padding: 17.5px;
+    color: var(--explorjob-dark);
+}
+
+.help-modal-video {
+    margin-top: -21px;
+    margin-bottom: 15px;
+}
+
+.help-modal-video iframe {
+    width: auto;
+    height: auto;
+    min-width: 50vw;
+    min-height: 30vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 1137px) {
+    .help-modal-video iframe {
+        min-width: 57.5vw;
+        min-height: 32.5vw;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .help-modal-video iframe {
+        min-width: 82.5vw;
+        min-height: 52.5vw;
+    }
+}
+
+.help-modal-faq {
+    margin-top: 30px;
+}
+
+.help-modal-faq a {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--explorjob-orange);
+    text-decoration: none;
+}
+
+.help-modal-contact {
+    margin-top: 17.5px;
+}
+
+.help-modal-contact a {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--explorjob-green);
+    text-decoration: none;
+}

@@ -1,0 +1,248 @@
+.account-layout-sidebar-wrapper {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.account-profile-photo {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.account-profile-photo-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.account-layout-sidebar-menu-empty {
+    height: 95%;
+    margin-bottom: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: var(--explorjob-white);
+    border-radius: 25px;
+}
+
+.account-layout-sidebar-menu {
+    margin-bottom: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-white);
+    border-radius: 25px;
+}
+
+.account-layout-sidebar-menu-title {
+    margin-bottom: 22.5px;
+    padding-right: 17.5px;
+    padding-left: 17.5px;
+    font-weight: bold;
+    font-size: 18.5px;
+    color: var(--explorjob-darkgrey);
+}
+
+.account-layout-sidebar-menu-item {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: var(--explorjob-orange);
+}
+
+.account-layout-sidebar-menu-item button {
+    width: 100%;
+    height: 100%;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    padding-left: 17.5px;
+    padding-right: 17.5px;
+    font-size: 17.5px;
+    font-weight: bold;
+    text-align: left;
+    color: var(--explorjob-white);
+    background-color: transparent;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+.account-layout-sidebar-menu-item button:hover {
+    font-size: 18px;
+}
+
+.account-layout-sidebar-menu-item-sub {
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: transparent;
+}
+
+.account-layout-sidebar-menu-item-sub button {
+    width: 100%;
+    height: 100%;
+    padding-left: 17.5px;
+    padding-right: 17.5px;
+    text-align: left;
+    font-size: 15.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: transparent;
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+.account-layout-sidebar-menu-item-sub button:hover {
+    font-weight: bold;
+}
+
+.account-layout-sidebar-become-pro {
+    margin-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10.5px;
+    background-color: var(--explorjob-green);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.account-layout-sidebar-become-pro button {
+    padding-left: 35px;
+    padding-right: 35px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+.display-become-professional-modal-title {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 17.5px;
+    color: var(--explorjob-green);
+}
+
+.display-become-professional-modal-content {
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14.5px;
+    color: var(--explorjob-dark);
+    text-align: justify;
+}
+
+.display-become-professional-modal-button {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7.5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+.account-layout-sidebar-menu-actions {
+    text-align: center;
+}
+
+.account-layout-sidebar-menu-item-logout {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14.5px;
+    background-color: var(--explorjob-grey);
+    cursor: pointer;
+}
+
+.account-layout-sidebar-menu-item-logout a,
+.account-layout-sidebar-menu-item-logout a:active,
+.account-layout-sidebar-menu-item-logout a:hover,
+.account-layout-sidebar-menu-item-logout a:link,
+.account-layout-sidebar-menu-item-logout a:visited {
+    color: var(--explorjob-darkgrey);
+    text-decoration: none;
+}
+
+.account-layout-sidebar-menu-item-delete {
+    margin-top: 10px;
+    color: var(--explorjob-darkgrey);
+    background-color: transparent;
+    border: none;
+    outline: inherit;
+}
+
+.account-layout-sidebar-menu-item-change-password {
+    margin-top: 20px;
+    color: var(--explorjob-darkgrey);
+    background-color: transparent;
+    border: none;
+    outline: inherit;
+}
+
+.account-change-password-form-modal-title {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--explorjob-orange);
+}
+
+.account-change-password-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.account-change-password-form-input-label {
+    margin-top: 23px;
+    font-weight: bold;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+}
+
+.account-change-password-form-input-text {
+    width: 100%;
+    height: 30px;
+}
+
+.account-change-password-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 18px;
+    padding: 7.5px;
+    float: right;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+.account-messaging-conversation-button-messages-icon-text {
+    display: inline-block;
+    position: relative;
+    width: 22.5px;
+    height: 22.5px;
+    margin-right: 7.5px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13.5px;
+    color: var(--explorjob-orange);
+    background-color: var(--explorjob-white);
+    border-radius: 50%;
+    line-height: 21px;
+}

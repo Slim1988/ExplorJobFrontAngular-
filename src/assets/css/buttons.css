@@ -1,0 +1,18 @@
+.buttons-wrapper {
+
+}
+
+.button {
+
+}
+
+.ui-button {
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-grey);
+    border: none;
+    outline: inherit;
+}
+
+.ui-dialog-footer .ui-button {
+    font-size: 17px;
+}

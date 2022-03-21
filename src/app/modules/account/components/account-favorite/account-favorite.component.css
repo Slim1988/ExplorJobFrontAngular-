@@ -1,0 +1,59 @@
+.account-favorite-wrapper {
+    margin: 0;
+}
+
+.account-favorite {
+    margin-bottom: -10px;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.account-favorite-photo {
+    margin-left: 3.5px;
+}
+
+@media screen and (max-width: 1686px) {
+    .account-favorite-photo {
+        margin-left: 7.5px;
+    }
+}
+
+@media screen and (max-width: 1475px) {
+    .account-favorite-photo {
+        margin-left: 12.5px;
+    }
+}
+
+@media screen and (max-width: 1375px) {
+    .account-favorite-photo {
+        margin-left: 15px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .account-favorite-photo {
+        margin-left: 0px;
+    }
+}
+
+.account-favorite-photo-img {
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 50%;
+}
+
+.account-favorite-username {
+
+}
+
+.account-favorite-job {
+    color: var(--explorjob-dark);
+}
+
+.account-favorite-company {
+
+}
+
+.account-favorite-localisation {
+
+}

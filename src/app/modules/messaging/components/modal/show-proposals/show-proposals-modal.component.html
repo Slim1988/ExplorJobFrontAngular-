@@ -1,0 +1,154 @@
+<div class="write-message-modal-wrapper">
+    <p-dialog
+        [(visible)]="options && options.display"
+        [modal]="true"
+        [draggable]="false"
+        [dismissableMask]="true"
+        [style]="{
+            width: 'auto',
+            maxWidth: '99vw',
+            minWidth: '35vw',
+            height: 'auto',
+            minheight: '20vw'
+        }"
+        [contentStyle]="{
+            width: 'auto',
+            maxWidth: '99vw',
+            minWidth: '35vw',
+            height: 'auto',
+            minheight: '20vw'
+        }"
+        [autoZIndex]="true"
+        (onHide)="handleModalClose()"
+    >
+        <p-header>
+            <h3 *ngIf="isAppropvalView()" class="write-message-modal-form-title">Rendez-vous proposé(s)</h3>
+            <h3 *ngIf="!isAppropvalView()" class="write-message-modal-form-title">Rendez-vous prévu(s)</h3>
+        </p-header>
+        <table
+            mat-table
+            [dataSource]="options.proposalAppointments"
+            class="mat-elevation-z8"
+        >
+            <ng-container matColumnDef="Date">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let element">
+                    {{ convertDateForDTS(element.dateTime, "DD/MM/YYYY HH:mm") }}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Hours">
+                <th mat-header-cell *matHeaderCellDef>Heure</th>
+                <td mat-cell *matCellDef="let element">
+                    {{ convertDateForDTS(element.dateTime,"HH:mm") }}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="Action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element">
+                    <button
+                        mat-button
+                        type="button"
+                        *ngIf="isAppropvalView() && element.proposalStaus != 1"
+                        (click)="SelectAppointmentProposal(element)"
+                        label="Choisir"
+                        title= "{{canValidateProposal() ? '' : 'Pour modifier ou annuler vos propositions, allez dans l’onglet \'Mes rendez-vous\'' }}"
+                        [disabled]="!canValidateProposal()"
+                        [ngClass]="[canValidateProposal() ? 'button write-message-modal-proposal-button' : 'write-message-modal-proposal-button-disabled',
+                        element == selectedElement ? 'write-message-modal-proposal-button-selected': '' ]">
+                        Choisir
+                    </button>
+                    <button
+                        mat-button
+                        type="button"
+                        *ngIf="!isAppropvalView() && element.proposalStaus != 1"
+                        (click)="SelectAppointmentProposal(element)"
+                        label="Supprimer le rendez-vous"
+                        [ngClass]= "['button write-message-modal-proposal-button', element == selectedElement ? 'write-message-modal-proposal-button-selected': '']"
+                    >
+                        Supprimer le rendez-vous
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        <mat-card *ngIf="selectedElement" class="selected-element"
+            >Rendez-vous selectionné :
+            {{ convertDateForDTS(selectedElement.dateTime, "DD/MM/YYYY") }}
+            {{
+                convertDateForDTS(selectedElement.dateTime, "DD/MM/YYYY") 
+            }}
+            </mat-card>
+
+        <div
+            *ngIf="messageForm && canValidateProposal() && isAppropvalView()"
+            class="write-message-modal-form"
+        >
+            <h3 class="write-message-modal-form-title">Ecrire un message</h3>
+            <form [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+                <div class="input-wrapper">
+                    <textarea
+                        pInputTextarea
+                        [rows]="8"
+                        autoResize="autoResize"
+                        formControlName="message"
+                        placeholder="Message"
+                        class="input-textarea write-message-modal-form-input-textarea"
+                    >
+                    </textarea>
+
+                    <div
+                        *ngIf="
+                            messageForm.controls.message.invalid &&
+                            (messageForm.controls.message.dirty ||
+                                messageForm.controls.message.touched)
+                        "
+                        class="input-messages"
+                    >
+                        <p-message
+                            *ngIf="
+                                messageForm.controls.message.errors.maxlength
+                            "
+                            severity="error"
+                            text="Le message ne peut excéder 500 caractères"
+                        >
+                        </p-message>
+                    </div>
+                </div>
+
+                <div class="buttons-wrapper">
+                    <button
+                        *ngIf="canValidateProposal()"
+                        pButton
+                        type="submit"
+                        label="Envoyer"
+                        [disabled]="!messageForm.valid"
+                        class="button write-message-modal-form-button"
+                    ></button>
+
+                    <p-message
+                        *ngIf="!canValidateProposal()"
+                        severity="error"
+                        text="Vous ne pouvez pas vous écrire à vous même !"
+                        style="
+                            display: block;
+                            margin-top: 15px;
+                            margin-bottom: 15px;
+                            text-align: center;
+                        "
+                    >
+                    </p-message>
+                </div>
+            </form>
+        </div>
+        <button
+            *ngIf="!isAppropvalView()"
+            pButton
+            type="button"
+            label="Confirmer"
+            (click)="sendMessage()"
+            class="button write-message-modal-form-button"
+        ></button>
+    </p-dialog>
+</div>

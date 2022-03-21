@@ -1,0 +1,72 @@
+<div class="write-message-modal-wrapper">
+    <p-dialog
+        [(visible)]="options && options.display"
+        [modal]="true"
+        [draggable]="false"
+        [dismissableMask]="true"
+        [style]="{ width: 'auto', maxWidth: '99vw', minWidth: '35vw', height: 'auto', minheight: '20vw' }"
+        [contentStyle]="{ width: 'auto', maxWidth: '99vw', minWidth: '35vw', height: 'auto', minheight: '20vw' }"
+        [autoZIndex]=true
+        (onHide)="handleModalClose()">
+
+        <p-header>
+            <h3 class="write-message-modal-form-title">
+                Envoyer un message
+            </h3>
+        </p-header>
+
+        <div *ngIf="messageForm" class="write-message-modal-form">
+
+            <form [formGroup]="messageForm" #myform (ngSubmit)="sendMessage()">
+                <div class="input-wrapper">
+                    
+                    <textarea
+                        pInputTextarea
+                        [rows]="8"
+                        [maxlength]="maximumCharacters" 
+                        autoResize="autoResize"
+                        formControlName="message"
+                        placeholder="Message"
+                        class="input-textarea write-message-modal-form-input-textarea">
+                    </textarea>
+
+                    <div class="characters-count" style="text-align:right">
+                        {{ remainingCharacters() }} caractères restants
+                    </div> 
+
+                    <div
+                        *ngIf="messageForm.controls.message.invalid && (messageForm.controls.message.dirty || messageForm.controls.message.touched)"
+                        class="input-messages">
+                        <p-message
+                            *ngIf="messageForm.controls.message.errors.required"
+                            severity="error"
+                            text="Un message est requis">
+                        </p-message>
+                       
+                    </div>
+                    <div class="proposal-calendar-row" *ngIf="options?.shouldShowProposalCalendar">
+                        <proposal-calendar (propsalEvent)="updateProposalDates($event)" click-stop-propagation></proposal-calendar>
+                    </div>
+                </div>
+
+                <div class="buttons-wrapper">
+                    <button
+                        *ngIf="!emitterIsReceiver()"
+                        pButton
+                        type="submit"
+                        label="Envoyer"
+                        class="button write-message-modal-form-button">
+                    </button>
+
+                    <p-message
+                        *ngIf="emitterIsReceiver()"
+                        severity="error"
+                        text="Vous ne pouvez pas vous écrire à vous même !"
+                        style="display: block; margin-top: 15px; margin-bottom: 15px; text-align: center;">
+                    </p-message>
+                </div>
+
+            </form>
+        </div>
+    </p-dialog>
+</div>

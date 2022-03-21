@@ -1,0 +1,53 @@
+.account-conversation-wrapper {
+    margin: 0;
+}
+
+.account-conversation {
+    margin-bottom: -10px;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.account-conversation-photo {
+    margin-left: 17.5px;
+}
+
+@media screen and (max-width: 767px) {
+    .account-conversation-photo {
+        margin-left: 0px;
+    }
+}
+
+.account-conversation-photo-img {
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 50%;
+}
+
+.account-conversation-username {
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 1199px) {
+    .account-conversation-username {
+        margin-left: 12.5px;
+    }
+}
+
+@media screen and (max-width: 1095px) {
+    .account-conversation-username {
+        margin-left: 22.5px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .account-conversation-username {
+        margin-left: 0;
+    }
+}
+
+.account-conversation-title {
+    margin-top: 10px;
+    color: var(--explorjob-dark);
+}

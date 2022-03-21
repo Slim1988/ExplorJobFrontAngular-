@@ -1,0 +1,233 @@
+<div class="app-condensed-menu-wrapper">
+
+    <div class="app-condensed-menu-logo">
+        <a routerLink="/{{ redirections.home.path }}">
+            <img src="assets/images/logos/explorjob.png"
+                title="ExplorJob"
+                alt="ExplorJob">
+        </a>
+    </div>
+
+    <div class="app-condensed-menu-burger">
+        <a (click)="closeCondensedMenu()">
+            <div class="app-condensed-menu-burger-item"></div>
+            <div class="app-condensed-menu-burger-item"></div>
+            <div class="app-condensed-menu-burger-item"></div>
+        </a>
+    </div>
+
+    <div *ngIf="displayConfirmDeleteAccount">
+        <div class="app-condensed-menu-account-delete">
+
+            <div class="app-condensed-menu-account-delete-message">
+                Êtes vous sûr de vouloir supprimer votre compte ?
+            </div>
+            <div>
+                <strong>Vous ne pourrez pas le récupérer</strong>
+            </div>
+
+            <div class="app-condensed-menu-account-delete-button">
+                <a (click)="confirmDeleteAccount()">
+                    Oui
+                </a>
+            </div>
+
+            <div class="app-condensed-menu-account-delete-button">
+                <a (click)="cancelDeleteAccount()">
+                    Non
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="!displayConfirmDeleteAccount">
+        <div class="app-condensed-menu-global">
+            <div class="p-grid">
+
+                <div class="p-col-11 p-md-11 p-lg-11">
+                    <div class="app-condensed-menu-global-links">
+                        <a (click)="handleRouterLink(redirections.home.path)"
+                            class="app-condensed-menu-global-link">
+                            Accueil
+                        </a>
+
+                        <a (click)="handleRouterLink('search/request')"
+                            class="app-condensed-menu-global-link">
+                            Trouver un métier
+                        </a>
+
+                        <a (click)="handleRouterLink(redirections.news.path)"
+                            class="app-condensed-menu-global-link">
+                            Actualités
+                        </a>
+
+                        <a (click)="handleRouterLink(redirections.gofurther.path)"
+                            class="app-condensed-menu-global-link">
+                            Aller plus loin
+                        </a>
+
+                        <a (click)="handleRouterLink(redirections.whoarewe.path)"
+                            class="app-condensed-menu-global-link">
+                            Qui sommes-nous ?
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-col-1 p-md-1 p-lg-">
+                    <div class="app-condensed-menu-social-medias">
+                        <a class="app-condensed-menu-social-media"
+                            href="{{ facebookUrl }}"
+                            target="_blank">
+                            <img src="assets/icons/social-medias/facebook-white.png"
+                                title="facebook"
+                                alt="facebook">
+                        </a>
+
+                        <a class="app-condensed-menu-social-media"
+                            href="{{ instagramUrl }}"
+                            target="_blank">
+                            <img src="assets/icons/social-medias/instagram-white.png"
+                                title="instagram"
+                                alt="instagram">
+                        </a>
+
+                        <a class="app-condensed-menu-social-media"
+                            href="{{ linkedInUrl }}"
+                            target="_blank">
+                            <img src="assets/icons/social-medias/linkedIn-white.png"
+                                title="linkedIn"
+                                alt="linkedIn">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-12">
+                    <div *ngIf="this.authService.isLoggedIn()">
+                        <div class="app-condensed-menu-account-photo">
+                            <a (click)="handleAccountLink(AccountMenu.AccountProfileGeneralInformations)">
+                                <img #accountProfilePhoto
+                                    src="{{ accountService.get()?.photoUrl }}"
+                                    (error)="accountProfilePhoto.src=accountProfilePhotoDefault()"
+                                    alt="Photo de profil"
+                                    class="app-condensed-menu-account-photo-img">
+                                </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-12">
+                    <a *ngIf="!this.authService.isLoggedIn()"
+                        (click)="handleRouterLink('login')"
+                        class="app-condensed-menu-global-link-account">
+                        Me connecter
+                    </a>
+
+                    <div *ngIf="this.authService.isLoggedIn()"
+                        class="app-condensed-menu-account">
+
+                        <div class="app-condensed-menu-account-title">
+                            <a (click)="handleAccountLink(AccountMenu.AccountProfileGeneralInformations)">
+                                Mon Compte
+                            </a>
+                        </div>
+
+                        <hr class="app-condensed-menu-account-title-separator">
+
+                        <div class="app-condensed-menu-account-link">
+                            <a (click)="handleAccountLink(AccountMenu.AccountProfileGeneralInformations)">
+                                Mon profil
+                            </a>
+                        </div>
+
+                        <div class="app-condensed-menu-account-link-sub">
+                            <a (click)="handleAccountLink(AccountMenu.AccountProfileGeneralInformations)">
+                                Informations générales
+                            </a>
+                        </div>
+
+                        <div class="app-condensed-menu-account-link-sub">
+                            <a (click)="handleAccountLink(AccountMenu.AccountProfileContactInformations)">
+                                Coordonnées
+                            </a>
+                        </div>
+
+                        <div class="app-condensed-menu-account-link-sub">
+                            <a (click)="handleAccountLink(AccountMenu.AccountProfileSituationInformations)">
+                                Situation actuelle
+                            </a>
+                        </div>
+
+                        <div class="app-condensed-menu-account-link">
+                            <a (click)="handleAccountLink(AccountMenu.AccountMessaging)">
+                                Messagerie
+                                <span class="account-messaging-conversation-button-messages-icon-text">
+                                    {{ numberOfUnreadMessages() }}
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="app-condensed-menu-account-link">
+                            <a (click)="handleAccountLink(AccountMenu.AccountAppointments)">
+                                Mes rendez-vous
+                            </a>
+                        </div>
+
+                        <div class="app-condensed-menu-account-link">
+                            <a (click)="handleAccountLink(AccountMenu.AccountFavorites)">
+                                Favoris
+                            </a>
+                        </div>
+
+                        <div *ngIf="!accountService.get()?.isProfessional()">
+                            <div class="app-condensed-menu-account-button-become-professional">
+                                <a (click)="becomeProfessional()">
+                                    Je souhaite aussi témoigner de mon métier
+                                </a>
+                            </div>
+                        </div>
+
+                        <div *ngIf="accountService.get()?.isProfessional()">
+                            <div class="app-condensed-menu-account-title">
+                                <a (click)="handleAccountLink(AccountMenu.AccountJobs)">
+                                    Mon Espace Pro
+                                </a>
+                            </div>
+
+                            <hr class="app-condensed-menu-account-title-separator">
+
+                            <div class="app-condensed-menu-account-link">
+                                <a (click)="handleAccountLink(AccountMenu.AccountJobs)">
+                                    Mes métiers
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="app-condensed-menu-account-buttons">
+                            <div class="app-condensed-menu-account-button-logout">
+                                <a *ngIf="authService.isLoggedIn()" (click)="logout()">
+                                    Me déconnecter
+                                </a>
+                            </div>
+
+                            <div class="app-condensed-menu-account-button-action">
+                                <a (click)="changePassword()">
+                                    Modifier mon mot de passe
+                                </a>
+                            </div>
+
+                            <div class="app-condensed-menu-account-button-action">
+                                <a (click)="deleteAccount()">
+                                    Supprimer mon compte
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

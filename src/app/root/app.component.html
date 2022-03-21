@@ -1,0 +1,31 @@
+<div class="app-wrapper">
+
+    <div *ngIf="displayCondensedMenu">
+        <app-condensed-menu
+            (burgerMenuTriggered)="handleTriggerDisplayCondensedMenu($event)">
+        </app-condensed-menu>
+    </div>
+
+    <div *ngIf="!displayCondensedMenu">
+        <div class="app-layout-header">
+            <app-topbar
+                (burgerMenuTriggered)="handleTriggerDisplayCondensedMenu($event)">
+            </app-topbar>
+        </div>
+
+        <div class="app-layout-content">
+            <div class="p-grid">
+                <div class="p-col-12 p-md-1 p-lg-2"></div>
+
+                <div class="p-col-12 p-md-10 p-lg-8">
+                    <router-outlet></router-outlet>
+                </div>
+
+                <div class="p-col-12 p-md-1 p-lg-2">
+                    <help *ngIf="displayHelpButton"></help>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

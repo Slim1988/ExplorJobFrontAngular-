@@ -1,0 +1,30 @@
+<p-dialog [(visible)]="options && options.display" [modal]="true" [draggable]="false" [dismissableMask]="true"
+    [style]="{ width: 'auto', maxWidth: '50vw', minWidth: '35vw', height: 'auto', minheight: '20vw' }"
+    [contentStyle]="{ width: 'auto', maxWidth: '50vw', minWidth: '35vw', height: 'auto', minheight: '20vw', padding:'2em', paddingTop: '0.5em' }"
+    [autoZIndex]=true>
+
+    <div class="flex">
+
+        <p-message *ngIf="!options.success" severity="error" [style]="{margin: 'auto'}"
+            text="Le message n'a pas pu être envoyé">
+        </p-message>
+
+        <p-message *ngIf="options.success" severity="success" [style]="{margin: 'auto'}" text="Le message a été envoyé">
+        </p-message>
+
+    </div>
+
+    <div class="margin-vertical center" *ngIf="promotes?.length > 0">
+        <div class="bold explorjob-dark margin-vertical "> Deux avis en valent mieux qu'un ;-)</div>
+
+        <div class="explorjob-darkgrey margin-vertical">
+            Découvrez ces entreprises et rencontrez aussi leurs professionnels, afin de découvrir d'autres façons
+            d'exercer le métier et élargir votre réseau !</div>
+
+
+        <div class="margin-vertical">
+            <promote-logo-carousel [showMessage]="false" [companiesToDisplay]="promotes"></promote-logo-carousel>
+        </div>
+    </div>
+
+</p-dialog>

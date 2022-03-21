@@ -1,0 +1,112 @@
+<p-confirmDialog acceptLabel="OK" rejectLabel="Annuler" [style]="{ maxWidth: '75vw' }"></p-confirmDialog>
+
+<user-profile-modal
+    [settings]="userProfileSettings"
+    (events)="handleUserProfileEvent($event)">
+</user-profile-modal>
+
+<write-message-modal
+    [options]="writeMessageOptions"
+    (events)="handleWriteMessageEvent($event)">
+</write-message-modal>
+
+<div class="account-favorites-wrapper">
+    <div *ngIf="!favorites; then accountFavoritesLoadingTemplate else accountFavoritesLoadedTemplate"></div>
+</div>
+
+<ng-template #accountFavoritesLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #accountFavoritesLoadedTemplate>
+    <div class="account-favorites-fielset">
+
+        <h2 class="account-favorites-fieldset-title">
+            Mes Favoris
+        </h2>
+
+        <hr class="account-favorites-separator">
+
+        <div class="account-favorites-content">
+
+            <div style="display: inherit; margin-top: -25px; margin-bottom: 20px;">
+                <p-messages></p-messages>
+            </div>
+
+            <div *ngIf="favorites.length">
+                <div class="account-favorites-filter">
+                    <input
+                        #filterFavoritesInput
+                        pInputText
+                        type="text"
+                        (input)="filterFavorites($event.target.value)"
+                        placeholder="Filtrer"
+                        class="input account-favorites-filter-input">
+                    <a (click)="clearFilterFavorites()" class="account-favorites-filter-close">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+
+                <div class="account-favorites-list">
+                    <div *ngFor="let favorite of displayedFavorites" class="account-favorites-list-item">
+
+                        <div class="p-grid">
+
+                            <div class="p-col-12 p-md-12 p-lg-9">
+                                <a (click)="userProfileTo(favorite?.user, favorite?.jobUser)" class="cursor-pointer">
+                                    <account-favorite [favorite]="favorite"></account-favorite>
+                                </a>
+                            </div>
+
+                            <div class="p-col-6 p-md-9 p-lg-2">
+                                <div class="account-favorites-list-item-actions">
+                                    <a (click)="userProfileTo(favorite?.user, favorite?.jobUser)"
+                                        class="account-favorites-list-item-action"
+                                        style="position: relative; top: 0px; margin-right: 12px;">
+                                        <img src="assets/icons/information-orange.png"
+                                            title="Voir le profil de {{ favorite?.user?.firstName | titlecase }}">
+                                    </a>
+                                    <a *ngIf="!userInFavoriteIsOwner(favorite?.user?.id)"
+                                        (click)="writeMessageTo(favorite?.user?.id)"
+                                        class="account-favorites-list-item-action"
+                                        style="position: relative; top: 1px; margin-right: 9px;">
+                                        <img src="assets/icons/message-orange.png"
+                                            title="Ecrire à {{ favorite?.user?.firstName | titlecase }}">
+                                    </a>
+                                    <a *ngIf="userInFavoriteIsOwner(favorite?.user?.id)"
+                                        class="account-favorites-list-item-action"
+                                        style="position: relative; top: 1px; margin-right: 9px;">
+                                        <img src="assets/icons/message-grey.png"
+                                            title="Vous ne pouvez pas vous écrire à vous même !">
+                                    </a>
+                                    <a (click)="removeFavorite(favorite)"
+                                        class="account-favorites-list-item-action"
+                                        style="position: relative; top: 0px; margin-right: 20px;">
+                                        <img src="assets/icons/corbeille-orange.png"
+                                            title="Retirer des favoris">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!favorites.length">
+                <div class="center">
+                    <i>Vous n'avez aucun favoris</i>
+                </div>
+
+                <div class="center">
+                    <a class="account-favorites-go-to-search-link"
+                        (click)="goToRequest()">
+                        Aller à la recherche
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</ng-template>

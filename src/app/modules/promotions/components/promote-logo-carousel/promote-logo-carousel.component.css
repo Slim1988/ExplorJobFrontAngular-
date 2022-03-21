@@ -1,0 +1,20 @@
+.item {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+.item-logo{
+    width: 10em;
+    height: 4em;
+    object-fit: contain;
+    margin-bottom: 1em;
+    align-self: center;
+}
+
+.item-message {
+    max-width: 12em;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    overflow: hidden;
+}

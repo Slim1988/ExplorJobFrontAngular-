@@ -1,0 +1,75 @@
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Proposer un rendez-vous ?
+        </mat-panel-title>
+        <mat-panel-description>
+          Choisir l'heure et la date dans le calendrier ci-dessous
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-grid-list cols="5">
+        <mat-grid-tile [colspan]="3">
+            <mat-form-field>
+
+            <input
+            matInput
+            [ngxMatDatetimePicker]="picker"
+            placeholder="Choisir une date"
+            [(ngModel)]="date"
+            [min]="minDate"
+            [max]="maxDate"
+            [disabled]="disabled">
+
+            <mat-datepicker-toggle
+            matSuffix
+            [for]="picker">
+            </mat-datepicker-toggle>
+
+            <ngx-mat-datetime-picker #picker
+            [showSpinners]="showSpinners"
+            [showSeconds]="showSeconds"
+            [stepHour]="stepHour"
+            [stepMinute]="stepMinute"
+            [stepSecond]="stepSecond"
+            [touchUi]="touchUi"
+            [color]="color"
+            [enableMeridian]="enableMeridian">
+            </ngx-mat-datetime-picker>
+
+            </mat-form-field>
+            <button
+                click-stop-propagation
+                mat-raised-button
+                type="button"
+                class="add-button"
+                (click)="AddDate()"
+                [disabled]="this.dates.length >= 3">
+                Ajouter
+            </button>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2">
+            <div class="propositions-block">
+                <mat-toolbar *ngIf="dates.length > 0">Proposition(s) de rendez-vous :</mat-toolbar>
+            <mat-list role="list" *ngIf="dates.length > 0">
+                <mat-list-item class="date-proposed" *ngFor="let dateProposed of dates" role="listitem">
+                    {{dateProposed | date:'dd/MM/yyyy HH:mm':'fr'}}
+                    <mat-icon
+                        click-stop-propagation
+                        class="delete-proposal"
+                        aria-hidden="false"
+                        aria-label="supprimer"
+                        (click)="DeleteDate(dateProposed)">
+                        close
+                    </mat-icon>
+                </mat-list-item>
+              </mat-list>
+            </div>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+
+
+    </mat-expansion-panel>
+  </mat-accordion>

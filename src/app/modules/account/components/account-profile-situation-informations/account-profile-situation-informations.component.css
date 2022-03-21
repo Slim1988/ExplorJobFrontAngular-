@@ -1,0 +1,61 @@
+.account-profile-situation-informations-wrapper {
+    margin: 0;
+}
+
+.account-profile-situation-informations-fielset {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.account-profile-situation-informations-fieldset-title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: var(--explorjob-orange);
+}
+
+.account-profile-situation-informations-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.account-profile-situation-informations-form {
+
+}
+
+.account-profile-situation-informations-form-input-label {
+    margin-top: 23px;
+    font-weight: bold;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+}
+
+.account-profile-situation-informations-form-input-text {
+    width: 100%;
+    height: 30px;
+    font-family: 'Montserrat';
+}
+
+.account-profile-situation-informations-form-input-dropdown {
+    width: auto;
+}
+
+.account-profile-situation-informations-form-button {
+    margin-top: 22.5px;
+    padding: 7.5px;
+    float: right;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}

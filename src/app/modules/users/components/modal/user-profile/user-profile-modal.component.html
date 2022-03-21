@@ -1,0 +1,392 @@
+<div class="user-profile-modal-wrapper">
+    <write-message-modal [options]="writeMessageOptions" (events)="handleWriteMessageEvent($event)">
+    </write-message-modal>
+
+    <message-sent-confirmation [options]="messageSentConfirmationModalOptions"></message-sent-confirmation>
+
+    <p-dialog *ngIf="usersService.isUserPublic(user)" [(visible)]="display" [modal]="true" [draggable]="false"
+        [closable]="false" [closeOnEscape]="false" [dismissableMask]="false" [autoZIndex]=true
+        [transitionOptions]="'250ms'" styleClass="user-profile-modal-lighten">
+
+        <p-header>
+            <div class="user-profile-modal-close">
+                <a (click)="closeModal()" class="fa fa-times"></a>
+            </div>
+
+            <div class="user-profile-photo">
+                <img #userPhoto src="{{ user?.photoUrl }}" (error)="userPhoto.src=userPhotoDefault()"
+                    alt="Photo de {{ user?.firstName | titlecase }}" class="user-profile-photo-img-lighten img-border">
+            </div>
+        </p-header>
+
+        <div class="user-profile-modal-content">
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-12">
+                    <div *ngIf="user" class="user-profile-name explorjob-green">
+                        {{ user.firstName | titlecase }} {{ userLastName() | slice:0:1 | uppercase }}{{ user.lastName ?
+                        '.' : '' }}
+                    </div>
+
+                    <div class="user-profile-title margin-bottom explorjob-orange">
+                        {{ userTitle() }}
+                    </div>
+
+                    <div class="user-profile-standard-property">
+                        <img class="icon" *ngIf="user?.localisationCity" src="assets/icons/localisation-green.png">
+                        <div class="align-icon">
+                            {{ user?.localisationCit ? 'Ville : ' : '' }} {{ user?.localisationCity | titlecase }}
+                        </div>
+                    </div>
+
+                    <div class="center">
+                        <hr class="user-profile-go-to-login-separator">
+
+                        Voir plus d'informations et intéragir ?
+
+                        <a class="user-profile-link" (click)="goToLogin()">
+                            Connectez-vous
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p-footer></p-footer>
+
+    </p-dialog>
+
+    <p-dialog *ngIf="usersService.isUserExplorer(user)" [(visible)]="display" [modal]="true" [draggable]="false"
+        [closable]="false" [closeOnEscape]="false" [dismissableMask]="false" [autoZIndex]=true
+        [transitionOptions]="'250ms'" styleClass="user-profile-modal">
+
+        <p-header>
+            <div class="user-profile-modal-close">
+                <a (click)="closeModal()" class="fa fa-times"></a>
+            </div>
+
+            <div class="user-profile-photo">
+                <img #userPhoto src="{{ user?.photoUrl }}" (error)="userPhoto.src=userPhotoDefault()"
+                    alt="Photo de {{ user?.firstName | titlecase }}" class="user-profile-photo-img img-border">
+            </div>
+
+            <div class="user-profile-modal-button-wrapper">
+                <button pButton *ngIf="!account?.isJobUserInFavorites(job?.id)" type="button" label="Mettre en favoris"
+                    (click)="addToFavorite(user?.id, job?.id)" class="user-profile-modal-button">
+                    <img src="assets/icons/etoile-orange-only-border.png">
+                </button>
+
+                <button pButton *ngIf="account?.isJobUserInFavorites(job?.id)" type="button" label="Retirer des favoris"
+                    (click)="removeFavorite(user?.id, job?.id)" class="user-profile-modal-button">
+                    <img src="assets/icons/etoile-orange.png">
+                </button>
+
+                <button pButton *ngIf="displayWriteMessage" type="button" label="Contacter"
+                    (click)="writeMessageTo(user?.id)" class="user-profile-modal-button">
+                    <img src="assets/icons/message-orange.png">
+                </button>
+
+
+            </div>
+        </p-header>
+
+        <div class="user-profile-modal-content">
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-5 p-lg-5">
+
+                    <div *ngIf="user" class="user-profile-name explorjob-orange">
+                        {{ user.firstName | titlecase }} {{ userLastName() | slice:0:1 | uppercase }}{{ user.lastName ?
+                        '.' : '' }}
+                    </div>
+
+                    <div class="user-profile-title margin-bottom explorjob-green">
+                        {{ userTitle() }}
+                    </div>
+
+                    <div *ngIf="user?.localisationCity" class="user-profile-standard-property ">
+                        <img class="icon" class="icon" src="assets/icons/localisation-orange.png">
+                        <div class="align-icon "> {{ user?.localisationCity ? 'Ville : ' : '' }} {{
+                            user?.localisationCity | titlecase }}</div>
+                    </div>
+
+                    <div *ngIf="user?.currentCompany" class="user-profile-standard-property">
+                        <img class="icon" src="assets/icons/company-orange.svg">
+                        <div class="align-icon ">{{ user?.currentCompany ? 'Entreprise : ' : '' }} {{
+                            user?.currentCompany }}</div>
+                    </div>
+
+                    <div *ngIf="user?.currentSchool" class="user-profile-standard-property">
+                        <img class="icon" src="assets/icons/graduate-orange.png">
+                        <div class="align-icon ">{{ user?.currentSchool ? 'École : ' : '' }} {{ user?.currentSchool }}
+                        </div>
+                    </div>
+
+                    <div *ngIf="user?.lastDegree?.label" class="user-profile-standard-property">
+                        <img class="icon" src="assets/icons/degree-orange.png">
+                        <div class="align-icon ">{{ user?.lastDegree?.label ? 'Dernier diplôme obtenu : ' : '' }} {{
+                            user?.lastDegree?.label }}</div>
+                    </div>
+
+                    <div *ngIf="user?.contactMethods?.length" class="user-profile-standard-property">
+                        <img class="icon" src="assets/icons/comment-orange.png">
+                        <div class="align-icon">
+                            <div class="text-nowrap">Moyen(s) de contact :</div>
+                            <img *ngFor="let contactMethod of user?.contactMethods"
+                                src="assets/icons/{{ contactMethod.id }}-orange.png"
+                                class="user-profile-contact-method-icon" title="{{contactMethod.label}}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="p-col-12 p-md-7 p-lg-7">
+                    <div *ngIf="user?.presentation">
+                        <div class="user-profile-presentation-title explorjob-orange">
+                            Présentation
+                        </div>
+
+                        <hr class="user-profile-presentation-separator">
+
+                        <div class="paragraph">
+                            {{ user?.presentation }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-12">
+                    <div class="user-profile-modal-report">
+                        <user-report-modal [user]="user"></user-report-modal>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p-footer></p-footer>
+
+    </p-dialog>
+
+    <p-dialog *ngIf="usersService.isUserProfessional(user)" [(visible)]="display" [modal]="true" [draggable]="false"
+        [closable]="false" [closeOnEscape]="false" [dismissableMask]="false" [autoZIndex]=true
+        [transitionOptions]="'250ms'" styleClass="user-profile-modal">
+
+        <p-header>
+            <div class="user-profile-modal-close">
+                <a (click)="closeModal()" class="fa fa-times"></a>
+            </div>
+
+            <div>
+                <img #userPhoto src="{{ user?.photoUrl }}" (error)="userPhoto.src=userPhotoDefault()"
+                    alt="Photo de {{ user?.firstName | titlecase }}" class="user-profile-photo-img img-border">
+            </div>
+
+            <div class="user-profile-modal-button-wrapper">
+                <button pButton *ngIf="!account?.isJobUserInFavorites(job?.id)" type="button" label="Mettre en favoris"
+                    (click)="addToFavorite(user?.id, job?.id)" class="user-profile-modal-button">
+                    <img src="assets/icons/etoile-orange-only-border.png">
+                </button>
+
+                <button pButton *ngIf="account?.isJobUserInFavorites(job?.id)" type="button" label="Retirer des favoris"
+                    (click)="removeFavorite(user?.id, job?.id)" class="user-profile-modal-button">
+                    <img src="assets/icons/etoile-orange.png">
+                </button>
+
+                <button pButton *ngIf="displayWriteMessage" type="button" label="Contacter"
+                    (click)="writeMessageTo(user?.id)" class="user-profile-modal-button">
+                    <img src="assets/icons/message-orange.png">
+                </button>
+
+
+            </div>
+        </p-header>
+
+        <div class="user-profile-modal-content">
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-5 p-lg-5 padding-right-small">
+
+                    <div *ngIf="user" class="user-profile-name explorjob-green">
+                        {{ user.firstName | titlecase }} {{ userLastName() | slice:0:1 | uppercase }}{{ user.lastName ?
+                        '.' : '' }}
+                    </div>
+
+                    <div class="container">
+
+                        <div class="user-profile-title explorjob-orange">
+                            {{ userTitle() }}
+                        </div>
+
+                        <div *ngIf="job?.company" class="user-profile-job-company">
+                            chez <span [ngClass]="{'cursor-pointer underline' : settings?.promote }"
+                                (click)="settings?.promote && goToCompanyPage(settings?.promote?.slug)"
+                                title="Voir le détail de l'entreprise {{ settings?.promote?.companyName }}">{{
+                                job?.company
+                                }}</span>
+                        </div>
+
+                        <div *ngIf="settings?.promote" class="flex-align-center margin-bottom">
+                            <img class="promote-company-logo cursor-pointer"
+                                (click)="goToCompanyPage(settings?.promote?.slug)" [src]="settings?.promote?.logoUrl"
+                                alt="Voir le détail de l'entreprise {{ settings?.promote?.companyName }}"
+                                title="Voir le détail de l'entreprise {{ settings?.promote?.companyName }}">
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div *ngIf="user?.presentation">
+                            <div class="user-profile-about-me-title explorjob-orange">
+                                A propos de moi
+                            </div>
+
+                            <div class="paragraph margin-bottom">
+                                {{ user?.presentation }}
+                            </div>
+                        </div>
+
+                        <div *ngIf="user?.currentSchool" class="user-profile-standard-property">
+                            <img class="icon" src="assets/icons/graduate-green.png">
+                            <div class="align-icon ">{{ user?.currentSchool ? "Formation suivie : " : '' }} {{
+                                user?.currentSchool }}</div>
+                        </div>
+
+                        <div *ngIf="user?.localisationCity" class="user-profile-standard-property">
+                            <img class="icon" src="assets/icons/localisation-green.png">
+                            <div class="align-icon "> {{ user?.localisationCity ? 'Ville : ' : '' }} {{
+                                user?.localisationCity | titlecase }}</div>
+                        </div>
+
+                        <div *ngIf="user?.currentCompany" class="user-profile-standard-property">
+                            <img class="icon" src="assets/icons/company-green.svg">
+                            <div class="align-icon "> {{ user?.currentCompany ? 'Entreprise actuelle : ' : '' }} {{
+                                user?.currentCompany }} </div>
+                        </div>
+
+                        <div *ngIf="user?.lastDegree?.label" class="user-profile-standard-property">
+                            <img class="icon" src="assets/icons/degree-green.png">
+                            <div class="align-icon"> {{ user?.lastDegree?.label ? 'Dernier diplôme obtenu : ' : '' }} {{
+                                user?.lastDegree?.label }}</div>
+
+                        </div>
+                        <div *ngIf="user?.contactMethods?.length" class="user-profile-standard-property">
+                            <img class="icon" src="assets/icons/comment-green.png">
+                            <div class="align-icon">
+                                <div class="text-nowrap">Moyen(s) de contact :</div>
+                                <img *ngFor="let contactMethod of user?.contactMethods"
+                                    src="assets/icons/{{ contactMethod.id }}-green.png"
+                                    class="user-profile-contact-method-icon" title="{{contactMethod.label}}">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="p-col-12 p-md-7 p-lg-7 padding-left-small">
+                    <div *ngIf="job?.presentation">
+                        <div class="job-presentation-header">
+
+                            <div class="user-profile-job-title">
+                                Présentation du métier
+                            </div>
+
+                            <div *ngIf="settings?.promote" class="flex-end">
+                                <img class="promote-company-logo cursor-pointer"
+                                    (click)="goToCompanyPage(settings?.promote?.slug)"
+                                    [src]="settings?.promote?.logoUrl"
+                                    alt="Voir le détail de l'entreprise {{ settings?.promote?.companyName }}"
+                                    title="Voir le détail de l'entreprise {{ settings?.promote?.companyName }}">
+                            </div>
+                        </div>
+
+                        <hr class="user-profile-job-separator">
+
+                        <div class="paragraph margin-bottom">
+                            {{ job?.presentation }}
+                        </div>
+
+
+                        <div class="user-profile-standard-property flex-align-top">
+                            <img class="icon" *ngIf="job?.domains" src="assets/icons/briefcase-green.svg">
+                            <div class="user-profile-job-domain">
+                                <div *ngFor="let domain of job?.domains; let last = last;">
+                                    {{ domain.label }}<span *ngIf="!last">,</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="jobs?.length" class="user-profile-jobs-wrapper">
+                        <div class="user-profile-jobs-label">
+                            Mes autres métiers
+                        </div>
+
+                        <hr class="user-profile-jobs-label-separator">
+
+                        <p-accordion>
+                            <div *ngFor="let job of jobs">
+                                <div class="p-grid">
+
+                                    <div class="p-col-11 p-md-11 p-lg-11">
+                                        <p-accordionTab>
+                                            <p-header class="user-profile-jobs-job-label">
+                                                {{ job?.label }}
+                                            </p-header>
+
+                                            <div>
+
+                                                <div class="user-profile-jobs-job-company">
+                                                    {{ job?.company }}
+                                                </div>
+
+                                                <div class="user-profile-jobs-job-presentation margin-bottom">
+                                                    {{ job?.presentation }}
+                                                </div>
+
+                                                <div class="user-profile-standard-property flex-align-top">
+                                                    <img class="icon" *ngIf="job?.domains"
+                                                        src="assets/icons/briefcase-green.svg">
+                                                    <div class="user-profile-job-domain">
+                                                        <div *ngFor="let domain of job?.domains; let last = last;">
+                                                            {{ domain.label }}<span *ngIf="!last">,</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </p-accordionTab>
+                                    </div>
+
+                                    <div class="p-col-1 p-md-1 p-lg-1">
+                                        <a *ngIf="!account?.isJobUserInFavorites(job?.id)"
+                                            class="user-profile-jobs-job-add-to-favorite"
+                                            (click)="addToFavorite(user?.id, job?.id)" title="Mettre en favoris">
+                                            <img src="assets/icons/etoile-orange-only-border.png">
+                                        </a>
+                                        <a *ngIf="account?.isJobUserInFavorites(job?.id)"
+                                            class="user-profile-jobs-job-remove-favorite"
+                                            (click)="removeFavorite(user?.id, job?.id)" title="Retirer des favoris">
+                                            <img src="assets/icons/etoile-orange.png">
+                                        </a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </p-accordion>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-12">
+                    <div class="user-profile-modal-report">
+                        <user-report-modal [user]="user"></user-report-modal>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p-footer></p-footer>
+
+    </p-dialog>
+</div>

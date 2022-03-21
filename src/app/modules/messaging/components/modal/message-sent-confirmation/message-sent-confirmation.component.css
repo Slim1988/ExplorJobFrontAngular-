@@ -1,0 +1,16 @@
+.flex {
+    display: flex;
+}
+
+.margin-vertical {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.max-width {
+    max-width: 70%;
+}

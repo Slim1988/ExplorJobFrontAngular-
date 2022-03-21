@@ -1,0 +1,26 @@
+.ui-dialog {
+    position: absolute !important;
+    background-color: var(--explorjob-white);
+    border-radius: 25px;
+}
+
+.ui-dialog-title {
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 15px;
+    color: var(--explorjob-darkgrey);
+    font-weight: bold;
+}
+
+.ui-dialog-titlebar-close {
+    font-size: 26px;
+    color: var(--explorjob-darkgrey);
+}
+
+.ui-dialog-mask {
+    background-color: rgba(75, 75, 75, 0.6);
+}
+
+.ui-confirmdialog-message {
+    color: var(--explorjob-darkgrey);
+}

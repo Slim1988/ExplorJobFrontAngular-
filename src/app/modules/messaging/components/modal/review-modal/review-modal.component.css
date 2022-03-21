@@ -1,0 +1,136 @@
+.write-message-modal-wrapper {
+    margin: 0;
+}
+
+.write-message-modal-form-title {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--explorjob-orange);
+}
+
+.write-message-modal-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.write-message-modal-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 18px;
+    padding: 7.5px;
+    float: right;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+.write-message-modal-proposal-button{
+    border-radius: 25px;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    font-size: 13px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.write-message-modal-proposal-button-disabled{
+    background-color: var(--app-grey);
+    border-radius: 25px;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    font-size: 13px;
+    color: var(--explorjob-white);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.selected-element{
+    margin-bottom: 20px;
+}
+.mat-table{
+    width: 100%;
+}
+th.mat-header-cell{
+    width: 33%;
+}
+ngb-rating {
+    color: #FFC107;
+    font-size: 40px;
+}
+.mat-radio-button {
+    margin-right: 5px;
+}
+.full-width{
+    width: 100%;
+}
+.no-margin{
+    margin: 0px;
+}
+.account-messaging-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+.modal-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.write-message-modal-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 18px;
+    padding: 7.5px;
+    float: right;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+.grid-display-radio{
+    display: grid;
+}
+.title{
+    font-weight: 700;
+}
+.normal-weight{
+    font-weight: normal;
+}
+.notice{
+    font-size: 12px;
+    margin: 5px;
+    max-width: 920px;
+}
+hr {
+    margin-top: 0px;
+}
+.mat-radio-button {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.required:after {
+    content:" *";
+    color: var(--explorjob-orange);
+  }

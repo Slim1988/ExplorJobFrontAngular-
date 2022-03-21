@@ -1,0 +1,267 @@
+.app-condensed-menu-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding-bottom: 32.5px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    overflow: auto;
+}
+
+@media only screen and (min-width: 768px) {
+    .app-condensed-menu-wrapper {
+        display: none;
+    }
+}
+
+.app-condensed-menu-logo {
+    margin-top: 13.5px;
+    margin-left: 20px;
+}
+
+.app-condensed-menu-logo img {
+    width: 170px;
+}
+
+.app-condensed-menu-burger {
+    position: absolute;
+    top: 30px;
+    right: 31px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-burger-item {
+    width: 36.5px;
+    height: 4.25px;
+    margin: 6.25px 0;
+    background-color: var(--explorjob-white);
+}
+
+.app-condensed-menu-global {
+    margin-top: 12.5px
+}
+.app-condensed-menu-global-links {
+
+}
+.app-condensed-menu-global-link {
+    display: block;
+    margin-top: 25px;
+    margin-left: 30px;
+    color: var(--explorjob-white);
+    font-size: 17.5px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.app-condensed-menu-global-link:hover {
+    margin-top: 24.5px;
+    font-size: 17.25px;
+}
+
+.app-condensed-menu-global-link-account {
+    display: block;
+    width: 35%;
+    margin-top: 27.5px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--explorjob-green);
+    background-color: var(--explorjob-white);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-global-link-account:hover {
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: 2px solid var(--explorjob-white);
+}
+
+.app-condensed-menu-social-medias {
+    position: absolute;
+    right: 40px;
+    margin-top: 47.5px;
+}
+
+.app-condensed-menu-social-media {
+    display: inherit;
+    margin-bottom: 17.5px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-social-media img {
+    width: 35px;
+}
+
+.app-condensed-menu-account-photo {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.app-condensed-menu-account-photo-img {
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account {
+    margin-top: -35px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.app-condensed-menu-account-title {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 17.5px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-title-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-white);
+}
+
+.app-condensed-menu-account-link {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-link:hover {
+    margin-top: -1px;
+    font-size: 16.25px;
+}
+
+.app-condensed-menu-account-link-sub {
+    margin-bottom: 20px;
+    padding-left: 15px;
+    font-size: 14.5px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-link-sub:hover {
+    font-weight: bold;
+}
+
+.app-condensed-menu-account-buttons {
+    margin-top: 25px;
+}
+
+.app-condensed-menu-account-button-become-professional {
+    display: block;
+    width: auto;
+    margin-top: 27.5px;
+    margin-bottom: 32.5px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: 2px solid var(--explorjob-white);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-button-become-professional:hover {
+    margin-top: 23.5px;
+    margin-bottom: 36.5px;
+    color: var(--explorjob-green);
+    background-color: var(--explorjob-white);
+}
+
+.app-condensed-menu-account-button-logout {
+    display: block;
+    width: auto;
+    max-width: 65%;
+    margin-top: 27.5px;
+    margin-bottom: 32.5px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: var(--explorjob-green);
+    background-color: var(--explorjob-white);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-button-logout:hover {
+    margin-bottom: 28.5px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: 2px solid var(--explorjob-white);
+}
+
+.app-condensed-menu-account-button-action {
+    margin-bottom: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-button-action:hover {
+    font-weight: bold;
+}
+
+.app-condensed-menu-account-delete {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.app-condensed-menu-account-delete-message {
+    margin-bottom: 10px;
+}
+
+.app-condensed-menu-account-delete-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 5px 20px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: 2px solid var(--explorjob-white);
+    cursor: pointer;
+}
+
+.app-condensed-menu-account-delete-button:hover {
+    color: var(--explorjob-green);
+    background-color: var(--explorjob-white);
+}
+.account-messaging-conversation-button-messages-icon-text {
+    display: inline-block;
+    position: relative;
+    width: 22.5px;
+    height: 22.5px;
+    margin-right: 7.5px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13.5px;
+    color: var(--explorjob-orange);
+    background-color: var(--explorjob-white);
+    border-radius: 50%;
+    line-height: 21px;
+}

@@ -1,0 +1,20 @@
+<div class="promote-logo-carousel-wrapper">
+
+    <div *ngIf="isLoaded()">
+        <p-carousel [numVisible]="3" [numScroll]="3" [value]="companiesToDisplay" [autoplayInterval]="companiesToDisplay.length > 1 ? sliderInterval : 0"
+            [circular]="companiesToDisplay.length > 1  && true" 
+            [responsiveOptions]="responsiveOptions" class="hide-dots custom-arrows" 
+            [ngClass]="{'hide-arrows' : companiesToDisplay.length === 1}">
+
+            <ng-template let-company pTemplate="item">
+                <div #item 
+                    (click)="goToCompanyPage(company.slug)" class="item cursor-pointer">
+                    <img [src]="company?.logoUrl" alt="Voir le détail de l'entreprise {{ company?.companyName }}" class="item-logo">
+                    <div *ngIf="showMessage" class="item-message center md-10">{{company?.message}}</div>
+                </div>
+            </ng-template>
+
+        </p-carousel>
+    </div>
+
+</div>

@@ -1,0 +1,7 @@
+.email-confirm-wrapper {
+    margin: 0;
+    padding: 25px;
+    text-align: center;
+    background-color: var(--explorjob-white);
+    border-radius: 25px;
+}

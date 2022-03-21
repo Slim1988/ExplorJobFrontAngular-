@@ -1,0 +1,496 @@
+<div class="write-message-modal-wrapper">
+    <p-dialog
+        [(visible)]="options && options.display"
+        [modal]="true"
+        [draggable]="false"
+        [dismissableMask]="true"
+        [style]="{
+            width: 'auto',
+            maxWidth: '80vw',
+            minWidth: '35vw',
+            height: 'auto',
+            minheight: '20vw'
+        }"
+        [contentStyle]="{
+            width: 'auto',
+            maxWidth: '80vw',
+            minWidth: '35vw',
+            height: 'auto',
+            minheight: '20vw'
+        }"
+        [autoZIndex]="true"
+        (onHide)="handleModalClose(myform)"
+    >
+        <p-header>
+            <h3 class="write-message-modal-form-title">
+                Evaluation de votre rendez-vous
+            </h3>
+            <h4 class="notice">
+                Votre évaluation ne sera pas visible par la personne que vous
+                avez rencontrée. Elle nous permettra de savoir si votre
+                expérience sur ExplorJob vous a plu, d'adapter notre outil à vos
+                besoins et de mesurer notre impact social.
+            </h4>
+        </p-header>
+        <hr class="account-messaging-separator" />
+        <div class="modal-form">
+            <form [formGroup]="reviewForm" (ngSubmit)="onFormSubmit(myform)" #myform="ngForm">
+                <div class="p-grid p-col-12 justify-content-md-center">
+                    <div class="p-col-12">
+                        <mat-label class="title required"
+                            >Votre rencontre avec
+                            {{ options.interlocutorName }} a-t-elle eu lieu
+                            ? </mat-label
+                        >
+                    </div>
+
+                    <div class="p-col-12">
+                        <div class="input-wrapper">
+                            <mat-radio-group
+                                class="grid-display-radio"
+                                formControlName="hasMet"
+                                [ngModel]="hasMet"
+                                aria-label="Votre rencontre avec a-t-elle eu lieu ?"
+                            >
+                                <mat-radio-button value="true"
+                                    >Oui</mat-radio-button
+                                >
+                                <mat-radio-button value="false"
+                                    >Non</mat-radio-button
+                                >
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="reviewForm.get('hasMet').value == undefined && myform.submitted"
+                        class="alert alert-danger"
+                    >
+                        Vous devez choisir si vous vos étes rencontrés ou non
+                    </div>
+                </div>
+                <div *ngIf="reviewForm.value.hasMet == 'true'">
+                <!-- OwO vous etiez ? -->
+                    <div class="p-grid p-col-12">
+                        <div class="p-col-12">
+                            <mat-label class="title required"
+                                >Pour ce rendez-vous, vous étiez :
+                            </mat-label>
+                        </div>
+                        <div class="p-col-12">
+                            <div class="input-wrapper">
+                                <mat-radio-group
+                                    class="grid-display-radio"
+                                    formControlName="whatWereYou"
+                                >
+                                    <div *ngIf="IsExplorerInThisContext()">
+                                        <mat-radio-button
+                                            [value]="Role.Explorer"
+                                            >Un explorateur</mat-radio-button
+                                        >
+                                    </div>
+                                   
+                                    <div *ngIf="!IsExplorerInThisContext()">
+                                        <mat-radio-button
+                                            [value]="Role.Professional"
+                                            >Un professionnel</mat-radio-button
+                                        >
+                                    </div>
+                                    
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div
+                            *ngIf="
+                                reviewForm.get('whatWereYou').invalid && myform.submitted"
+                            class="alert alert-danger"
+                        >
+                            Vous devez renseigner quel était votre rôle dans cette rencontre
+                        </div>
+                    </div>
+                    <!-- OwO sur quels métier avez vous interrogé le pro ? if explo-->
+                    <div *ngIf="!reviewForm.get('whatWereYou').invalid && (jobs$ | async)?.length !== 0">
+                        <div class="p-grid p-col-12">
+                            <div *ngIf="reviewForm.value.whatWereYou == Role.Explorer">
+                                <div class="p-col-12">
+                                    <mat-label class="title required"
+                                        >Sur quel métier avez-vous interrogé le professionnel ?
+                                    </mat-label>
+                                </div>
+                            </div>
+                            <div *ngIf="reviewForm.value.whatWereYou == Role.Professional">
+                                <div class="p-col-12">
+                                    <mat-label class="title required"
+                                        >Sur quel métier avez-vous été interrogé ?
+                                    </mat-label>
+                                </div>
+                            </div>
+                            
+                            <div class="p-col-12">
+                                <div class="input-wrapper">
+                                    
+                                    <mat-radio-group
+                                        class="grid-display-radio"
+                                        formControlName="whichJob"
+                                    >
+                                        <div *ngFor="let job of jobs$ | async">  
+                                            <mat-radio-button
+                                                [value]="job.id"
+                                                >{{job.label}}</mat-radio-button
+                                            >
+                                        </div>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            <div *ngIf="
+                                    reviewForm.get('whichJob').invalid && myform.submitted && reviewForm.value.whatWereYou == Role.Explorer"
+                                    class="alert alert-danger">
+                                    Vous devez renseigner sur quel métier vous avez interrogé le professionnel 
+                            </div>
+                            <div *ngIf="reviewForm.get('whichJob').invalid && myform.submitted && reviewForm.value.whatWereYou == Role.Professional"
+                                    class="alert alert-danger">
+                                    Vous devez renseigner sur quel métier vous avez été interrogé
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-grid p-col-12">
+                        <div class="p-col-12">
+                            <mat-label class="title required"
+                                >Comment évaluez-vous la qualité de cet échange
+                                ? <span class="normal-weight">(5 étoiles étant la meilleure
+                                note)</span> </mat-label
+                            >
+                        </div>
+                        <div class="p-col-12">
+                            <div class="input-wrapper no-margin">
+                                <ngb-rating
+                                    [max]="5"
+                                    formControlName="meetingQuality"
+                                    [readonly]="false"
+                                ></ngb-rating>
+                            </div>
+                        </div>
+                        <div
+                            *ngIf="
+                                reviewForm.get('meetingQuality').invalid && myform.submitted"
+                            class="alert alert-danger"
+                        >
+                            Vous devez renseigner la qualité de cet échange
+                        </div>
+                    </div>
+                    <div class="p-grid p-col-12">
+                        <div class="p-col-12">
+                            <mat-label class="title required"
+                                >Par quel moyen vous êtes-vous rencontrés
+                                ?</mat-label
+                            >
+                        </div>
+                        <div class="p-col-12">
+                            <div class="input-wrapper">
+                                <mat-radio-group
+                                    class="grid-display-radio"
+                                    formControlName="meetingPlateform"
+                                >
+                                    <mat-radio-button
+                                        [value]="MeetingPlateform.FaceToFace"
+                                        >Face-à-face</mat-radio-button
+                                    >
+                                    <mat-radio-button
+                                        [value]="MeetingPlateform.VideoCall"
+                                        >Visio conférence</mat-radio-button
+                                    >
+                                    <mat-radio-button
+                                        [value]="MeetingPlateform.Phone"
+                                        >Téléphone</mat-radio-button
+                                    >
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div
+                            *ngIf="
+                                reviewForm.get('meetingPlateform').invalid && myform.submitted"
+                            class="alert alert-danger"
+                        >
+                            Vous devez renseigner le moyen de rencontre
+                        </div>
+                    </div>
+                    <div class="p-grid p-col-12">
+                        <div class="p-col-12">
+                            <mat-label class="title required"
+                                >Combien de temps a duré votre échange
+                                ?</mat-label
+                            >
+                        </div>
+                        <div class="p-col-12">
+                            <div class="input-wrapper">
+                                <mat-radio-group
+                                    class="grid-display-radio"
+                                    formControlName="meetingDuration"
+                                    aria-label="Combien de temps a duré votre échange ?"
+                                >
+                                    <mat-radio-button
+                                        [value]="MeetingDuration.LessThen30min"
+                                        >Inférieur à 30 minutes</mat-radio-button
+                                    >
+                                    <mat-radio-button
+                                        [value]="
+                                            MeetingDuration.Between30minAnd1h
+                                        "
+                                        >De 30 minutes à 1
+                                        heure</mat-radio-button
+                                    >
+                                    <mat-radio-button
+                                        [value]="MeetingDuration.MoreThan1h"
+                                        >Supérieur à 1 heure</mat-radio-button
+                                    >
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div
+                            *ngIf="
+                                reviewForm.get('meetingDuration').invalid && myform.submitted"
+                            class="alert alert-danger"
+                        >
+                            Vous devez renseigner la durée de votre échange
+                        </div>
+                    </div>
+                    <!-- OwO suite a ce RDV, auriez vous envie ? if role == explorer -->
+                    <div *ngIf="reviewForm.value.whatWereYou == Role.Explorer">
+                        <div class="p-grid p-col-12">
+                            <div class="p-col-12">
+                                <mat-label class="title required"
+                                    >Suite à ce rendez-vous, auriez vous envie : <span class="normal-weight">(5 étoiles étant la meilleure
+                                        note)</span></mat-label
+                                >
+                            </div>
+                            <div class="p-col-12">
+                                <div class="input-wrapper no-margin p-grid p-align-center vertical-container">
+                                    <div class="p-col-5">De faire le métier du professionnel</div>
+                                    <div class="p-col-6">
+                                        <ngb-rating
+                                            [max]="5"
+                                            formControlName="doTheSame"
+                                            [readonly]="false"
+                                        ></ngb-rating>
+                                    </div>
+                                    
+                                </div>
+                                <div class="input-wrapper no-margin p-grid p-align-center vertical-container">
+                                    <div class="p-col-5">De travailler dans l'entreprise du professionnel</div>
+                                    <div class="p-col-6">
+                                        <ngb-rating
+                                            [max]="5"
+                                            formControlName="sameCompany"
+                                            [readonly]="false"
+                                        ></ngb-rating>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="
+                                    (reviewForm.get('doTheSame').value == null || reviewForm.get('sameCompany').value == null) && myform.submitted"
+                                class="alert alert-danger"
+                            >
+                            Vous devez renseigner vos envies suite à ce rendez-vous
+                            </div>
+                        </div>
+                    </div>
+                    <!-- OwO suite à ce rdv, pensez vous que l'explo serait adapté pour votre métier ? -->
+                    <div *ngIf="reviewForm.value.whatWereYou == Role.Professional">
+                        <div class="p-grid p-col-12">
+                            <div class="p-col-12">
+                                <mat-label class="title required"
+                                    >Suite à ce rendez-vous, pensez-vous que l'Explorateur serait adapté à exercer votre métier ? 
+                                </mat-label>
+                            </div>
+                            <div class="p-col-12">
+                                <div class="input-wrapper">
+                                    <mat-radio-group
+                                        class="grid-display-radio"
+                                        formControlName="isExplorerGood"
+                                    >
+                                        <mat-radio-button
+                                            [value]="IsExplorerGood.Yes"
+                                            >Oui</mat-radio-button
+                                        >
+                                        <mat-radio-button
+                                            [value]="IsExplorerGood.No"
+                                            >Non</mat-radio-button
+                                        >
+                                        <mat-radio-button
+                                            [value]="IsExplorerGood.ImpossibleToJudge"
+                                            >Explorateur en début de démarche d'orientation, jugement impossible</mat-radio-button
+                                        >
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="
+                                    reviewForm.get('isExplorerGood').invalid && myform.submitted"
+                                class="alert alert-danger"
+                            >
+                                Vous devez renseigner si vous avez trouvé l'explorateur adapté à exercer votre métier
+                            </div>
+                        </div>
+                    </div>
+                    <!-- OwO ce profil pourrait il interesser votre entreprise ? -->
+                    <div *ngIf="reviewForm.value.isExplorerGood == IsExplorerGood.Yes || reviewForm.value.isExplorerGood == IsExplorerGood.ImpossibleToJudge">
+                        <div class="p-grid p-col-12">
+                            <div class="p-col-12">
+                                <mat-label class="title required"
+                                    >Ce profil pourrait-il intéresser votre entreprise ? 
+                                </mat-label>
+                            </div>
+                            <div class="p-col-12">
+                                <div class="input-wrapper">
+                                    <mat-radio-group
+                                        class="grid-display-radio"
+                                        formControlName="isExplorerInterestingForCompany"
+                                    >
+                                        <mat-radio-button
+                                            [value]="IsExplorerGood.Yes"
+                                            >Oui</mat-radio-button
+                                        >
+                                        <mat-radio-button
+                                            [value]="IsExplorerGood.No"
+                                            >Non</mat-radio-button
+                                        >
+                                        <mat-radio-button
+                                            [value]="IsExplorerGood.ImpossibleToJudge"
+                                            >Explorateur en début de démarche d'orientation, jugement impossible</mat-radio-button
+                                        >
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="
+                                    reviewForm.get('isExplorerInterestingForCompany').invalid && myform.submitted"
+                                class="alert alert-danger"
+                            >
+                                Vous devez renseigner si vous avez trouvé l'explorateur intéressant pour votre entreprise
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+                <div *ngIf="reviewForm.value.hasMet == 'false'">
+                    <div class="p-grid p-col-12">
+                        <div class="p-col-12">
+                            <mat-label class="title required"
+                                >Pour quelle raison ?</mat-label
+                            >
+                        </div>
+                        <div class="p-col-12">
+                            <div class="input-wrapper">
+                                <mat-radio-group
+                                    class="grid-display-radio"
+                                    formControlName="meetingCanellationReason"
+                                    aria-label="Pour quelle raison ?"
+                                >
+                                    <mat-radio-button
+                                        [value]="
+                                            MeetingCanellationReason.InterlocutorAbsent
+                                        "
+                                        >La personne ne s’est pas présentée au
+                                        rendez-vous</mat-radio-button
+                                    >
+                                    <mat-radio-button
+                                        [value]="
+                                            MeetingCanellationReason.LastMinCancellation
+                                        "
+                                        >J’ai dû annuler au dernier moment
+                                    </mat-radio-button>
+                                    <mat-radio-button
+                                        [value]="MeetingCanellationReason.Other"
+                                        >Autre raison
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                                <textarea
+                                    *ngIf="
+                                        reviewForm.value
+                                            .meetingCanellationReason == '2'
+                                    "
+                                    pInputTextarea
+                                    [rows]="2"
+                                    autoResize="autoResize"
+                                    formControlName="meetingCanellationReasonOther"
+                                    placeholder="Veuillez spécifier la raison"
+                                    class="input-textarea write-message-modal-form-input-textarea"
+                                >
+                                </textarea>
+                                <div
+                                    *ngIf="
+                                        reviewForm.get('meetingCanellationReason').invalid && myform.submitted"
+                                    class="alert alert-danger"
+                                >
+                                    Vous devez renseigner la raison
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="p-grid p-col-12">
+                    <div class="p-col-12">
+                        <mat-label class="title required"
+                            >Dans quelle mesure recommanderiez-vous ExplorJob à
+                            un ami ? <span class="normal-weight">(5 étoiles étant la meilleure
+                                note)</span></mat-label
+                        >
+                    </div>
+                    <div class="p-col-12">
+                        <div class="input-wrapper no-margin">
+                            <ngb-rating
+                                [max]="5"
+                                formControlName="recommendation"
+                                [readonly]="false"
+                            ></ngb-rating>
+                        </div>
+                    </div>
+                    <div
+                        *ngIf="
+                            reviewForm.get('recommendation').value == null && myform.submitted"
+                        class="alert alert-danger"
+                    >
+                    Vous devez renseigner votre niveau de satisfaction pour ExplorJob
+                    </div>
+                </div>
+                <div class="p-grid p-col-12">
+                    <div class="p-col-12">
+                        <mat-label class="title"
+                            >N’hésitez pas à nous faire un retour d’expérience.
+                        </mat-label>
+                    </div>
+                    <div class="p-col-12">
+                        <div class="input-wrapper no-margin">
+                            <textarea
+                                pInputTextarea
+                                [rows]="2"
+                                autoResize="autoResize"
+                                formControlName="otherComment"
+                                placeholder="Message"
+                                class="input-textarea write-message-modal-form-input-textarea"
+                            >
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-wrapper">
+                    <div
+                        *ngIf="
+                            reviewForm.invalid && myform.submitted"
+                        class="alert alert-danger"
+                    >
+                    Veuillez remplir tous les champs obligatoires
+                    </div>
+                    <button
+                        pButton
+                        type="submit"
+                        label="Envoyer"
+                        class="button write-message-modal-form-button"
+                    ></button>
+                </div>
+            </form>
+        </div>
+    </p-dialog>
+</div>

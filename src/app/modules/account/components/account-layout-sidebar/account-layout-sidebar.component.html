@@ -1,0 +1,307 @@
+<p-toast position="bottom-right"></p-toast>
+
+<p-confirmDialog acceptLabel="OK" rejectLabel="Annuler" [style]="{ maxWidth: '75vw' }"></p-confirmDialog>
+
+<div class="account-layout-sidebar-wrapper">
+
+    <div *ngIf="!account" class="account-layout-sidebar-menu-empty"></div>
+
+    <div *ngIf="account" class="account-layout-sidebar-menu">
+
+        <div class="account-layout-sidebar-menu-title">
+            Mon Compte
+        </div>
+
+        <div class="account-profile-photo">
+            <a (click)="setMenuItemSelected(AccountMenu.AccountProfileGeneralInformations)">
+                <img #accountProfilePhoto
+                    src="{{ account?.photoUrl }}"
+                    (error)="accountProfilePhoto.src=accountProfilePhotoDefault()"
+                    alt="Photo de profil"
+                    class="account-profile-photo-img">
+                </a>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item">
+            <button
+                (click)="setMenuItemSelected(AccountMenu.AccountProfileGeneralInformations)"
+                [ngClass]="accountService.get()?.isProfessional() ? 'bg-explorjob-green' : 'bg-explorjob-orange'">
+                Mon profil
+            </button>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item-sub">
+            <button (click)="setMenuItemSelected(AccountMenu.AccountProfileGeneralInformations)">
+                Informations générales
+            </button>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item-sub">
+            <button (click)="setMenuItemSelected(AccountMenu.AccountProfileContactInformations)">
+                Coordonnées
+            </button>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item-sub">
+            <button (click)="setMenuItemSelected(AccountMenu.AccountProfileSituationInformations)">
+                Situation actuelle
+            </button>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item">
+            <button
+                (click)="setMenuItemSelected(AccountMenu.AccountMessaging)"
+                [ngClass]="accountService.get()?.isProfessional() ? 'bg-explorjob-green' : 'bg-explorjob-orange'">
+                Messagerie
+                <span *ngIf="!isMessageRead" class="account-messaging-conversation-button-messages-icon-text">
+                    {{ numberOfUnreadMessages() }}
+                </span>
+                <span *ngIf="isMessageRead" class="account-messaging-conversation-button-messages-icon-text">
+                    {{ UdaptedNumberOfUnreadMessages() }}
+                </span>
+            </button>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item">
+            <button
+                (click)="setMenuItemSelected(AccountMenu.AccountAppointments)"
+                [ngClass]="accountService.get()?.isProfessional() ? 'bg-explorjob-green' : 'bg-explorjob-orange'">
+                Mes rendez-vous
+            </button>
+        </div>
+
+        <div class="account-layout-sidebar-menu-item">
+            <button
+                (click)="setMenuItemSelected(AccountMenu.AccountFavorites)"
+                [ngClass]="accountService.get()?.isProfessional() ? 'bg-explorjob-green' : 'bg-explorjob-orange'">
+                Favoris
+            </button>
+        </div>
+
+   </div>
+
+   <div *ngIf="displayBecomeProfessionalButton()" class="account-layout-sidebar-become-pro">
+
+        <button (click)="showBecomeProfessionalModal()">
+            Je souhaite aussi témoigner de mon métier
+        </button>
+
+   </div>
+
+   <div *ngIf="displayProfessionalMenuPart()" class="account-layout-sidebar-menu">
+
+        <div class="account-layout-sidebar-menu-title">
+            Mon Espace Pro
+        </div>
+
+        <div class="account-layout-sidebar-menu-item">
+            <button
+                (click)="setMenuItemSelected(AccountMenu.AccountJobs)"
+                class="bg-explorjob-green">
+                Mes métiers
+            </button>
+        </div>
+
+   </div>
+
+   <div *ngIf="account" class="account-layout-sidebar-menu">
+
+        <div class="account-layout-sidebar-menu-actions">
+            <div class="account-layout-sidebar-menu-item-logout">
+                <a *ngIf="authService.isLoggedIn()"
+                    routerLink="/logout"
+                    class="app-topbar-link">
+                    Me déconnecter
+                </a>
+            </div>
+
+            <button
+                pButton
+                type="button"
+                label="Modifier mon mot de passe"
+                (click)="displayChangePasswordModal()"
+                class="button account-layout-sidebar-menu-item-change-password">
+            </button>
+
+            <button
+                pButton
+                type="button"
+                label="Supprimer mon compte"
+                (click)="deleteAccount()"
+                class="button account-layout-sidebar-menu-item-delete">
+            </button>
+        </div>
+
+   </div>
+
+</div>
+
+<p-dialog
+    [(visible)]="displayBecomeProfessionalModal"
+    [modal]="true"
+    [draggable]="false"
+    [dismissableMask]="false"
+    [style]="{ width: 'auto', maxWidth: '60vw', minWidth: '50vw', height: 'auto', minheight: '25vw' }"
+    [contentStyle]="{ width: 'auto', maxWidth: '60vw', minWidth: '50vw', height: 'auto', minheight: '25vw' }"
+    [autoZIndex]=true>
+
+    <p-header>
+        <h3 class="display-become-professional-modal-title">Conditions compte professionnel</h3>
+    </p-header>
+
+    <div>
+        <div class="display-become-professional-modal-content">
+            <p>Vous vous êtes inscrit sur ExplorJob en tant qu’Explorateur car vous êtes en construction de votre projet professionnel. Cependant vous exercez ou avez exercé un ou plusieurs métiers et vous souhaiteriez vous aussi, transmettre votre expérience. En cliquant sur « je souhaite aussi témoigner de mon métier », vous devenez Professionnel Inspirant en plus de votre profil d’Explorateur. Grâce à vous, d’autres Explorateurs vont pouvoir découvrir votre métier et vos choix de parcours</p>
+            <p>Renseigner le ou les métiers sur le(s)quel(s) vous souhaitez témoigner, vous n’avez plus qu’à patienter qu’un Explorateur vous contacte !</p>
+            <p>Note Importante : Un Explorateur peut-être un collégien, un lycéen, un étudiant, un jeune sorti du système scolaire, un adulte en reconversion professionnelle ou une personne en recherche d’emploi. Point important, lorsque des mineurs vous contactent, merci d’accepter le rendez-vous UNIQUEMENT s’ils viennent accompagnés d’une personne majeure.</p>
+            <p>Je certifie être majeur et souhaite à mon tour, témoigner de mes expériences professionnelles.</p>
+            <p>Je certifie que je n’accepterai de rencontrer des mineurs pour leur parler de mon métier que si ces derniers sont accompagnés d’une personne majeure.</p>
+        </div>
+
+        <button
+            (click)="becomeProfessional()"
+            class="display-become-professional-modal-button">
+            J'accepte les conditions générales d'accès au compte professionels
+        </button>
+    </div>
+
+</p-dialog>
+
+<p-dialog
+    [(visible)]="displayChangePasswordFormModal"
+    [modal]="true"
+    [draggable]="false"
+    [dismissableMask]="false"
+    [style]="{ width: 'auto', minWidth: '50vw', height: 'auto', minheight: '25vw' }"
+    [contentStyle]="{ width: 'auto', minWidth: '50vw', height: 'auto', minheight: '25vw' }"
+    [autoZIndex]=true>
+
+    <p-header>
+        <h3 class="account-change-password-form-modal-title">
+            Modifier le mot de passe
+        </h3>
+    </p-header>
+
+    <div *ngIf="changePasswordForm" class="account-change-password-form">
+
+        <form
+            [formGroup]="changePasswordForm"
+            (ngSubmit)="changePassword()">
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="account-change-password-form-input-label input-label-required">
+                        Mot de passe actuel
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="input-wrapper">
+                        <input
+                            pPassword
+                            type="password"
+                            feedback
+                            formControlName="currentPassword"
+                            placeholder="Mot de passe actuel"
+                            class="input account-change-password-form-input-text">
+
+                        <div
+                            *ngIf="changePasswordForm.controls.currentPassword.invalid && (changePasswordForm.controls.currentPassword.dirty || changePasswordForm.controls.currentPassword.touched)"
+                            class="input-messages">
+                            <p-message
+                                *ngIf="changePasswordForm.controls.currentPassword.errors.required"
+                                severity="error"
+                                text="Le mot de passe est requis">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="account-change-password-form-input-label input-label-required">
+                        Nouveau mot de passe
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="input-wrapper">
+                        <input
+                            pPassword
+                            type="password"
+                            feedback
+                            formControlName="password"
+                            placeholder="Nouveau mot de passe"
+                            class="input account-change-password-form-input-text">
+
+                        <div
+                            *ngIf="changePasswordForm.controls.password.invalid && (changePasswordForm.controls.password.dirty || changePasswordForm.controls.password.touched)"
+                            class="input-messages">
+                            <p-message
+                                *ngIf="changePasswordForm.controls.password.errors.required"
+                                severity="error"
+                                text="Le mot de passe est requis">
+                            </p-message>
+                            <p-message
+                                *ngIf="changePasswordForm.controls.password.errors.minlength"
+                                severity="error"
+                                text="Le mot de passe doit faire au moins 8 caractères">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="account-change-password-form-input-label input-label-required">
+                        Confirmez le mot de passe
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-6">
+                    <div class="input-wrapper">
+                        <input
+                            pPassword
+                            type="password"
+                            feedback
+                            formControlName="confirmPassword"
+                            placeholder="Confirmez le mot de passe"
+                            class="input account-change-password-form-input-text">
+
+                        <div
+                            *ngIf="changePasswordForm.controls.confirmPassword.invalid && (changePasswordForm.controls.confirmPassword.dirty || changePasswordForm.controls.confirmPassword.touched)"
+                            class="input-messages">
+                            <p-message
+                                *ngIf="changePasswordForm.controls.confirmPassword.errors.required"
+                                severity="error"
+                                text="La confirmation du mot de passe est requise">
+                            </p-message>
+                            <p-message
+                                *ngIf="changePasswordForm.controls.confirmPassword.errors.confirmPassword"
+                                severity="error"
+                                text="Les mots de passe doivent être identiques">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-wrapper">
+
+                <button
+                    pButton
+                    type="submit"
+                    label="Modifier"
+                    [disabled]="!changePasswordForm.valid"
+                    class="button account-change-password-form-button">
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</p-dialog>

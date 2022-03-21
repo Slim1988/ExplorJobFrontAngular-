@@ -1,0 +1,54 @@
+<div class="search-result-public-wrapper">
+    <div *ngIf="result">
+
+        <div class="search-result-public">
+            <div class="p-grid align-center">
+
+                <div class="p-col-12 p-md-6 p-lg-1">
+                    <div class="search-result-public-photo">
+                        <img #resultUserPhoto
+                            src="{{ result.user?.photoUrl }}"
+                            (error)="resultUserPhoto.src=userPhotoDefault()"
+                            alt="Photo de {{ result.user?.firstName | titlecase }}"
+                            class="search-result-public-photo-img">
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-3">
+                    <div *ngIf="result.user"
+                        class="search-result-public-username">
+                        {{ result.user.firstName | titlecase }} {{ result.user.lastName | slice:0:1 | uppercase }}{{ result.user.lastName ? '.' : '' }}
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-4">
+                    <div class="search-result-public-job dark">
+                        {{ result.job?.label ? result.job?.label : '' }}
+                    </div>
+                    <div class="search-result-public-company">
+                        {{ result.job?.company ? result.job?.company : '' }}
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-2">
+                    <div class="search-result-public-company-logo">
+                        <img 
+                            *ngIf="result.promote?.isResultLineLogoActive" 
+                            [src]="result.promote?.logoUrl" 
+                            alt="Aller à la page entreprise de {{ result.promote?.companyName }}"
+                            (click)="goToCompanyPage(result.promote?.slug)"
+                        >
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-2">
+                    <div class="search-result-public-localisation">
+                        {{ result.user?.localisationCity | titlecase }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,72 @@
+.write-message-modal-wrapper {
+    margin: 0;
+}
+
+.write-message-modal-form-title {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--explorjob-orange);
+}
+
+.write-message-modal-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+.write-message-modal-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 18px;
+    padding: 7.5px;
+    float: right;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+.write-message-modal-proposal-button{
+    border-radius: 25px;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    font-size: 13px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.write-message-modal-proposal-button-selected{
+    border-radius: 25px;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    font-size: 13px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.write-message-modal-proposal-button-disabled{
+    background-color: var(--app-grey);
+    border-radius: 25px;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    font-size: 13px;
+    color: var(--explorjob-white);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.selected-element{
+    margin-bottom: 20px;
+}
+.mat-table{
+    width: 100%;
+}
+th.mat-header-cell{
+    width: 33%;
+}

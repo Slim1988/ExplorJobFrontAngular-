@@ -1,0 +1,194 @@
+<div class="company-wrapper">
+    <div *ngIf="isLoaded()" class="w-100">
+
+        <div *ngIf="company.medias.bannerUrl" class="banner-container p-mb-0">
+            <img src="{{ company.medias.bannerUrl }}" alt="Bannière de présentation d'entreprise" class="banner">
+        </div>
+
+        <div class="p-grid p-mb-6 p-ai-end " [ngClass]="{'p-mt--4' : company.medias.bannerUrl}">
+
+            <div class="p-col-fixed logo-container p-mr-3">
+                <img *ngIf="company.medias.logoUrl" src="{{ company.medias.logoUrl }}" alt="Logo de l'entreprise"
+                    class="logo">
+            </div>
+            <div class="header-titles p-col">
+                <h1 class="explorjob-dark p-mt-0 p-mb-0">{{ company.name }}</h1>
+                <h2 class="explorjob-dark p-mt-0 p-mb-0">{{ company.texts.companyCatchPhrase }}</h2>
+            </div>
+        </div>
+
+        <div class="p-grid p-my-5 p-ai-start">
+
+            <div class="p-col-12 p-md-8 p-lg-8">
+                <h3 class="explorjob-orange">Présentation</h3>
+                <p class="md-14 presentation justify p-mr-3">{{ company.texts.presentation }}</p>
+            </div>
+
+            <aside class="bg-lightgrey p-col p-p-4 p-mb-4">
+                <h4 class="explorjob-orange md-16 p-mb-1 p-mt-0 fw-600">Secteur d'activité</h4>
+                {{ company.activityArea }}
+                <div *ngFor="let field of company.dynamicFields">
+                    <h4 class="explorjob-orange md-16 p-mb-1 fw-600">{{ field.title }}</h4>
+                    {{ field.content }}
+                </div>
+            </aside>
+
+        </div>
+
+        <section class="p-grid p-my-5 p-ai-end wrap-reverse align-stretch">
+
+            <div class="p-col align-end">
+                <div class="bg-lightgrey p-p-4 justify-between">
+
+                    <div *ngIf="safeGoogleMapsUrl" class="p-mb-3">
+                        <h4 class="explorjob-orange md-16 fw-600 p-mt-0 p-mb-2">Nous situer</h4>
+
+                        <iframe [src]="safeGoogleMapsUrl" width="600" height="450" class="iframe" allowfullscreen=""
+                            loading="lazy"></iframe>
+
+                    </div>
+                    <div class='p-mt-5'>
+                        <h4 class="explorjob-orange md-16 fw-600 p-mb-2">Nous suivre</h4>
+                        <div class="social-links">
+                            <a [href]="company.socialNetworks?.instagramUrl"
+                                *ngIf="company.socialNetworks?.instagramUrl"
+                                target="_blank">
+                                <img src="../../../../../assets/icons/social-medias/instagram.svg"
+                                    alt="Voir le profil Instagram" class='social-icon p-mr-3'> </a>
+                            <a [href]="company.socialNetworks?.twitterUrl"
+                            *ngIf="company.socialNetworks?.twitterUrl"
+                            target="_blank">
+
+                                <img src="../../../../../assets/icons/social-medias/twitter.svg"
+                                    alt="Voir le profil Twitter" class='social-icon p-mr-3'>
+                            </a>
+                            <a [href]="company.socialNetworks?.facebookUrl"
+                            *ngIf="company.socialNetworks?.facebookUrl"
+                            target="_blank">
+                                <img src="../../../../../assets/icons/social-medias/facebook.svg"
+                                    alt="Voir le profil Facebook" class='social-icon p-mr-3'>
+                            </a>
+                            <a [href]="company.socialNetworks?.linkedInUrl"
+                            *ngIf="company.socialNetworks?.linkedInUrl"
+                            target="_blank">
+                                <img src="../../../../../assets/icons/social-medias/linkedin.svg"
+                                    alt="Voir le profil Linkedin" class='social-icon p-mr-3'>
+                            </a>
+                            <a [href]="company.socialNetworks?.youtubeUrl"
+                            *ngIf="company.socialNetworks?.youtubeUrl"
+                            target="_blank">
+                                <img src="../../../../../assets/icons/social-medias/youtube.svg"
+                                    alt="Voir le profil Youtube" class='social-icon'>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-col-12 p-md-8 p-lg-8">
+                <div class="p-grid vertical-center">
+
+                    <div class="p-col-12 p-md-6 p-lg-6">
+                        <div class="slideshow-container">
+
+                            <img *ngFor="let url of slidePhotos; let i = index;" [src]="url"
+                                [ngClass]="{ 'show' : i  == slideIndex , 'hide' : i != slideIndex}"
+                                class="unselectable fade cursor-pointer " (click)="handleModalOpen(url)">
+
+                            <company-image-modal [imageUrl]="modalImageUrl" [showModal]="modalIsShown"
+                                (events)="handleModalClose()"></company-image-modal>
+
+                            <a *ngIf="slidePhotos.length > 1" class="arrow unselectable md-18"
+                                (click)="setSlide(slideIndex - 1)">&#10094;</a>
+                            <a *ngIf="slidePhotos.length > 1" class="arrow unselectable md-18"
+                                (click)="setSlide(slideIndex + 1)">&#10095;</a>
+
+                            <div *ngIf="slidePhotos.length > 1" class="dot-container">
+                                <span *ngFor="let url of slidePhotos; let i = index;"
+                                    [ngClass]="{'dot center' : true, 'active' : i  == slideIndex}"
+                                    (click)="setSlide(i)"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div *ngIf="company.medias.youtubeVideoEmbedUrl" class="p-col-12 p-md-6 p-lg-6 resizable-container">
+                        <div class="resizable-image-container">
+                            <iframe class="unselectable resizable-image" width="560" height="315" [src]="safeYoutubeURL"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div *ngIf="!company.medias.youtubeVideoEmbedUrl" class="p-col-12 p-md-6 p-lg-6">
+                        <img [src]="youtubeReplacementPhoto" class="show cursor-pointer"
+                            (click)="handleModalOpen(youtubeReplacementPhoto)" />
+                        <company-image-modal [imageUrl]="modalImageUrl" [showModal]="modalIsShown"
+                            (events)="handleModalClose()"></company-image-modal>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="explorjob-orange">Les profils que nous recherchons</h3>
+                    <p class="md-14 p-mb-0">{{ company.texts.profilesSought }}</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="p-my-5 p-grid">
+            <div class="p-col-12" style="padding: 0;">
+                <h3 class="explorjob-orange center p-mb-3"> {{ company.texts.jobsCatchPhrase }} </h3>
+                <div class="p-mb-4" >
+                    <search-results [hidePromotes]="true" [scrollable]="true"></search-results>
+                </div>
+            </div>
+
+
+        </section>
+
+        <section class="p-my-5">
+            <div class="p-col-12">
+                <h3 class="explorjob-orange">Pourquoi venir chez nous ?</h3>
+            </div>
+
+            <div class="p-grid p-mb-0 align-stretch">
+
+                <div class="p-col-12 p-md-6 p-lg-6">
+
+                    <div class="bg-lightgrey p-p-4">
+                        <h4 class="explorjob-orange md-16 p-mt-0 fw-600">{{ company.texts.dynamicText1Title }}</h4>
+                        <p class="md-14 p-mb-0">{{ company.texts.dynamicText1Content }}</p>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-6 resizable-container">
+                    <div class="resizable-image-container">
+                        <img [src]="company.medias.footerPhotoUrl" class="show resizable-image" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-6 p-lg-6">
+                    <div class="bg-lightgrey p-p-4">
+                        <h4 class="explorjob-orange md-16 p-mt-0 fw-600">{{ company.texts.dynamicText2Title }}</h4>
+                        <p class="md-14 p-mb-0">{{ company.texts.dynamicText2Content }}</p>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-6 p-lg-6">
+                    <div class="bg-lightgrey p-p-4">
+                        <h4 class="explorjob-orange md-16 p-mt-0 fw-600">{{ company.texts.dynamicText3Title }}</h4>
+                        <p class="md-14 p-mb-0">{{ company.texts.dynamicText3Content }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="center p-my-5 p-col-12">
+            <p class="explorjob-green md-18 fw-600 p-mb-4">{{ company.texts.footerPhrase }}</p>
+            <a class="cta bg-explorjob-orange rounded" [href]="company.websiteUrl" target="_blank"> {{
+                company.texts.careerWebsiteWording }}</a>
+        </section>
+    </div>
+</div>

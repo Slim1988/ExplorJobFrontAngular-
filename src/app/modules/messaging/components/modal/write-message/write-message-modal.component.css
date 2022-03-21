@@ -1,0 +1,45 @@
+.write-message-modal-wrapper {
+    margin: 0;
+}
+
+.write-message-modal-form-title {
+    margin: 0 !important;
+    font-weight: bold;
+    font-size: 18px;
+    color: var(--explorjob-orange);
+}
+
+.write-message-modal-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.write-message-modal-form-input-textarea {
+
+}
+.write-message-modal-form-button {
+    margin-top: 22.5px;
+    margin-bottom: 18px;
+    padding: 7.5px;
+    float: right;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+.proposal-calendar-row{
+    display: flex;
+    width: 100%;
+}
+.input-messages {
+    margin-bottom: 5px !important;
+}
+
+.characters-count {
+    padding: 7.5px;
+    font-size: 10px;
+    left : 90%;
+    color: var(--explorjob-orange);
+    text-transform: uppercase;
+}

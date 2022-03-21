@@ -1,0 +1,19 @@
+.account-photo-upload-wrapper {
+    margin: 0;
+}
+
+.account-photo-upload-input {
+    display: none;
+}
+
+.account-photo-upload-button {
+    width: 100%;
+    padding: 10px 22.5px;
+    font-weight: bold;
+    color: var(--explorjob-orange);
+    background-color: var(--explorjob-white);
+    border: solid 1px var(--explorjob-orange);
+    outline: inherit;
+    text-transform: uppercase;
+    cursor: pointer;
+}

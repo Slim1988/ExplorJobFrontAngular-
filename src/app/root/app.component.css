@@ -1,0 +1,58 @@
+.app-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat';
+    font-size: 14.5px;
+    background: url("./../../assets/images/backgrounds/main.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow: auto;
+}
+
+.app-layout-header {
+    position: fixed;
+    z-index: 10;
+    height: 100px;
+    left: 0;
+    top: 0;
+    right: 0;
+    color: var(--explorjob-white) !important;
+    background-color: var(--explorjob-orange) !important;
+}
+
+.app-layout-content {
+    margin-top: 2.5rem;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--explorjob-white) !important;
+}
+
+.submenu-item{
+    color: rgb(240, 116, 52);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+} 
+
+.menu-link{
+    border-bottom-width:1px !important;
+    border-style:solid !important;
+    border-color:#fffdfa !important;
+    color:#f07434 !important;
+    height:100% !important;
+    -webkit-box-align:center !important;
+    -webkit-align-items:center !important;
+    -moz-box-align:center !important;
+    -ms-flex-align:center !important;
+    align-items:center !important;
+    -js-display:flex !important;
+    display:flex !important;
+}

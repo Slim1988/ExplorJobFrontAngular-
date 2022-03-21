@@ -1,0 +1,45 @@
+<div class="help-wrapper">
+    <button
+        (click)="showModal()"
+        class="help-button"
+        title="Besoin d'aide ?">
+        ?
+    </button>
+</div>
+
+<p-dialog
+    [(visible)]="displayHelpModal"
+    (onHide)="hideModal()"
+    [modal]="true"
+    [draggable]="false"
+    [closable]="true"
+    [closeOnEscape]="false"
+    [dismissableMask]="false"
+    [autoZIndex]=true
+    [transitionOptions]="'250ms'"
+    styleClass="help-modal">
+
+    <p-header>
+        <h3 class="help-modal-title">Comment pouvons-nous vous aider ?</h3>
+    </p-header>
+
+    <div class="help-modal-content">
+        <div class="help-modal-video">
+            <iframe
+                #videoFrame
+                [src]="accountService.get()?.isProfessional() ? videoUrlProfessional : videoUrlExplorer"
+                frameborder="0"
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture">
+            </iframe>
+        </div>
+
+        <div class="help-modal-faq center">
+            <p>N'hésitez pas à consulter la <a href="{{ faqUrl }}" target="_blank">FAQ</a></p>
+        </div>
+
+        <div class="help-modal-contact center">
+            <p>Pour toutes autres questions, vous pouvez nous contacter sur <a href="mailto:{{ contactEmail }}">{{ contactEmail }}</a></p>
+        </div>
+    </div>
+
+</p-dialog>

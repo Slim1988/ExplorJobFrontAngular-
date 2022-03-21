@@ -1,0 +1,49 @@
+.search-result-restricted-wrapper {
+    margin: 0;
+}
+
+.search-result-restricted {
+    margin-bottom: -10px;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.search-result-restricted-photo {
+
+}
+
+.search-result-restricted-photo-img {
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 50%;
+    object-fit: center; 
+    margin: auto;
+}
+
+.search-result-restricted-company-logo img {
+    object-fit: center; 
+    max-width: 5em; 
+    max-height: 3.5em; 
+    height: auto;
+    margin: auto;
+}
+
+.search-result-restricted-username {
+
+}
+
+.search-result-restricted-job {
+
+}
+
+.search-result-restricted-company {
+
+}
+
+.search-result-restricted-localisation {
+
+}

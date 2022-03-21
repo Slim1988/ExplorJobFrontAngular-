@@ -1,0 +1,306 @@
+@import 'assets/css/fonts.css';
+@import 'assets/css/scrollbar.css';
+@import 'assets/css/messages.css';
+@import 'assets/css/inputs.css';
+@import 'assets/css/buttons.css';
+@import 'assets/css/modals.css';
+@import 'assets/css/fieldset-responsive-from-top.css';
+@import 'assets/css/carousel.css';
+
+:root {
+    --app-blue: #004085;
+    --app-lightblue: #b8daff;
+    --app-grey: #6c757d;
+    --app-lightgrey: #efefef;
+    --app-green: #28a745;
+    --app-lightgreen: #d4edda;
+    --app-red: #dc3545;
+    --app-lightred: #f8d7da;
+    --app-orange: #856404;
+    --app-lightorange: #fff3cd;
+    --app-dark: #343a40;
+    --explorjob-green: #296a6e;
+    --explorjob-orange: #f07434;
+    --explorjob-lightgrey: #f2f2f2;
+    --explorjob-grey: #e2e2e2;
+    --explorjob-darkgrey: #707070;
+    --explorjob-white: #ffffff;
+    --explorjob-dark: #000000;
+}
+
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.clear {
+    clear: both;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cursor-help {
+    cursor: help;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.blue {
+    color: var(--app-blue) !important;
+}
+
+.grey {
+    color: var(--app-grey) !important;
+}
+
+.lightgrey {
+    color: var(--app-lightgrey) !important;
+}
+
+.green {
+    color: var(--app-green) !important;
+}
+
+.red {
+    color: var(--app-red) !important;
+}
+
+.orange {
+    color: var(--app-orange) !important;
+}
+
+.dark {
+    color: var(--app-dark) !important;
+}
+
+.explorjob-green {
+    color: var(--explorjob-green) !important;
+}
+
+.explorjob-orange {
+    color: var(--explorjob-orange) !important;
+}
+
+.explorjob-lightgrey {
+    color: var(--explorjob-lightgrey) !important;
+}
+
+.explorjob-grey {
+    color: var(--explorjob-grey) !important;
+}
+
+.explorjob-darkgrey {
+    color: var(--explorjob-darkgrey) !important;
+}
+
+.explorjob-white {
+    color: var(--explorjob-white) !important;
+}
+
+.explorjob-dark {
+    color: var(--explorjob-dark) !important;
+}
+
+.bg-blue {
+    background-color: var(--app-blue) !important;
+}
+
+.bg-grey {
+    background-color: var(--app-grey) !important;
+}
+
+.bg-lightgrey {
+    background-color: var(--app-lightgrey) !important;
+}
+
+.bg-green {
+    background-color: var(--app-green) !important;
+}
+
+.bg-red {
+    background-color: var(--app-red) !important;
+}
+
+.bg-orange {
+    background-color: var(--app-orange) !important;
+}
+
+.bg-dark {
+    background-color: var(--app-dark) !important;
+}
+
+.bg-explorjob-green {
+    background-color: var(--explorjob-green) !important;
+}
+
+.bg-explorjob-orange {
+    background-color: var(--explorjob-orange) !important;
+}
+
+.bg-explorjob-lightgrey {
+    background-color: var(--explorjob-lightgrey) !important;
+}
+
+.bg-explorjob-grey {
+    background-color: var(--explorjob-grey) !important;
+}
+
+.bg-explorjob-darkgrey {
+    background-color: var(--explorjob-darkgrey) !important;
+}
+
+.bg-explorjob-white {
+    background-color: var(--explorjob-white) !important;
+}
+
+.bg-explorjob-dark {
+    background-color: var(--explorjob-dark) !important;
+}
+
+.md-2,
+.material-icons.md-2 {
+    font-size: 2px;
+}
+
+.md-4,
+.material-icons.md-4 {
+    font-size: 4px;
+}
+
+.md-6,
+.material-icons.md-6 {
+    font-size: 6px;
+}
+
+.md-8,
+.material-icons.md-8 {
+    font-size: 8px;
+}
+
+.md-10,
+.material-icons.md-10 {
+    font-size: 10px;
+}
+
+.md-12,
+.material-icons.md-12 {
+    font-size: 12px;
+}
+
+.md-14,
+.material-icons.md-14 {
+    font-size: 14px;
+}
+
+.md-16,
+.material-icons.md-16 {
+    font-size: 16px;
+}
+
+.md-18,
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.md-20,
+.material-icons.md-20 {
+    font-size: 20px;
+}
+
+.md-22,
+.material-icons.md-22 {
+    font-size: 22px;
+}
+
+.md-24,
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.md-26,
+.material-icons.md-26 {
+    font-size: 26px;
+}
+
+.md-28,
+.material-icons.md-28 {
+    font-size: 28px;
+}
+
+.md-30,
+.material-icons.md-30 {
+    font-size: 30px;
+}
+
+.md-32,
+.material-icons.md-32 {
+    font-size: 32px;
+}
+
+.md-34,
+.material-icons.md-34 {
+    font-size: 34px;
+}
+
+.md-36,
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.md-38,
+.material-icons.md-38 {
+    font-size: 38px;
+}
+
+.md-40,
+.material-icons.md-40 {
+    font-size: 40px;
+}
+
+.md-42,
+.material-icons.md-42 {
+    font-size: 42px;
+}
+
+.md-44,
+.material-icons.md-44 {
+    font-size: 44px;
+}
+
+.md-46,
+.material-icons.md-46 {
+    font-size: 46px;
+}
+
+.md-48,
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.md-64,
+.material-icons.md-64 {
+    font-size: 64px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

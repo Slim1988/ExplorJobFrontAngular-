@@ -1,0 +1,627 @@
+.user-profile-modal-wrapper {
+    margin: 0;
+    color: var(--explorjob-darkgrey);
+}
+
+.user-profile-modal-lighten,
+::ng-deep .user-profile-modal-lighten {
+    min-width: 25vw;
+    height: auto;
+    min-height: 15vw;
+    border-radius: 37.5px;
+}
+
+.user-profile-modal,
+::ng-deep .user-profile-modal {
+    width: 45vw;
+    min-width: 45vw;
+    height: auto;
+    min-height: 15vw;
+    border-radius: 37.5px;
+}
+
+@media screen and (max-width: 1634px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 50.5vw;
+    }
+}
+
+@media screen and (max-width: 1614px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 51vw;
+    }
+}
+
+@media screen and (max-width: 1594px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 51.5vw;
+    }
+}
+
+@media screen and (max-width: 1574px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 52vw;
+    }
+}
+
+@media screen and (max-width: 1554px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 52.5vw;
+    }
+}
+
+@media screen and (max-width: 1534px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 53vw;
+    }
+}
+
+@media screen and (max-width: 1514px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 53.5vw;
+    }
+}
+
+@media screen and (max-width: 1494px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 54vw;
+    }
+}
+
+@media screen and (max-width: 1474px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 54.5vw;
+    }
+}
+
+@media screen and (max-width: 1454px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 55vw;
+    }
+}
+
+@media screen and (max-width: 1434px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 56vw;
+    }
+}
+
+@media screen and (max-width: 1414px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 57vw;
+    }
+}
+
+@media screen and (max-width: 1394px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 58vw;
+    }
+}
+
+@media screen and (max-width: 1374px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 59vw;
+    }
+}
+
+@media screen and (max-width: 1354px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 1334px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 61vw;
+    }
+}
+
+@media screen and (max-width: 1314px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 62vw;
+    }
+}
+
+@media screen and (max-width: 1294px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 63vw;
+    }
+}
+
+@media screen and (max-width: 1274px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 64vw;
+    }
+}
+
+@media screen and (max-width: 1254px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 65vw;
+    }
+}
+
+@media screen and (max-width: 1234px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 66vw;
+    }
+}
+
+@media screen and (max-width: 1214px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 67vw;
+    }
+}
+
+@media screen and (max-width: 1194px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 68vw;
+    }
+}
+
+@media screen and (max-width: 1174px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 69vw;
+    }
+}
+
+@media screen and (max-width: 1154px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 70vw;
+    }
+}
+
+@media screen and (max-width: 1134px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 72vw;
+    }
+}
+
+@media screen and (max-width: 1114px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 74vw;
+    }
+}
+
+@media screen and (max-width: 1094px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 76vw;
+    }
+}
+
+@media screen and (max-width: 1074px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 78vw;
+    }
+}
+
+@media screen and (max-width: 1054px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 1034px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 82vw;
+    }
+}
+
+@media screen and (max-width: 1014px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 84vw;
+    }
+}
+
+@media screen and (max-width: 994px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 86vw;
+    }
+}
+
+@media screen and (max-width: 974px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 88vw;
+    }
+}
+
+@media screen and (max-width: 954px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-width: 934px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 92vw;
+    }
+}
+
+@media screen and (max-width: 914px) {
+    .user-profile-modal,
+    ::ng-deep .user-profile-modal {
+        width: 95vw;
+    }
+}
+
+.user-profile-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.user-profile-modal-content {
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 35px;
+}
+
+.user-profile-modal-button-wrapper {
+    position: absolute;
+    top: 57.5px;
+    right: 30px;
+}
+
+@media only screen and (max-width: 520px) {
+    .user-profile-modal-button-wrapper {
+        top: 75px;
+    }
+}
+
+.user-profile-modal-button {
+    display: inline-block;
+    height: 25px;
+    margin-right: 15px;
+    padding: 15px;
+    font-weight: bold;
+    color: var(--explorjob-orange);
+    background-color: var(--explorjob-white);
+    border: solid 2px var(--explorjob-orange);
+    outline: inherit;
+    cursor: pointer;
+}
+
+.user-profile-modal-button img {
+    display: inline-block;
+    position: absolute;
+    width: 15px;
+    top: 8px;
+    margin-left: 8px;
+}
+
+::ng-deep .user-profile-modal-button .ui-button-text {
+    display: inline-block;
+    margin-top: -15px;
+    margin-left: 20px;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 767px) {
+    .user-profile-modal-button {
+        display: block;
+        margin-top: 15px;
+    }
+}
+
+.user-profile-modal-report {
+    position: relative;
+    margin-top: 25px;
+}
+
+.user-profile-modal-report user-report-modal {
+    position: absolute;
+    right: 0;
+}
+
+.img-border { 
+    border: solid 0.2em var(--explorjob-orange);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.user-profile-photo-img {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    top: -75px;
+    left: 91px;
+    border-radius: 50%;
+}
+
+@media only screen and (max-width: 520px) {
+    .user-profile-photo-img {
+        top: -95px;
+    }
+}
+
+.user-profile-photo-img-lighten {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    top: -75px;
+    left: 42.5px;
+    border-radius: 50%;
+
+}
+
+.user-profile-name {
+    font-size: 21.5px;
+    font-weight: bold;
+}
+
+.user-profile-title {
+    font-size: 16.5px;
+    font-weight: bold;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.user-profile-presentation-title {
+    margin-bottom: 0.3em;
+    font-size: 16.5px;
+    font-weight: bold;
+}
+
+.user-profile-about-me-title {
+    margin-bottom: 0.3em;
+    font-size: 16.5px;
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 767px) {
+    .user-profile-presentation-title {
+        margin-top: 37.5px;
+    }
+}
+
+.user-profile-presentation-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-darkgrey);
+}
+
+.paragraph {
+    font-size: 14.5px;
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.job-presentation-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-profile-job-title {
+    font-size: 16.5px;
+    font-weight: bold;
+    color: var(--explorjob-green);
+}
+
+.flex-end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.flex-align-center {
+    display: flex; 
+    align-items: center;
+}
+
+.flex-align-top {
+    display: flex; 
+    align-items: flex-start;
+}
+
+.promote-company-logo {
+    max-width: 7em; 
+    max-height: 4em; 
+    height: auto;
+    object-fit: scale-down;
+}
+
+.user-profile-job-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-darkgrey);
+}
+
+.user-profile-job-domains {
+    display: inline-block;
+    margin-bottom: 6.5px; 
+}
+
+.user-profile-job-company {
+    margin-bottom: 0.7em;
+    font-size: 14.5px;
+    color: var(--explorjob-dark);
+}
+
+.align-icon {
+    margin-top: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.user-profile-job-domain {
+    display: inline;
+    font-size: 14.5px;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+.user-profile-jobs-wrapper {
+    margin-top: 50px;
+}
+
+.user-profile-jobs-label {
+    font-weight: bold;
+    font-size: 14.5px;
+    color: var(--explorjob-orange);
+}
+
+.user-profile-jobs-label-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-orange);
+}
+
+.user-profile-jobs-job-label {
+    font-weight: bold;
+    font-size: 14.5px;
+    color: var(--explorjob-green);
+}
+
+.user-profile-jobs-job-add-to-favorite {
+    position: relative;
+    display: inline-block;
+    margin-top: 7.5px;
+    cursor: pointer;
+}
+
+.user-profile-jobs-job-add-to-favorite img {
+    width: 20px;
+}
+
+.user-profile-jobs-job-remove-favorite {
+    position: relative;
+    display: inline-block;
+    margin-top: 7.5px;
+    cursor: pointer;
+}
+
+.user-profile-jobs-job-remove-favorite img {
+    width: 20px;
+}
+
+.user-profile-jobs-job-company {
+    margin-bottom: 7.5px;
+    font-size: 14.5px;
+    color: var(--explorjob-dark);
+}
+
+.user-profile-jobs-job-presentation {
+    font-size: 14px;
+    text-align: justify;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.user-profile-standard-property {
+    display: flex;
+    align-items: flex-start;
+    margin: 1em 0;
+}
+
+.user-profile-standard-property .icon {
+    position: relative;
+    margin-right: 1em;
+}
+
+.user-profile-standard-property img {
+    width: 22.5px;
+}
+
+.user-profile-contact-method-icon {
+    margin: 0 5px;
+    cursor: help;
+}
+
+.user-profile-contact-method-icon:nth-of-type(1) {
+    margin-left: 7.5px;
+}
+
+.user-profile-go-to-login-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-darkgrey);
+}
+
+.user-profile-link {
+    display: block;
+    margin-top: 7.5px;
+    font-weight: bold;
+    color: var(--explorjob-orange);
+    cursor: pointer;
+}
+
+.container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.padding-right-small {
+    padding-right: 1.5em;
+}
+
+.padding-left-small {
+    padding-left: 1.5em;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}

@@ -1,0 +1,514 @@
+.account-messaging-wrapper {
+    margin:  0;
+}
+
+.account-messaging-wrapper {
+    margin: 0;
+}
+
+.account-messaging-fielset {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.account-messaging-fieldset-title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: var(--explorjob-orange);
+}
+
+.account-messaging-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.account-messaging-content {
+    padding-top: 10px;
+}
+
+.account-messaging-content-conversations {
+
+}
+
+.account-messaging-conversations-filter {
+    margin-bottom: 25px;
+}
+
+.account-messaging-conversations-filter-input {
+    height: auto;
+    padding-top: 13.5px;
+    padding-bottom: 13.5px;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-grey);
+}
+
+.account-messaging-conversations-filter-close {
+    position: relative;
+    float: right;
+    top: -29px;
+    margin-right: 12.5px;
+    font-size: 13.5px;
+    cursor: pointer;
+}
+
+.account-messaging-conversations {
+
+}
+
+.account-messaging-conversations-paginator {
+    display: block;
+    margin-top: 27.5px;
+}
+
+.account-messaging-conversation {
+    margin-bottom: 12px;
+    background-color: var(--explorjob-lightgrey);
+}
+
+.account-messaging-conversation-button-messages {
+    display: inline-flex;
+    width: auto;
+    height: 25px;
+    float: right;
+    margin-top: 1.5px;
+    margin-right: 15px;
+    padding-top: 8px;
+    padding-bottom: 23.5px;
+    padding-left: 9.5px;
+    padding-right: 11.5px;
+    font-size: 14.5px;
+    font-weight: bold;
+    color: var(--explorjob-green);
+    background-color: var(--explorjob-lightgrey);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 991px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 755px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 47.5px;
+    }
+}
+
+@media screen and (max-width: 745px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 45px;
+    }
+}
+
+@media screen and (max-width: 735px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 42.5px;
+    }
+}
+
+@media screen and (max-width: 725px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 40px;
+    }
+}
+
+@media screen and (max-width: 715px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 37.5px;
+    }
+}
+
+@media screen and (max-width: 705px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 35px;
+    }
+}
+
+@media screen and (max-width: 695px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 32.5px;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 30px;
+    }
+}
+
+@media screen and (max-width: 675px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 27.5px;
+    }
+}
+
+@media screen and (max-width: 665px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 25px;
+    }
+}
+
+@media screen and (max-width: 655px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 22.5px;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 17.5px;
+    }
+}
+
+@media screen and (max-width: 625px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 12.5px;
+    }
+}
+
+@media screen and (max-width: 605px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 10px;
+    }
+}
+
+@media screen and (max-width: 585px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 7.5px;
+    }
+}
+
+@media screen and (max-width: 555px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 6.5px;
+    }
+}
+
+@media screen and (max-width: 545px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 2.5px;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .account-messaging-conversation-button-messages {
+        margin-right: 0;
+    }
+}
+
+.account-messaging-conversation-button-messages-icon {
+    display: inline-block;
+    position: relative;
+    top: -3.5px;
+    width: 22.5px;
+    height: 22.5px;
+    margin-right: 7.5px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 13.5px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 1420px) {
+    .account-messaging-conversation-button-messages-icon {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .account-messaging-conversation-button-messages-icon {
+        margin-right: 7.5px;
+    }
+}
+
+.account-messaging-conversation-button-messages-icon-text {
+    position: relative;
+    top: 3.5px;
+}
+
+.account-messaging-conversation-button-messages-text {
+    position: relative;
+    bottom: 6.5px;
+}
+
+@media screen and (max-width: 1420px) {
+    .account-messaging-conversation-button-messages-text {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .account-messaging-conversation-button-messages-text {
+        position: relative;
+        bottom: 6.5px;
+    }
+}
+
+.account-messaging-conversation-actions {
+    float: right;
+    margin-top: 8px;
+}
+
+.account-messaging-conversation-action {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.account-messaging-conversation-action img {
+    width: 22px;
+}
+
+.account-messaging-messages-actions-back {
+    position: relative;
+    top: -8.5px;
+    color: var(--explorjob-orange);
+    cursor: pointer;
+}
+
+.account-messaging-messages-actions-user-photo {
+    margin-top: -7.5px;
+}
+
+.account-messaging-messages-actions-user-photo img {
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 50%;
+}
+
+.account-messaging-messages-actions-username {
+    text-align: center;
+}
+
+.account-messaging-messages-actions-user-title {
+    text-align: center;
+}
+
+.account-messaging-messages-action-user-detail {
+    cursor: pointer;
+}
+
+.account-messaging-messages-action-user-detail img {
+    width: 22px;
+}
+
+.account-messaging-messages-actions-has-met {
+    cursor: pointer;
+}
+
+.account-messaging-messages-actions-has-met img {
+    width: 20px;
+}
+
+
+
+.account-messaging-messages {
+    height: 435px;
+    padding-right: 10px;
+    overflow: scroll;
+}
+
+.account-messaging-messages-footer {
+    margin-top: 15px;
+    padding-right: 25px;
+}
+
+.account-messaging-messages-footer-actions {
+    display: inline-block;
+}
+
+.account-messaging-messages-footer-action-transmit-skype {
+    display: inline-block;
+    margin-top: 0.5px;
+    margin-left: 12.5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.account-messaging-messages-footer-action-transmit-skype img {
+    width: 27.5px;
+}
+
+.account-messaging-messages-footer-action-transmit-phone {
+    display: inline-block;
+    margin-top: 0.5px;
+    margin-left: 12.5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.account-messaging-messages-footer-action-transmit-phone img {
+    width: 30px;
+}
+
+.account-appintments-button {
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+.account-messaging-messages-propose-button {
+    height: 35px;
+    width: 250px;
+    float: left;
+    padding-top: 3.5px;
+    padding-bottom: 1.5px;
+    padding-left: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-green);
+    border: none;
+    outline: inherit;
+    cursor: pointer;
+}
+
+.account-messaging-messages-propose-button:hover {
+    font-size: 17px;
+}
+
+.account-messaging-go-to-search-link {
+    display: block;
+    margin-top: 17.5px;
+    color: var(--explorjob-orange);
+    cursor: pointer;
+}
+.account-conversation-wrapper {
+    margin: 0;
+}
+
+.account-conversation {
+    margin-bottom: -10px;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.account-conversation-photo {
+    margin-left: 17.5px;
+}
+
+@media screen and (max-width: 767px) {
+    .account-conversation-photo {
+        margin-left: 0px;
+    }
+}
+
+.account-conversation-photo-img {
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 50%;
+}
+
+.account-conversation-username {
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 1199px) {
+    .account-conversation-username {
+        margin-left: 12.5px;
+    }
+}
+
+@media screen and (max-width: 1095px) {
+    .account-conversation-username {
+        margin-left: 22.5px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .account-conversation-username {
+        margin-left: 0;
+    }
+}
+
+.account-conversation-title {
+    margin-top: 10px;
+    color: var(--explorjob-dark);
+}
+.mat-table{
+    width: 100%;
+}
+th.mat-header-cell{
+    width: 33%;
+}
+.mat-icon {
+    font-size: 45px;
+  }
+.no-elements{
+    font-style: italic;
+}
+.panel-title{
+    color: var(--explorjob-green);
+    font-weight: 500;
+    font-size: 17px;
+}
+.mat-accordion .mat-expansion-panel:not(.mat-expanded), .mat-accordion .mat-expansion-panel:not(.mat-expansion-panel-spacing) {
+    border-radius: 0;
+    margin-bottom: 15px;
+}
+@media only screen and (max-width: 1280px) {
+    .account-appintments-button {
+        font-size: 11px;
+    }
+}
+.img-btn{
+    cursor: pointer;
+    max-width: 50px;
+}
+mat-form-field {
+    margin-right: 12px;
+}
+
+::ng-deep .mat-snack-bar-panel {
+    color: var(--explorjob-lightgrey);
+    background: var(--explorjob-orange);
+    box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+}
+::ng-deep .mat-simple-snackbar-action {
+    color: var(--explorjob-lightgrey);
+}

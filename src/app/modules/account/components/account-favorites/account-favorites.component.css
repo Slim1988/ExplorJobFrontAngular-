@@ -1,0 +1,134 @@
+.account-favorites-wrapper {
+    margin: 0;
+}
+
+.account-favorites-fielset {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.account-favorites-fieldset-title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: var(--explorjob-orange);
+}
+
+.account-favorites-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.account-favorites-content {
+    padding-top: 10px;
+}
+
+.account-favorites-filter {
+    margin-bottom: 25px;
+}
+
+.account-favorites-filter-input {
+    height: auto;
+    padding-top: 13.5px;
+    padding-bottom: 13.5px;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+    background-color: var(--explorjob-grey);
+}
+
+.account-favorites-filter-close {
+    position: relative;
+    float: right;
+    top: -29px;
+    margin-right: 12.5px;
+    font-size: 13.5px;
+    cursor: pointer;
+}
+
+.account-favorites-list {
+
+}
+
+.account-favorites-list-item {
+    margin-bottom: 12px;
+    background-color: var(--explorjob-lightgrey);
+}
+
+.account-favorites-list-item-actions {
+    display: block;
+    margin-top: 8px;
+}
+
+@media screen and (max-width: 991px) {
+    .account-favorites-list-item-actions {
+        margin-left: 60px;
+    }
+}
+
+.account-favorites-list-item-action {
+    cursor: pointer;
+}
+
+.account-favorites-list-item-action img {
+    width: 22px;
+}
+
+.account-favorites-list-item-has-met-wrapper {
+    float: right;
+    display: block;
+    margin-top: 8px;
+    margin-right: 35px;
+}
+
+@media screen and (max-width: 1735px) {
+    .account-favorites-list-item-has-met-wrapper {
+        margin-right: 15px;
+    }
+}
+
+@media screen and (max-width: 1699px) {
+    .account-favorites-list-item-has-met-wrapper {
+        margin-right: 12.5px;
+    }
+}
+
+@media screen and (max-width: 1302px) {
+    .account-favorites-list-item-has-met-wrapper {
+        margin-right: 5px;
+    }
+}
+
+@media screen and (max-width: 1175px) {
+    .account-favorites-list-item-has-met-wrapper {
+        margin-right: 2.5px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .account-favorites-list-item-has-met-wrapper {
+        margin-right: 45px;
+    }
+}
+
+.account-favorites-list-item-has-met {
+    cursor: pointer;
+}
+
+.account-favorites-list-item-has-met img {
+    width: 22px;
+}
+
+.account-favorites-go-to-search-link {
+    display: block;
+    margin-top: 17.5px;
+    color: var(--explorjob-orange);
+    cursor: pointer;
+}

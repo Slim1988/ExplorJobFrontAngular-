@@ -1,0 +1,18 @@
+<div class="account-photo-upload-wrapper">
+
+    <input
+        #accountPhotoUploadInput
+        type="file"
+        placeholder="Sélectionnez une image"
+        (change)="uploadFile(accountPhotoUploadInput.files)"
+        accept="image/png, image/jpeg"
+        class="account-photo-upload-input ">
+
+    <button
+        type="button"
+        (click)="accountPhotoUploadInput.click()"
+        class="button account-photo-upload-button">
+        Modifier ma photo de profil
+    </button>
+
+</div>

@@ -1,0 +1,223 @@
+<p-confirmDialog acceptLabel="OK" rejectLabel="Annuler" [style]="{ maxWidth: '75vw' }"></p-confirmDialog>
+
+<div class="account-jobs-wrapper">
+    <div *ngIf="!jobs; then accountJobsLoadingTemplate else accountJobsLoadedTemplate"></div>
+</div>
+
+<ng-template #accountJobsLoadingTemplate>
+    <loader></loader>
+</ng-template>
+
+<ng-template #accountJobsLoadedTemplate>
+    <div class="account-jobs-fielset">
+
+        <h2 class="account-jobs-fieldset-title">
+            Mes Métiers
+        </h2>
+
+        <a (click)="displayModalToAddJob()" title="Ajouter un métier" class="account-jobs-add">
+            <i class="fa fa-plus"></i>
+        </a>
+
+        <hr class="account-jobs-separator">
+
+        <div class="account-jobs-content">
+
+            <div style="display: inherit; margin-top: -15px; margin-bottom: 20px;">
+                <p-messages></p-messages>
+            </div>
+
+            <div *ngIf="jobs.length">
+                <div class="account-jobs-list">
+
+                    <div *ngFor="let job of jobs">
+
+                        <div class="account-jobs-list-item">
+                            <div class="p-grid">
+
+                                <div class="p-col-11">
+                                    <account-job [job]="job"></account-job>
+                                </div>
+
+                                <div class="p-col-1">
+                                    <a (click)="displayModalToEditJob(job)" title="Modifier le métier"
+                                        class="account-jobs-list-item-edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+
+                                    <a (click)="deleteJob(job)" title="Supprimer le métier"
+                                        class="account-jobs-list-item-remove">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr class="account-jobs-separator">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div *ngIf="!jobs.length">
+                <div class="center">
+                    <i>Vous n'avez aucun métier</i>
+                </div>
+
+                <div class="center">
+                    <a class="account-jobs-go-to-add-link" (click)="displayModalToAddJob()">
+                        Ajouter un métier
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</ng-template>
+
+<p-dialog [draggable]="false" [(visible)]="displayJobFormModal" [modal]="true" [dismissableMask]="false"
+    [style]="{ width: 'auto', minWidth: '50vw', height: 'auto', minheight: '25vw' }"
+    [contentStyle]="{ width: 'auto', minWidth: '50vw', height: 'auto', minheight: '25vw' }" [autoZIndex]=true>
+
+    <p-header>
+        <h3 class="account-jobs-form-modal-title">
+            {{ jobForm?.value?.isAdd ? 'Ajouter' : 'Editer' }} un métier
+        </h3>
+    </p-header>
+
+    <div *ngIf="jobForm" class="account-jobs-form">
+
+        <form [formGroup]="jobForm" (ngSubmit)="submitJobForm()">
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-4">
+                    <div class="account-jobs-form-input-label input-label-required">
+                        Domaine métier
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-8">
+                    <div class="input-wrapper">
+                        <p-dropdown
+                            styleClass="account-jobs-form-input-dropdown-multi"
+                            [options]="jobDomainsDropdown"
+                            optionLabel="label"
+                            defaultLabel="Quel est votre famille de métier ?"
+                            formControlName="domains"
+                            placeholder="Quel est votre famille de métier ?"
+                            class="input-dropdown-multi account-jobs-form-input-dropdown-multi"
+                        >
+                        </p-dropdown>
+
+                        <div *ngIf="jobForm.controls.domains.invalid && (jobForm.controls.domains.dirty || jobForm.controls.domains.touched)"
+                            class="input-messages">
+                            <p-message *ngIf="jobForm.controls.domains.errors.required" severity="error"
+                                text="Le domaine métier est requis">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-4">
+                    <div class="account-jobs-form-input-label input-label-required">
+                        Intitulé de Poste
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-8">
+                    <div class="input-wrapper">
+                        <input pInputText type="text" formControlName="label" placeholder="Le titre de votre fonction (privilégiez les termes grands public)"
+                            class="input account-jobs-form-input-text">
+
+                        <div *ngIf="jobForm.controls.label.invalid && (jobForm.controls.label.dirty || jobForm.controls.label.touched)"
+                            class="input-messages">
+                            <p-message *ngIf="jobForm.controls.label.errors.required" severity="error"
+                                text="L'intitulé du poste est requis">
+                            </p-message>
+                            <p-message *ngIf="jobForm.controls.label.errors.maxlength" severity="error"
+                                text="L'intitulé du poste ne peut excéder 150 caractères">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-4">
+                    <div class="account-jobs-form-input-label">
+                        Entreprise
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-8">
+                    <div class="input-wrapper">
+                        <p-autoComplete
+                            class="account-jobs-form-input-text"
+                            formControlName="company"
+                            placeholder="Dans quelle entreprise excercez-vous ce métier ?"
+                            styleClass="account-jobs-form-input-text-container"
+                            inputStyleClass="account-jobs-form-input-text-input-field input"
+                            panelStyleClass="account-jobs-form-input-text-panel"
+                            [suggestions]="jobUsersFilteredCompanies"
+                            [dropdown]
+                            (completeMethod)="searchCompanies($event)"
+                            (onClear)="onClearCompaniesInput($event)"
+                        >
+                        </p-autoComplete>
+
+                        <div *ngIf="jobForm.controls.company.invalid && (jobForm.controls.company.dirty || jobForm.controls.company.touched)"
+                            class="input-messages">
+                            <p-message *ngIf="jobForm.controls.company.errors.maxlength" severity="error"
+                                text="L'entreprise ne peut excéder 125 caractères">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-grid">
+                <div class="p-col-12 p-md-12 p-lg-4">
+                    <div class="account-jobs-form-input-label input-label-required">
+                        Présentez votre métier en quelques lignes <i
+                            title="Décrivez en quelques lignes votre métier. Dans quel secteur d’activité l’avez-vous exercé, pendant combien de temps, donnez quelques exemples de missions"
+                            class="fa fa-question-circle md-18"
+                            style="position: relative; top: 1px; margin-left: 1px; cursor: help;"></i>
+                    </div>
+                </div>
+
+                <div class="p-col-12 p-md-12 p-lg-8">
+                    <div class="input-wrapper">
+                        <textarea pInputTextarea [rows]="8" autoResize="autoResize" formControlName="presentation"
+                            placeholder="Vous pouvez indiquer les missions principales ou une spécificité de votre métier.&#10;L'objectif est d'introduire en quelques lignes votre témoignage."
+                            class="input-textarea account-jobs-form-input-textarea">
+                        </textarea>
+
+                        <div *ngIf="jobForm.controls.presentation.invalid && (jobForm.controls.presentation.dirty || jobForm.controls.presentation.touched)"
+                            class="input-messages">
+                            <p-message *ngIf="jobForm.controls.presentation.errors.required" severity="error"
+                                text="La présentation du métier est requise">
+                            </p-message>
+                            <p-message *ngIf="jobForm.controls.presentation.errors.maxlength" severity="error"
+                                text="La présentation du métier ne peut excéder 500 caractères">
+                            </p-message>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons-wrapper">
+                <button pButton type="submit" label="Enregistrer" [disabled]="!jobForm.valid"
+                    class="button account-jobs-form-button">
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</p-dialog>

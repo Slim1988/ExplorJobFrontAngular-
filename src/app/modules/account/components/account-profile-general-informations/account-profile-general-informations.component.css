@@ -1,0 +1,111 @@
+.account-profile-general-informations-wrapper {
+    margin: 0;
+}
+
+.account-profile-general-informations-fielset {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.account-profile-general-informations-fieldset-title {
+    margin: 0;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: var(--explorjob-orange);
+}
+
+.account-profile-general-informations-separator {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 20.5px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid var(--explorjob-dark);
+}
+
+.account-profile-general-informations-form {
+
+}
+
+.account-profile-general-informations-form-input-label {
+    margin-top: 23px;
+    font-weight: bold;
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+}
+
+.account-profile-general-informations-form-input-text {
+    width: 100%;
+    height: 30px;
+}
+
+.account-profile-general-informations-form-input-textarea {
+
+}
+
+.account-profile-general-informations-form-input-date {
+    display: block;
+    margin-top: 17.5px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.birth-input {
+    font-size: 14.5px;
+    color: var(--explorjob-darkgrey);
+    background: var(--explorjob-lightgrey);
+    border: none;
+    outline: none;
+}
+
+.account-profile-general-informations-form-photo {
+    margin-top: 15px;
+}
+
+.account-profile-general-informations-form-button {
+    margin-top: 22.5px;
+    padding: 7.5px;
+    font-weight: bold;
+    color: var(--explorjob-white);
+    background-color: var(--explorjob-orange);
+    border: none;
+    outline: inherit;
+    text-transform: uppercase;
+}
+
+@media only screen and (min-width: 1175px) {
+    .account-profile-general-informations-form-button {
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 1174px) {
+    .account-profile-general-informations-form-button {
+        margin-right: 22.5px;
+    }
+}
+
+::ng-deep.mat-datepicker-toggle-active {
+    color: var(--explorjob-darkgrey);
+}
+
+::ng-deep.mat-datepicker-toggle-active {
+    color: var(--explorjob-orange);
+}
+
+::ng-deep.mat-calendar {
+    background: var(--explorjob-lightgrey);
+    font-family: "Montserrat";
+}
+
+::ng-deep.mat-calendar-body-selected {
+    background: var(--explorjob-orange);
+}
+
+textarea::placeholder {
+    font-style: italic;
+}

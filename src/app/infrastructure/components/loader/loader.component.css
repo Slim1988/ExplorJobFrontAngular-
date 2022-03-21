@@ -1,0 +1,32 @@
+.loader-wrapper {
+    margin: 0;
+    margin-top: 4.5rem;
+    text-align: center;
+}
+
+.progress-spinner {
+    width: 100px;
+    height: 100px;
+}
+
+@keyframes ui-progress-spinner-color {
+    100%
+    {
+        stroke: var(--explorjob-orange);
+    }
+    0% {
+        stroke: var(--explorjob-orange);
+    }
+    40% {
+        stroke: var(--explorjob-green);
+    }
+    66% {
+        stroke: var(--explorjob-green);
+    }
+    80% {
+        stroke: var(--explorjob-orange);
+    }
+    90% {
+        stroke: var(--explorjob-orange);
+    }
+}

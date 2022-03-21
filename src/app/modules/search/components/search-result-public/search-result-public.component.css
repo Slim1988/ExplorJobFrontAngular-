@@ -1,0 +1,49 @@
+.search-result-public-wrapper {
+    margin: 0;
+}
+
+.search-result-public {
+    margin-bottom: -10px;
+    font-size: 14.5px;
+    text-align: center;
+}
+
+.search-result-public-photo {
+
+}
+
+.align-center{
+    align-items: center;
+}
+
+.search-result-public-photo-img {
+    object-fit: center; 
+    width: 37.5px;
+    height: 37.5px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.search-result-public-company-logo img {
+    object-fit: center; 
+    max-width: 5em; 
+    max-height: 3.5em; 
+    height: auto;
+    margin: auto;
+}
+
+.search-result-public-username {
+
+}
+
+.search-result-public-job {
+
+}
+
+.search-result-public-company {
+
+}
+
+.search-result-public-localisation {
+
+}
